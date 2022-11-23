@@ -56,5 +56,15 @@ export default {
 .onlinedoc{
     flex:1;
 }
+.t-tabs{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+/deep/ .t-tabs__content{
+    flex: 1;
+    height: 1px;
+    overflow-y: auto;
+}
 </style>
   

@@ -18,16 +18,9 @@
     <div class="main">
       <div class="siderbar">
         <t-menu theme="dark">
-          <t-menu-item value="0">
-            <template #icon>
-              <t-icon name="app" />
-            </template>
-            仪表盘
-          </t-menu-item>
-
           <t-submenu value="1" title="资源列表">
             <template #icon>
-              <t-icon name="code" />
+              <t-icon name="folder" />
             </template>
             <t-menu-item value="1-1" disabled>
               <span>菜单二</span>
@@ -35,7 +28,7 @@
           </t-submenu>
           <t-submenu value="2" title="调度平台">
             <template #icon>
-              <t-icon name="file" />
+              <t-icon name="folder" />
             </template>
             <t-submenu value="2-1" title="二级菜单-1">
               <t-menu-item value="3-1">三级菜单-1</t-menu-item>
