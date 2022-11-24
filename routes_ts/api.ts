@@ -1,25 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 import {genWecomApiDoc} from '../logic/getApiInfo.js'
 
 router.post('/info/get', async (req, res, next) => {
     const {operationid} = req.body;
-    const filePath = `../api/${operationid.replace(/[\.\/\\]/g, '')}`
-    
-    try {
-      if (fs.existsSync(filePath)) {
-        //file exists
+    const filePath = path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.json`)
+    fs.exists(filePath, async function(exists) {
+      if(exists) {
         const jsonData = await require(filePath)
-      res.send({
-          schema: jsonData,
-          md: genWecomApiDoc(jsonData)
-      })
+        try {
+          const md = genWecomApiDoc(jsonData)
+          res.send({
+              schema: jsonData,
+              md
+          })
+        } catch(e) {
+          console.log(`---- ${operationid} schema解析失败----`)
+          res.send({
+            schema: jsonData,
+            md: ''
+        })
+        }
+      } else {
+        res.send({
+          schema: {
+            operationid
+          }
+        })
       }
-    } catch(err) {
-      console.error(err)
-    }
-
+    })
   });
 
 
