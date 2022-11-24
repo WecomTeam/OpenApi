@@ -44,10 +44,11 @@ export default {
     },
     methods:{
         eventApiClick:function(e){
-            console.log(e)
+            
             if(e.api != this.currentApi.api){
+                
                 this.currentApi = e            
-                this.$emit('onApiChanged',e.api)
+                this.$emit('onApiChanged',e)
             }
             
         }

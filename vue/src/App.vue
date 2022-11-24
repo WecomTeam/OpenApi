@@ -17,10 +17,10 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree />
+        <CatalogTree @onApiChanged="eventApiChanged" />
       </div>
       <div class="body">
-        <MainBoxVue/>
+        <MainBoxVue :api="currentApi"/>
       </div>
     </div>
   </div>
@@ -31,9 +31,20 @@ import MainBoxVue from './components/MainBox.vue';
 import CatalogTree from './components/catalog/CatalogTree.vue'
 export default {
   name: 'App',
+  data:function(){
+    return {
+      currentApi:{}
+    }
+  },  
   components: {
     MainBoxVue,
     CatalogTree
+  },
+  methods:{
+    eventApiChanged:function(api){
+      console.log(api)
+      this.currentApi = api
+    }
   }
 }
 </script>
