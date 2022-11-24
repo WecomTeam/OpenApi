@@ -44,14 +44,14 @@ export default {
         api:async function (value) {
             console.log(value)
             if(value.api){
-                this.apiSchema = await this.fetchApi()
+                this.apiSchema = await this.fetchApi(value.api)
             }
         }
     },
     methods: {
-        async fetchApi() {
+        async fetchApi(api) {
             const data = await axios.post('/api/info/get', {
-                operationid: 'WwOpenGetUser'
+                operationid: api
             })
             console.log(data)
         }
