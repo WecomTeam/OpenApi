@@ -1,29 +1,33 @@
 <template>
-    <t-menu theme="dark">
-        <t-submenu v-for="cate in tree" :key="cate.cate_id" :value="cate.cate_id" :title="cate.title">
+    <t-menu theme="dark" width="300px">
+
+        <t-submenu v-for="cata in tree" :key="cata.cate_id" :value="cata.category_id" :title="cata.title">
             <template #icon>
                 <t-icon name="folder" />
             </template>
-            
-            <t-menu-item value="1-1" disabled>
-                <span>菜单二</span>
-            </t-menu-item>
-        </t-submenu>
 
+            <template v-for="cata1 in cata.children">
+                <t-submenu v-if="cata1.is_folder" :key="cata1.category_id" :value="cata1.category_id"
+                    :title="cata1.title">
 
-        <t-submenu value="2" title="调度平台">
-            <template #icon>
-                <t-icon name="folder" />
+                    <template v-for="cata2 in cata1.children">
+                        <t-submenu v-if="cata2.is_folder" :key="cata2.category_id" :value="cata2.category_id"
+                            :title="cata2.title">
+
+                        </t-submenu>
+
+                        <t-menu-item v-else :key="cata2.category_id" :value="cata2.api" @click="eventApiClick(cata2)">{{ cata2.title }}</t-menu-item>
+
+                    </template>
+
+                </t-submenu>
+
+                <t-menu-item v-else :key="cata1.category_id" :value="cata1.api" @click="eventApiClick(cata1)">{{ cata1.title }}</t-menu-item>
+
             </template>
-            <t-submenu value="2-1" title="二级菜单-1">
-                <t-menu-item value="3-1">三级菜单-1</t-menu-item>
-                <t-menu-item value="3-2">三级菜单-2</t-menu-item>
-                <t-menu-item value="3-3">三级菜单-3</t-menu-item>
-            </t-submenu>
-            <t-menu-item value="2-2">
-                <span>二级菜单-2</span>
-            </t-menu-item>
+
         </t-submenu>
+
     </t-menu>
 </template>
 
@@ -34,7 +38,18 @@ console.log(categoryTree)
 export default {
     data() {
         return {
-            tree: categoryTree
+            tree: categoryTree,
+            currentApi:{}
+        }
+    },
+    methods:{
+        eventApiClick:function(e){
+            console.log(e)
+            if(e.api != this.currentApi.api){
+                this.currentApi = e            
+                this.$emit('onApiChanged',e.api)
+            }
+            
         }
     }
 }

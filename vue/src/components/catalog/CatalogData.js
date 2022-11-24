@@ -2,7 +2,6 @@ let category = {
     "author": "jasonqldu",
     "category_id": 90135,
     "childSort": [
-
         90192,
         90225,
         90234,
@@ -76,11 +75,10 @@ let category = {
                             "category_id": 90196,
                             "childSort": [
                                 "WwOpenGetUser",
-                                null
+                                "WwOpenGetUser"
                             ],
                             "children": {
-                                "WwOpenGetUser": "读取成员",
-                                "undefined": "读取成员"
+                                "WwOpenGetUser": "读取成员"
                             },
                             "doc_id": 10019,
                             "gray_status": 0,
@@ -205,10 +203,10 @@ let category = {
                             "author": "warrenchen",
                             "category_id": 90975,
                             "childSort": [
-                                null
+                                "BatchInvite"
                             ],
                             "children": {
-                                "undefined": "邀请成员"
+                                "BatchInvite": "邀请成员"
                             },
                             "doc_id": 12543,
                             "gray_status": 0,
@@ -269,11 +267,11 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 96067,
                             "childSort": [
-                                null,
-                                null
+                                "WwOpenListDeptUser",
+                                "WwOpenListDeptUser"
                             ],
                             "children": {
-                                "undefined": "获取成员ID列表"
+                                "WwOpenListDeptUser": "获取成员ID列表"
                             },
                             "doc_id": 40856,
                             "gray_status": 0,
@@ -423,10 +421,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 90210,
                             "childSort": [
-                                null
+                                "WwCreateTag"
                             ],
                             "children": {
-                                "undefined": "创建标签"
+                                "WwCreateTag": "创建标签"
                             },
                             "doc_id": 10915,
                             "gray_status": 0,
@@ -487,10 +485,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 90214,
                             "childSort": [
-                                null
+                                "WwAddTagUser"
                             ],
                             "children": {
-                                "undefined": "增加标签成员"
+                                "WwAddTagUser": "增加标签成员"
                             },
                             "doc_id": 10923,
                             "gray_status": 0,
@@ -503,10 +501,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 90215,
                             "childSort": [
-                                null
+                                "WwDelTagUser"
                             ],
                             "children": {
-                                "undefined": "删除标签成员"
+                                "WwDelTagUser": "删除标签成员"
                             },
                             "doc_id": 10925,
                             "gray_status": 0,
@@ -799,10 +797,10 @@ let category = {
                             "author": "bmanluo",
                             "category_id": 94854,
                             "childSort": [
-                                null
+                                "WwOpenGetExportResult"
                             ],
                             "children": {
-                                "undefined": "##接口定义"
+                                "WwOpenGetExportResult": "##接口定义"
                             },
                             "doc_id": 31884,
                             "gray_status": 0,
@@ -898,10 +896,10 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 90232,
                             "childSort": [
-                                null
+                                "WwOpenGetMenu"
                             ],
                             "children": {
-                                "undefined": "获取菜单"
+                                "WwOpenGetMenu": "获取菜单"
                             },
                             "doc_id": 10787,
                             "gray_status": 0,
@@ -1048,10 +1046,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 90248,
                             "childSort": [
-                                null
+                                "AppChatSend"
                             ],
                             "children": {
-                                "undefined": "##接口定义"
+                                "AppChatSend": "##接口定义"
                             },
                             "doc_id": 13294,
                             "gray_status": 0,
@@ -1150,10 +1148,10 @@ let category = {
                     "author": "harrygong",
                     "category_id": 94888,
                     "childSort": [
-                        null
+                        "UpdateTemplateCardMsg"
                     ],
                     "children": {
-                        "undefined": "接口定义"
+                        "UpdateTemplateCardMsg": "接口定义"
                     },
                     "doc_id": 32086,
                     "gray_status": 0,
@@ -1185,11 +1183,11 @@ let category = {
                     "author": "abelzhu",
                     "category_id": 90253,
                     "childSort": [
-                        null,
-                        null
+                        "WwOpenUploadMedia",
+                        "WwOpenUploadMedia"
                     ],
                     "children": {
-                        "undefined": "上传临时素材"
+                        "WwOpenUploadMedia": "上传临时素材"
                     },
                     "doc_id": 10112,
                     "gray_status": 0,
@@ -1203,11 +1201,10 @@ let category = {
                     "category_id": 90254,
                     "childSort": [
                         "WwOpenGetMedia",
-                        null
+                        "WwOpenGetMedia"
                     ],
                     "children": {
-                        "WwOpenGetMedia": "获取临时素材",
-                        "undefined": "获取临时素材"
+                        "WwOpenGetMedia": "获取临时素材"
                     },
                     "doc_id": 10115,
                     "gray_status": 0,
@@ -1236,11 +1233,11 @@ let category = {
                     "author": "abelzhu",
                     "category_id": 90256,
                     "childSort": [
-                        null,
-                        null
+                        "UploadImage",
+                        "UploadImage"
                     ],
                     "children": {
-                        "undefined": "上传图片"
+                        "UploadImage": "上传图片"
                     },
                     "doc_id": 13219,
                     "gray_status": 0,
@@ -1292,10 +1289,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 91437,
                             "childSort": [
-                                null
+                                "WwOpenGetUserInfoByCodeV2"
                             ],
                             "children": {
-                                "undefined": "获取访问用户身份"
+                                "WwOpenGetUserInfoByCodeV2": "获取访问用户身份"
                             },
                             "doc_id": 15574,
                             "gray_status": 0,
@@ -1324,10 +1321,10 @@ let category = {
                             "author": "warrenchen",
                             "category_id": 91023,
                             "childSort": [
-                                null
+                                "WwOpenGetUserInfoByCodeV2"
                             ],
                             "children": {
-                                "undefined": "获取访问用户身份"
+                                "WwOpenGetUserInfoByCodeV2": "获取访问用户身份"
                             },
                             "doc_id": 15047,
                             "gray_status": 0,
@@ -1479,10 +1476,10 @@ let category = {
                             "author": "jackiejjwu",
                             "category_id": 93384,
                             "childSort": [
-                                null
+                                "WwOpenGetCorpCheckinOption"
                             ],
                             "children": {
-                                "undefined": "获取企业所有打卡规则"
+                                "WwOpenGetCorpCheckinOption": "获取企业所有打卡规则"
                             },
                             "doc_id": 25765,
                             "gray_status": 0,
@@ -1598,10 +1595,10 @@ let category = {
                             "author": "warrenchen",
                             "category_id": 91530,
                             "childSort": [
-                                null
+                                "WwOpenGetSPData"
                             ],
                             "children": {
-                                "undefined": "**提示：推荐使用新接口“批量获取审批单号”及“获取审批申请详情”，此接口后续将不再维护、逐步下线。**"
+                                "WwOpenGetSPData": "**提示：推荐使用新接口“批量获取审批单号”及“获取审批申请详情”，此接口后续将不再维护、逐步下线。**"
                             },
                             "doc_id": 11228,
                             "gray_status": 0,
@@ -1630,13 +1627,12 @@ let category = {
                             "category_id": 91853,
                             "childSort": [
                                 "WwOpenSpApplyEvent",
-                                null,
-                                null,
-                                null
+                                "WwOpenSpApplyEvent",
+                                "WwOpenSpApplyEvent",
+                                "WwOpenSpApplyEvent"
                             ],
                             "children": {
-                                "WwOpenSpApplyEvent": "提交审批申请",
-                                "undefined": "提交审批申请"
+                                "WwOpenSpApplyEvent": "提交审批申请"
                             },
                             "doc_id": 17891,
                             "gray_status": 0,
@@ -1650,12 +1646,11 @@ let category = {
                             "category_id": 91982,
                             "childSort": [
                                 "WwOpenGetSpTemplateDetail",
-                                null,
-                                null
+                                "WwOpenGetSpTemplateDetail",
+                                "WwOpenGetSpTemplateDetail"
                             ],
                             "children": {
-                                "WwOpenGetSpTemplateDetail": "获取审批模板详情",
-                                "undefined": "获取审批模板详情"
+                                "WwOpenGetSpTemplateDetail": "获取审批模板详情"
                             },
                             "doc_id": 18596,
                             "gray_status": 0,
@@ -1669,12 +1664,11 @@ let category = {
                             "category_id": 91983,
                             "childSort": [
                                 "WwOpenGetSpInfoDetail",
-                                null,
-                                null
+                                "WwOpenGetSpInfoDetail",
+                                "WwOpenGetSpInfoDetail"
                             ],
                             "children": {
-                                "WwOpenGetSpInfoDetail": "获取审批申请详情",
-                                "undefined": "获取审批申请详情"
+                                "WwOpenGetSpInfoDetail": "获取审批申请详情"
                             },
                             "doc_id": 18615,
                             "gray_status": 0,
@@ -1687,10 +1681,10 @@ let category = {
                             "author": "jackiejjwu",
                             "category_id": 93375,
                             "childSort": [
-                                null
+                                "WwOpenGetCorpVacation"
                             ],
                             "children": {
-                                "undefined": "获取企业假期管理配置"
+                                "WwOpenGetCorpVacation": "获取企业假期管理配置"
                             },
                             "doc_id": 25690,
                             "gray_status": 0,
@@ -1818,28 +1812,27 @@ let category = {
                             "category_id": 93394,
                             "childSort": [
                                 "OpenQueryJournalRecordDetail",
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail",
+                                "OpenQueryJournalRecordDetail"
                             ],
                             "children": {
-                                "OpenQueryJournalRecordDetail": "获取汇报记录详情",
-                                "undefined": "获取汇报记录详情"
+                                "OpenQueryJournalRecordDetail": "获取汇报记录详情"
                             },
                             "doc_id": 25845,
                             "gray_status": 0,
@@ -2012,7 +2005,7 @@ let category = {
                     "doc_id": 0,
                     "gray_status": 0,
                     "id": 93664,
-                    "order_id": 4096,
+                    "order_id": 5120,
                     "parent_id": 90272,
                     "title": "对外收款"
                 }
@@ -2110,28 +2103,10 @@ let category = {
             "author": "warrenchen",
             "category_id": 90663,
             "childSort": [
-                90930,
                 91039,
-                92520,
-                95884
+                92520
             ],
             "children": {
-                "90930": {
-                    "author": "warrenchen",
-                    "category_id": 90930,
-                    "childSort": [
-                        null
-                    ],
-                    "children": {
-                        "undefined": "3.1 支持Http Get请求验证URL有效性"
-                    },
-                    "doc_id": 14961,
-                    "gray_status": 0,
-                    "id": 90465,
-                    "order_id": 6144,
-                    "parent_id": 90663,
-                    "title": "回调配置"
-                },
                 "91039": {
                     "author": "warrenchen",
                     "category_id": 91039,
@@ -2163,24 +2138,6 @@ let category = {
                     "order_id": 8192,
                     "parent_id": 90663,
                     "title": "获取企业微信API域名IP段"
-                },
-                "95884": {
-                    "author": "samueldeng",
-                    "category_id": 95884,
-                    "childSort": [
-                        null,
-                        "ConvertOpenUserIdToUserId"
-                    ],
-                    "children": {
-                        "undefined": "自建应用与第三方应用的对接",
-                        "ConvertOpenUserIdToUserId": "userid转换"
-                    },
-                    "doc_id": 39558,
-                    "gray_status": 0,
-                    "id": 95884,
-                    "order_id": 10240,
-                    "parent_id": 90663,
-                    "title": "自建应用与第三方应用的对接"
                 }
             },
             "doc_id": 0,
@@ -2219,10 +2176,10 @@ let category = {
                     "author": "kenshinxu",
                     "category_id": 91774,
                     "childSort": [
-                        null
+                        "GetSimpleRobotInfo"
                     ],
                     "children": {
-                        "undefined": "##获取机器人信息"
+                        "GetSimpleRobotInfo": "##获取机器人信息"
                     },
                     "doc_id": 17312,
                     "gray_status": 0,
@@ -2276,10 +2233,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 91707,
                             "childSort": [
-                                null
+                                "WwOpenGetUserInfoByCode"
                             ],
                             "children": {
-                                "undefined": "获取访问用户身份"
+                                "WwOpenGetUserInfoByCode": "获取访问用户身份"
                             },
                             "doc_id": 16881,
                             "gray_status": 0,
@@ -2292,10 +2249,10 @@ let category = {
                             "author": "adamtan",
                             "category_id": 95791,
                             "childSort": [
-                                null
+                                "WwOpenGetSchoolUserInfoByCode"
                             ],
                             "children": {
-                                "undefined": "获取家校访问用户身份"
+                                "WwOpenGetSchoolUserInfoByCode": "获取家校访问用户身份"
                             },
                             "doc_id": 39090,
                             "gray_status": 0,
@@ -2375,10 +2332,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 92323,
                             "childSort": [
-                                null
+                                "ConverExternalToOpenId"
                             ],
                             "children": {
-                                "undefined": "外部联系人openid转换"
+                                "ConverExternalToOpenId": "外部联系人openid转换"
                             },
                             "doc_id": 18820,
                             "gray_status": 0,
@@ -2423,7 +2380,6 @@ let category = {
                         92330,
                         92331,
                         92332,
-                        92333,
                         92334,
                         92335,
                         92336,
@@ -2501,10 +2457,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 92329,
                             "childSort": [
-                                null
+                                "SchoolBatchDelStudent"
                             ],
                             "children": {
-                                "undefined": "批量删除学生"
+                                "SchoolBatchDelStudent": "批量删除学生"
                             },
                             "doc_id": 18834,
                             "gray_status": 0,
@@ -2561,22 +2517,6 @@ let category = {
                             "parent_id": 92324,
                             "title": "删除家长"
                         },
-                        "92333": {
-                            "author": "ryanjelin",
-                            "category_id": 92333,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "更新家长"
-                            },
-                            "doc_id": 19181,
-                            "gray_status": 0,
-                            "id": 92333,
-                            "order_id": 9216,
-                            "parent_id": 92324,
-                            "title": "更新家长"
-                        },
                         "92334": {
                             "author": "ryanjelin",
                             "category_id": 92334,
@@ -2597,10 +2537,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 92335,
                             "childSort": [
-                                null
+                                "SchoolBatchDelParent"
                             ],
                             "children": {
-                                "undefined": "批量删除家长"
+                                "SchoolBatchDelParent": "批量删除家长"
                             },
                             "doc_id": 19153,
                             "gray_status": 0,
@@ -2728,10 +2668,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 92341,
                             "childSort": [
-                                null
+                                "UpdateSchoolDepartment"
                             ],
                             "children": {
-                                "undefined": "更新部门"
+                                "UpdateSchoolDepartment": "更新部门"
                             },
                             "doc_id": 18837,
                             "gray_status": 0,
@@ -2855,12 +2795,11 @@ let category = {
                             "category_id": 92114,
                             "childSort": [
                                 "GetExternalContact",
-                                null,
-                                null
+                                "GetExternalContact",
+                                "GetExternalContact"
                             ],
                             "children": {
-                                "GetExternalContact": "获取客户详情",
-                                "undefined": "获取客户详情"
+                                "GetExternalContact": "获取客户详情"
                             },
                             "doc_id": 13878,
                             "gray_status": 0,
@@ -3035,10 +2974,10 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 94822,
                             "childSort": [
-                                null
+                                "OpenGidToChatId"
                             ],
                             "children": {
-                                "undefined": "客户群opengid转换"
+                                "OpenGidToChatId": "客户群opengid转换"
                             },
                             "doc_id": 31650,
                             "gray_status": 0,
@@ -3512,11 +3451,11 @@ let category = {
                     "author": "sandyzeng",
                     "category_id": 95098,
                     "childSort": [
-                        null,
-                        null
+                        "UploadAttachment",
+                        "UploadAttachment"
                     ],
                     "children": {
-                        "undefined": "上传附件资源"
+                        "UploadAttachment": "上传附件资源"
                     },
                     "doc_id": 34657,
                     "gray_status": 0,
@@ -3578,10 +3517,10 @@ let category = {
                     "author": "abelzhu",
                     "category_id": 93403,
                     "childSort": [
-                        null
+                        "GetAppShareInfoList"
                     ],
                     "children": {
-                        "undefined": "获取应用共享信息"
+                        "GetAppShareInfoList": "获取应用共享信息"
                     },
                     "doc_id": 25951,
                     "gray_status": 0,
@@ -3641,10 +3580,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 93515,
                             "childSort": [
-                                null
+                                "ResidentCorpStatus"
                             ],
                             "children": {
-                                "undefined": "获取单位居民上报数据统计"
+                                "ResidentCorpStatus": "获取单位居民上报数据统计"
                             },
                             "doc_id": 25637,
                             "gray_status": 0,
@@ -4002,10 +3941,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 94540,
                             "childSort": [
-                                null
+                                "GetCataList"
                             ],
                             "children": {
-                                "undefined": "获取事件类别列表"
+                                "GetCataList": "获取事件类别列表"
                             },
                             "doc_id": 30455,
                             "gray_status": 0,
@@ -4051,10 +3990,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 95463,
                             "childSort": [
-                                null
+                                "GetSiteCodeList"
                             ],
                             "children": {
-                                "undefined": "获取场所码列表"
+                                "GetSiteCodeList": "获取场所码列表"
                             },
                             "doc_id": 37243,
                             "gray_status": 0,
@@ -4101,9 +4040,7 @@ let category = {
             "childSort": [
                 93623,
                 93632,
-                93652,
-                93653,
-                95348
+                93653
             ],
             "children": {
                 "93623": {
@@ -4321,122 +4258,6 @@ let category = {
                     "parent_id": 93622,
                     "title": "直播"
                 },
-                "93652": {
-                    "author": "abelzhu",
-                    "category_id": 93652,
-                    "childSort": [
-                        93655,
-                        93656,
-                        93657,
-                        93658,
-                        95856,
-                        95968
-                    ],
-                    "children": {
-                        "93655": {
-                            "author": "abelzhu",
-                            "category_id": 93655,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "新建空间"
-                            },
-                            "doc_id": 26911,
-                            "gray_status": 0,
-                            "id": 93655,
-                            "order_id": 2048,
-                            "parent_id": 93652,
-                            "title": "空间管理"
-                        },
-                        "93656": {
-                            "author": "abelzhu",
-                            "category_id": 93656,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "添加成员/部门"
-                            },
-                            "doc_id": 26912,
-                            "gray_status": 0,
-                            "id": 93656,
-                            "order_id": 3072,
-                            "parent_id": 93652,
-                            "title": "空间权限"
-                        },
-                        "93657": {
-                            "author": "abelzhu",
-                            "category_id": 93657,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "获取文件列表"
-                            },
-                            "doc_id": 26913,
-                            "gray_status": 0,
-                            "id": 93657,
-                            "order_id": 4096,
-                            "parent_id": 93652,
-                            "title": "文件管理"
-                        },
-                        "93658": {
-                            "author": "abelzhu",
-                            "category_id": 93658,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "新增成员"
-                            },
-                            "doc_id": 26914,
-                            "gray_status": 0,
-                            "id": 93658,
-                            "order_id": 5120,
-                            "parent_id": 93652,
-                            "title": "文件权限"
-                        },
-                        "95856": {
-                            "author": "mattwu",
-                            "category_id": 95856,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "获取盘专业版信息"
-                            },
-                            "doc_id": 39471,
-                            "gray_status": 0,
-                            "id": 95856,
-                            "order_id": 7168,
-                            "parent_id": 93652,
-                            "title": "版本和容量管理"
-                        },
-                        "95968": {
-                            "author": "mattwu",
-                            "category_id": 95968,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "分块上传初始化"
-                            },
-                            "doc_id": 40102,
-                            "gray_status": 0,
-                            "id": 95968,
-                            "order_id": 6144,
-                            "parent_id": 93652,
-                            "title": "文件分块上传"
-                        }
-                    },
-                    "doc_id": 0,
-                    "gray_status": 0,
-                    "id": 93652,
-                    "order_id": 5120,
-                    "parent_id": 93622,
-                    "title": "微盘"
-                },
                 "93653": {
                     "author": "abelzhu",
                     "category_id": 93653,
@@ -4467,105 +4288,6 @@ let category = {
                     "order_id": 6144,
                     "parent_id": 93622,
                     "title": "公费电话"
-                },
-                "95348": {
-                    "author": "mattwu",
-                    "category_id": 95348,
-                    "childSort": [
-                        95510,
-                        95511,
-                        95512,
-                        95513,
-                        95514
-                    ],
-                    "children": {
-                        "95510": {
-                            "author": "mattwu",
-                            "category_id": 95510,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "创建邮件群组"
-                            },
-                            "doc_id": 37503,
-                            "gray_status": 0,
-                            "id": 95510,
-                            "order_id": 2048,
-                            "parent_id": 95348,
-                            "title": "管理邮件群组"
-                        },
-                        "95511": {
-                            "author": "mattwu",
-                            "category_id": 95511,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "创建业务邮箱"
-                            },
-                            "doc_id": 37504,
-                            "gray_status": 0,
-                            "id": 95511,
-                            "order_id": 3072,
-                            "parent_id": 95348,
-                            "title": "管理业务邮箱"
-                        },
-                        "95512": {
-                            "author": "mattwu",
-                            "category_id": 95512,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "禁用/启用邮箱"
-                            },
-                            "doc_id": 37505,
-                            "gray_status": 0,
-                            "id": 95512,
-                            "order_id": 4096,
-                            "parent_id": 95348,
-                            "title": "邮箱账号管理"
-                        },
-                        "95513": {
-                            "author": "mattwu",
-                            "category_id": 95513,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "获取用户功能属性"
-                            },
-                            "doc_id": 37506,
-                            "gray_status": 0,
-                            "id": 95513,
-                            "order_id": 5120,
-                            "parent_id": 95348,
-                            "title": "功能设置"
-                        },
-                        "95514": {
-                            "author": "mattwu",
-                            "category_id": 95514,
-                            "childSort": [
-                                null
-                            ],
-                            "children": {
-                                "undefined": "获取用户新邮件数"
-                            },
-                            "doc_id": 37507,
-                            "gray_status": 0,
-                            "id": 95514,
-                            "order_id": 6144,
-                            "parent_id": 95348,
-                            "title": "新邮件提醒"
-                        }
-                    },
-                    "doc_id": 0,
-                    "gray_status": 0,
-                    "id": 95348,
-                    "order_id": 1024,
-                    "parent_id": 93622,
-                    "title": "企业邮箱"
                 }
             },
             "doc_id": 0,
@@ -4631,10 +4353,10 @@ let category = {
                             "author": "abelzhu",
                             "category_id": 93678,
                             "childSort": [
-                                null
+                                "GetHealthReportJobInfo"
                             ],
                             "children": {
-                                "undefined": "获取健康上报任务详情"
+                                "GetHealthReportJobInfo": "获取健康上报任务详情"
                             },
                             "doc_id": 22041,
                             "gray_status": 0,
@@ -4680,10 +4402,10 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 93744,
                             "childSort": [
-                                null
+                                "GetSchoolCustomizeTeacherHealthInfo"
                             ],
                             "children": {
-                                "undefined": "获取老师健康信息"
+                                "GetSchoolCustomizeTeacherHealthInfo": "获取老师健康信息"
                             },
                             "doc_id": 22016,
                             "gray_status": 0,
@@ -4696,10 +4418,10 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 93745,
                             "childSort": [
-                                null
+                                "GetSchoolCustomizeStudentHealthInfo"
                             ],
                             "children": {
-                                "undefined": "获取学生健康信息"
+                                "GetSchoolCustomizeStudentHealthInfo": "获取学生健康信息"
                             },
                             "doc_id": 22014,
                             "gray_status": 0,
@@ -4765,10 +4487,10 @@ let category = {
                             "author": "samueldeng",
                             "category_id": 93740,
                             "childSort": [
-                                null
+                                "GetSchoolLivingInfo"
                             ],
                             "children": {
-                                "undefined": "获取直播详情"
+                                "GetSchoolLivingInfo": "获取直播详情"
                             },
                             "doc_id": 21636,
                             "gray_status": 0,
@@ -5208,11 +4930,10 @@ let category = {
                             "category_id": 95159,
                             "childSort": [
                                 "BatchGetWxUserProfile",
-                                null
+                                "BatchGetWxUserProfile"
                             ],
                             "children": {
-                                "BatchGetWxUserProfile": "获取客户基础信息",
-                                "undefined": "获取客户基础信息"
+                                "BatchGetWxUserProfile": "获取客户基础信息"
                             },
                             "doc_id": 31072,
                             "gray_status": 0,
@@ -5241,10 +4962,10 @@ let category = {
                             "author": "tamizhou",
                             "category_id": 95489,
                             "childSort": [
-                                null
+                                "GetCorpStatistic"
                             ],
                             "children": {
-                                "undefined": "获取「客户数据统计」企业汇总数据"
+                                "GetCorpStatistic": "获取「客户数据统计」企业汇总数据"
                             },
                             "doc_id": 37457,
                             "gray_status": 0,
@@ -5257,10 +4978,10 @@ let category = {
                             "author": "tamizhou",
                             "category_id": 95490,
                             "childSort": [
-                                null
+                                "GetServicerStatistic"
                             ],
                             "children": {
-                                "undefined": "获取「客户数据统计」接待人员明细数据"
+                                "GetServicerStatistic": "获取「客户数据统计」接待人员明细数据"
                             },
                             "doc_id": 37469,
                             "gray_status": 0,
@@ -5289,10 +5010,10 @@ let category = {
                             "author": "mattwu",
                             "category_id": 95971,
                             "childSort": [
-                                null
+                                "AddKnowledgeGroup"
                             ],
                             "children": {
-                                "undefined": "添加分组"
+                                "AddKnowledgeGroup": "添加分组"
                             },
                             "doc_id": 40159,
                             "gray_status": 0,
@@ -5355,10 +5076,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 95813,
                             "childSort": [
-                                null
+                                "GetAppShareInfoList"
                             ],
                             "children": {
-                                "undefined": "获取应用共享信息"
+                                "GetAppShareInfoList": "获取应用共享信息"
                             },
                             "doc_id": 25951,
                             "gray_status": 0,
@@ -5403,10 +5124,10 @@ let category = {
                             "author": "ryanjelin",
                             "category_id": 95818,
                             "childSort": [
-                                null
+                                "ConvertUnionidToExternalUseridb2b"
                             ],
                             "children": {
-                                "undefined": "通过unionid和openid查询external_userid"
+                                "ConvertUnionidToExternalUseridb2b": "通过unionid和openid查询external_userid"
                             },
                             "doc_id": 35987,
                             "gray_status": 0,
