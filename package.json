@@ -4,19 +4,24 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev:server": "tsc --watch"
+    "dev:server": "tsc --watch",
+    "build:server": "rm -rf ./routes && tsc"
   },
   "dependencies": {
+    "axios": "^1.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "jsdom": "^20.0.3",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
+    "@typescript-eslint/parser": "^5.44.0",
     "eslint": "^8.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "typescript": "^4.9.3"
   }
 }

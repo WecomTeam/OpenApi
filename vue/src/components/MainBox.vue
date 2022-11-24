@@ -23,6 +23,7 @@
 
   
 <script>
+import axios from 'axios';
 import DocEditVue from './DocEdit.vue';
 import DocPreviewVue from './DocPreview.vue';
 export default {
@@ -34,6 +35,12 @@ export default {
     props: {
 
     },
+    async mounted() {
+        const data = await axios.post('/api/info/get', {
+            operationid: 'WwOpenGetUser'
+        })
+        console.log(data)
+    },
     data() {
         return {
             value1: 'first',
@@ -44,7 +51,7 @@ export default {
 </script>
   
 
-<style scoped>
+<style scoped lang="less">
 .mainbox{
     display: flex;
     height:100%;

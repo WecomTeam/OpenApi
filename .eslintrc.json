@@ -3,10 +3,13 @@
         "es2022": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": "airbnb-base",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
+        "ecmaVersion": 2022,
         "sourceType": "module"
     },
+    "plugins": ["@typescript-eslint"],
     "rules": {
         "no-console": 0,
         "no-unused-vars": "error",
