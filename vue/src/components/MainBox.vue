@@ -88,7 +88,7 @@ export default {
             console.log('保存成功')
         },
         onSave(schema) {
-            this.saveApi(this.api.operationid, schema)
+            this.saveApi(this.api.api, schema)
         }
     },
 

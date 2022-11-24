@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const fs = require('fs');
-const path = require('path');
 import {genWecomApiDoc} from '../logic/getApiInfo.js'
 import {getApiSchema, editApiSchema} from '../logic/operation.js'
 
@@ -25,9 +23,7 @@ router.post('/info/get', async (req, res, next) => {
       } 
   });
 
-
-
-router.post('/api/edit', async(req, res, next) => {
+router.post('/info/edit', async(req, res, next) => {
   const {operationid, schema} = req.body
   await editApiSchema(operationid, schema)
   res.send({})

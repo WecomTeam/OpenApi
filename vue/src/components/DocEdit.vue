@@ -19,7 +19,7 @@
     props: ['apiSchema'],
     watch: {
       apiSchema: {
-        handle(val) {
+        handler(val) {
           this.schema = val
         },
         deep: true
@@ -39,6 +39,14 @@
   </script>
   
   <style lang="less" scoped>
-  
+  .editor__wrapper {
+    height: calc(100vh - 113px);
+    &>div {
+      height: 100%;
+    }
+  }
+  /deep/.jsoneditor-vue {
+      height: calc(100% - 50px);
+    }
   </style>
   
