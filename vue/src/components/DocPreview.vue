@@ -24,6 +24,8 @@ export default {
 
 <style scoped>
 .docpreview{
-  padding:30px;
+  padding:15px;
+  /* color:#f7f7f7; */
+
 }
 </style>

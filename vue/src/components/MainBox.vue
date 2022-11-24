@@ -16,7 +16,7 @@
 
                     </template>
                     <DocEditVue :apiSchema="apiSchema" @save="onSave"/>
-                    
+
                 </t-tab-panel>
             </t-tabs>
             </div>
@@ -108,9 +108,14 @@ export default {
     display: flex;
     height: 100%;
     width: 100%;
+    gap:10px;
 }
 
 .localdoc {
+    // padding:15px;
+    // border-radius: 3px;
+    // box-sizing: border-box;
+    // overflow: hidden;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -120,6 +125,10 @@ export default {
 .onlinedoc {
     flex: 1;
     flex-direction: column;
+    // padding:15px ;
+    // border-radius: 3px;
+    // box-sizing: border-box;
+    // overflow: hidden;
 }
 
 .tabs-switch {

@@ -13,4 +13,5 @@ new Vue({
 }).$mount('#app')
 
 
-
+// 设置暗色模式
+// document.documentElement.setAttribute('theme-mode', 'dark')

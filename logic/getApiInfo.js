@@ -23,9 +23,7 @@ const cherryEngineInstance = new CherryEngine({
 
 function cherryMakeHtml(md) {
     const htmlStr = cherryEngineInstance.makeHtml(md);
-
-    
-return htmlStr;
+    return htmlStr;
 }
 
 function walkSchema(schema = [], prefix = '') {
@@ -50,8 +48,8 @@ function walkSchema(schema = [], prefix = '') {
             }
         }
     });
-    
-return params;
+
+    return params;
 }
 
 function genApiMarkdownContent({
@@ -71,8 +69,8 @@ function genApiMarkdownContent({
         currentCompat.forEach((item) => {
             supportMap[item] = supportMap[item].replace('×', '✓');
         });
-        
-return `${supportMap[2]} ${supportMap[3]} ${supportMap[1]}`;
+
+        return `${supportMap[2]} ${supportMap[3]} ${supportMap[1]}`;
     };
 
     const hasRequestQuery = (auth.length + query.length) > 0;
@@ -86,51 +84,51 @@ return `${supportMap[2]} ${supportMap[3]} ${supportMap[1]}`;
     const getRequiredText = isRequired => isRequired ? '是' : '否';
 
     const requestQueryMd = hasRequestQuery ? ('\n### 查询参数' +
-    '\n|  参数 | 必须  | 类型  | 说明  |' +
-    '\n| ------------ | ------------ | ------------ | ------------ |' +
-    auth.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('') +
-    query.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('')) : '';
+        '\n|  参数 | 必须  | 类型  | 说明  |' +
+        '\n| ------------ | ------------ | ------------ | ------------ |' +
+        auth.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('') +
+        query.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('')) : '';
 
     const requestBodyMd = hasRequestBody ? ('\n### 请求体' +
-    '\n|  参数 | 必须  | 类型  | 说明  |' +
-    '\n| ------------ | ------------ | ------------ | ------------ |' +
-    body.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('') +
-    '\n### 请求示例' +
-    '\n```' +
-    `\n${bodyExample}` +
-    '\n```') : '';
+        '\n|  参数 | 必须  | 类型  | 说明  |' +
+        '\n| ------------ | ------------ | ------------ | ------------ |' +
+        body.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${item.type}|${item.desc || ''}|`).join('') +
+        '\n### 请求示例' +
+        '\n```' +
+        `\n${bodyExample}` +
+        '\n```') : '';
 
     const formDataMd = hasFormData ? ('\n### 请求体' +
-    '\n|  参数 | 必须  | 类型  | 说明  |' +
-    '\n| ------------ | ------------ | ------------ | ------------ |' +
-    formData.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${[item.type]}|${item.desc || ''}|`).join('')) : '';
+        '\n|  参数 | 必须  | 类型  | 说明  |' +
+        '\n| ------------ | ------------ | ------------ | ------------ |' +
+        formData.map(item => `\n|${item.name}|${getRequiredText(item.required)}|${[item.type]}|${item.desc || ''}|`).join('')) : '';
 
     const urlMd = doc_id ? `[${apiInfo.path}](https://developer.work.weixin.qq.com/interface/${doc_id}/${apiSummary.api_id})` : apiInfo.path;
     const permissionDesc = apiInfo.permission?.trim() ? `\n| 权限说明 | ${apiInfo.permission?.trim()}|` : '';
     const attention = apiInfo.attention ? `\n## 注意事项\n${apiInfo.attention}\n` : '';
     const markdown = apiInfo.description.trim() +
-                     '\n## 请求\n### 基本信息' +
-                     '\n| 条目 | 说明|' +
-                     '\n| :------------ | :------------ |' +
-                     `\n| URL  | ${urlMd} |` +
-                     `\n| Method  | ${apiInfo.method}  |` +
-                     (hasMarkAppType ? `\n| 应用类型 | ${getSupportType(apiInfo.compat_app)} |` : '') +
-                     permissionDesc +
-                     requestQueryMd +
-                     requestBodyMd +
-                     formDataMd +
-                     '\n## 响应\n### 响应体' +
-                     '\n| 参数 | 说明|' +
-                     '\n| :------------ | :------------ |' +
-                     response.map(item => `\n|${item.name}|${item.desc || ''}|`).join('') +
-                     '\n### 响应示例' +
-                     '\n```' +
-                     `\n${resExample}` +
-                     '\n```' +
-                      attention;
+        '\n## 请求\n### 基本信息' +
+        '\n| 条目 | 说明|' +
+        '\n| :------------ | :------------ |' +
+        `\n| URL  | ${urlMd} |` +
+        `\n| Method  | ${apiInfo.method}  |` +
+        (hasMarkAppType ? `\n| 应用类型 | ${getSupportType(apiInfo.compat_app)} |` : '') +
+        permissionDesc +
+        requestQueryMd +
+        requestBodyMd +
+        formDataMd +
+        '\n## 响应\n### 响应体' +
+        '\n| 参数 | 说明|' +
+        '\n| :------------ | :------------ |' +
+        response.map(item => `\n|${item.name}|${item.desc || ''}|`).join('') +
+        '\n### 响应示例' +
+        '\n```' +
+        `\n${resExample}` +
+        '\n```' +
+        attention;
 
-    
-return markdown;
+
+    return markdown;
 }
 
 function genExample(schema = [], isArray = false) {
@@ -140,8 +138,8 @@ function genExample(schema = [], isArray = false) {
         let type = TYPE_MAP[property.type];
 
         if (!type) {
- type = 'string'; 
-}
+            type = 'string';
+        }
         if (type === 'file') {
             example[property.name] = '';
         } else if (type === 'string') {
@@ -170,8 +168,8 @@ function genExample(schema = [], isArray = false) {
             }
         }
     });
-    
-return example;
+
+    return example;
 }
 
 export const genWecomApiDoc = (apiJson, apiSummary, doc_id) => {
