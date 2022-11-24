@@ -4,14 +4,13 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 import {genWecomApiDoc} from '../logic/getApiInfo.js'
+import {getApiSchema, editApiSchema} from '../logic/operation.js'
 
 router.post('/info/get', async (req, res, next) => {
     const {operationid} = req.body;
-    const filePath = path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.json`)
-    fs.exists(filePath, async function(exists) {
-      if(exists) {
-        const jsonData = await require(filePath)
-        try {
+
+    const jsonData = await getApiSchema(operationid)
+    try {
           const md = genWecomApiDoc(jsonData)
           res.send({
               schema: jsonData,
@@ -23,20 +22,14 @@ router.post('/info/get', async (req, res, next) => {
             schema: jsonData,
             md: ''
         })
-        }
-      } else {
-        res.send({
-          schema: {
-            operationid
-          }
-        })
-      }
-    })
+      } 
   });
 
 
 
-router.post('/api/edit', (req, res, next) => {
-
+router.post('/api/edit', async(req, res, next) => {
+  const {operationid, schema} = req.body
+  await editApiSchema(operationid, schema)
+  res.send({})
 })
 module.exports = router;
