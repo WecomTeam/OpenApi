@@ -52,16 +52,15 @@ export default {
     },
     props: ['api'],
     watch: {
-        api:async function (value) {
-            console.log(value)
-            this.getOnlineDocURL()
+        api:async function (value) {            
+            this.tabValue = 'preview'
             if(value.api){
+                this.getOnlineDocURL()
                 let schema = await this.fetchApi(value.api);
                 if(schema){
                     this.apiData = schema
                 }
-            }
-            
+            }            
         }
     },
     methods: {
