@@ -16,6 +16,7 @@ router.post('/info/get', async (req, res, next) => {
           })
         } catch(e) {
           console.log(`---- ${operationid} schema解析失败----`)
+          console.error(e)
           res.send({
             schema: jsonData,
             md: ''

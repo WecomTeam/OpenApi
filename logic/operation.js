@@ -21,7 +21,6 @@ export const getApiSchema = async(operationid) => {
         return {}
     }
 }
-
 export const editApiSchema = async(operationid, schema) => {
     try {
     const filePath = parseValidFile(operationid)

@@ -41,7 +41,7 @@ function walkSchema(schema = [], prefix = '') {
             params = params.concat(walkSchema(property.items.properties, prefix + property.name + '.'));
         } else if (property.items && TYPE_MAP[property.type] === 'array') {
             // innerEle是数据内部元素，只有当其为对象和数组时才展示在字段示例中
-            const innerEle = property.items.properties[0]?.items?.properties;
+            const innerEle = (property.items.properties || [])[0]?.items?.properties;
 
             if (innerEle) {
                 params = params.concat(walkSchema(innerEle, prefix + property.name + '.'));
@@ -79,7 +79,7 @@ function genApiMarkdownContent({
 
     const hasFormData = formData.length > 0;
 
-    const hasMarkAppType = apiInfo.compat_app.length > 0;
+    const hasMarkAppType = (apiInfo.compat_app || []).length > 0;
 
     const getRequiredText = isRequired => isRequired ? '是' : '否';
 
@@ -185,7 +185,7 @@ export const genWecomApiDoc = (apiJson, apiSummary, doc_id) => {
     const query = walkSchema(apiInfo.request.params);
     const body = walkSchema(apiInfo.request.body);
     const bodyExample = genExample(apiInfo.request.body);
-    const formData = walkSchema(apiInfo.request.form_data);
+    const formData = walkSchema(apiInfo.request.formData);
     const response = walkSchema(apiInfo.response[0].body);
     const resExample = genExample(apiInfo.response[0].body);
     const md = genApiMarkdownContent({

@@ -1,23 +1,20 @@
 <template>
-  <div class="docpreview">
+<div class="cherry">
+  <div v-html="apiMd.domStr" class="docpreview cherry-markdown">
     {{testString}}
   </div>
+</div>
 </template>
 
 <script>
+import '../style/cherry-markdown.css';
+import '../style/cherry-wxwork.css';
+import '../style/colorfulTips.css';
+import '../style/style.css';
+
 export default {
   name: 'DocPreview',
-  props: ['apiData'],
-  watch:{
-    apiData(){
-      this.testString = JSON.stringify(this.apiData)
-    }
-  },
-  data(){
-    return {
-      testString:''
-    }
-  }
+  props: ['apiMd'],
 }
 </script>
 

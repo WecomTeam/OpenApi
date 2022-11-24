@@ -22,7 +22,7 @@
             </t-tabs>
             </div>
             <div class="tabs-content">
-                <DocPreviewVue :hidden="tabValue != 'preview'" :apiData="apiData"/>
+                <DocPreviewVue :hidden="tabValue != 'preview'" :apiMd="apiData.md"/>
                 <DocEditVue :hidden="tabValue != 'edit'" :apiSchema="apiData.schema" />
             </div>
 

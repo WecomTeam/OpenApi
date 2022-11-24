@@ -1,0 +1,87 @@
+.cherry-markdown img {
+    max-width: 100%;
+}
+
+.cherry-markdown a.anchor:before {
+    display: none;
+}
+
+.cherry-markdown .toc-title {
+    display: none;
+}
+
+.cherry-markdown .toc {
+    border-left: 4px solid #ddd;
+    padding-left: 16px;
+    display: none;
+}
+
+.cherry-markdown .toc .toc-li {
+    border-bottom: none;
+}
+
+.cherry-markdown .toc .toc-li a {
+    color: #267EF0;
+    font-size: 14px;
+}
+
+.cherry-markdown .toc .toc-li a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width:1200px) {
+    .cherry-markdown .toc {
+        display: block;
+    }
+}
+
+.cherry-markdown [data-code-block-theme='coy'] div[data-type='codeBlock'] pre[class*="language-"]>code {
+    border: 1px solid #ddd;
+    background: #f7f8fb;
+    padding: 10px 20px;
+}
+
+.cherry-markdown a {
+    color: var(--ww_accent_blue);
+    text-decoration: none;
+}
+
+.cherry-markdown a:hover {
+    color: var(--ww_accent_blue);
+    text-decoration: underline;
+}
+
+.cherry-markdown [data-code-block-theme='coy'] div[data-type='codeBlock'] pre {
+    position: relative;
+}
+
+.cherry-markdown h1, .cherry-markdown h2, .cherry-markdown h3, .cherry-markdown h4, .cherry-markdown h5, .cherry-markdown h6, .cherry-markdown .h1, .cherry-markdown .h2, .cherry-markdown .h3, .cherry-markdown .h4, .cherry-markdown .h5, .cherry-markdown .h6 {
+    font-weight: normal;
+}
+
+.cherry-markdown h2, .cherry-markdown .h2 {
+    margin-top: 50px;
+    border-bottom: 1px solid #e4e6e9;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.cherry-markdown h5, .cherry-markdown .h5, .cherry-markdown h6, .cherry-markdown .h6 {
+    font-size: 1em;
+    color: #777;
+    font-weight: 400;
+}
+
+.__dark_theme .cherry-markdown .cherry-table-container .cherry-table th {
+    background-color: var(--ww_base_gray_025);
+}
+
+.__dark_theme .cherry-markdown [data-code-block-theme='coy'] div[data-type='codeBlock'] pre[class*="language-"]>code {
+    border: 1px solid var(--ww_base_gray_007);
+    background: var(--ww_bg_gray_mobile_1);
+    padding: 10px 20px;
+}
+
+.__dark_theme .cherry-markdown div[data-type='codeBlock']>pre code[class*="language-"] .code-line {
+    color: var(--ww_base_black);
+}
