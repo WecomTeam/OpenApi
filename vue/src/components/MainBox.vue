@@ -2,14 +2,14 @@
     <div class="mainbox">
 
         <div class="localdoc">
-            <t-tabs :value="value2" theme="card" @change="(newValue) => (value2 = newValue)">
-                <t-tab-panel value="first">
+            <t-tabs theme="card" :value="tabValue"  @change="(newValue) => (tabValue = newValue)">
+                <t-tab-panel value="preview">
                     <template #label>
                         <t-icon name="file"></t-icon><span style="margin-left:5px;">预览</span>
                     </template>
-                    <DocPreviewVue />
+                    <DocPreviewVue :apiSchema="apiSchema"/>
                 </t-tab-panel>
-                <t-tab-panel value="second">
+                <t-tab-panel value="edit">
                     <template #label>
                         <t-icon name="edit"></t-icon><span style="margin-left:5px;">编辑</span>
                     </template>
@@ -19,7 +19,7 @@
         </div>
         <div class="onlinedoc">
             <iframe style="width:100%;height:100%;border:0 none;"
-                src="https://open.work.weixin.qq.com/wwopen/common/readDocument/10019" frameborder="0"></iframe>
+                :src="onlineDocURL" frameborder="0"></iframe>
         </div>
 
 
@@ -43,25 +43,40 @@ export default {
     watch: {
         api:async function (value) {
             console.log(value)
+            this.getOnlineDocURL()
             if(value.api){
-                this.apiSchema = await this.fetchApi(value.api)
+                let schema = await this.fetchApi(value.api);
+                if(schema){
+                    this.apiSchema = schema
+                }
             }
+            
         }
     },
     methods: {
         async fetchApi(api) {
-            const data = await axios.post('/api/info/get', {
+            const res = await axios.post('/api/info/get', {
                 operationid: api
             })
-            console.log(data)
+            if(res.status == 200){
+                console.log(res)
+                return res.data
+            }
+            else{
+                return 
+            }           
+            
+        },
+        getOnlineDocURL :function(){            
+            this.onlineDocURL = `https://open.work.weixin.qq.com/wwopen/common/readDocument/${this.api.doc_id}`
         }
     },
 
     data() {
         return {
-            apiSchema:{},
-            value1: 'first',
-            value2: 'first',
+            tabValue:'preview',
+            apiSchema:{},      
+            onlineDocURL:''
         };
     },
 }
