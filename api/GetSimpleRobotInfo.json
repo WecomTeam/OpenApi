@@ -1,0 +1,1 @@
+{"summary":"##获取机器人信息","url":"https://qyapi.weixin.qq.com/cgi-bin/msgaudit/get_robot_info","operationid":"GetSimpleRobotInfo","tag":"wwmsgauditlogic","method":"GET","cate_path":"服务端API-会话内容存档-获取会话内容","isExampleError":true,"titleIndex":0}

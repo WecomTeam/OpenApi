@@ -1,0 +1,1 @@
+{"summary":"获取健康上报任务详情","url":"https://qyapi.weixin.qq.com/cgi-bin/health/get_report_job_info","operationid":"GetHealthReportJobInfo","tag":"wwopencrmlogic","method":"POST","cate_path":"服务端API-家校应用-健康上报-获取健康上报任务详情","isExampleError":true,"titleIndex":-1}

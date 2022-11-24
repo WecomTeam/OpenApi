@@ -1,0 +1,1 @@
+{"summary":"获取场所码列表","url":"https://qyapi.weixin.qq.com/cgi-bin/report/sitecode/list","operationid":"GetSiteCodeList","tag":"wwopencrmlogic","method":"POST","cate_path":"服务端API-政民沟通-防疫场所码-获取场所码列表","isExampleError":true,"titleIndex":-1}

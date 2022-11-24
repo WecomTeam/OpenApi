@@ -1,0 +1,1 @@
+{"summary":"外部联系人openid转换","url":"https://qyapi.weixin.qq.com/cgi-bin/externalcontact/convert_to_openid","operationid":"ConverExternalToOpenId","tag":"wwopencrmlogic","method":"POST","cate_path":"服务端API-家校沟通-基础接口-外部联系人openid转换","isExampleError":true,"titleIndex":-1}

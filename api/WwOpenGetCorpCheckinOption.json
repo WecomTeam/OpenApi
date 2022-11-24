@@ -1,0 +1,1 @@
+{"summary":"获取企业所有打卡规则","url":"https://qyapi.weixin.qq.com/cgi-bin/checkin/getcorpcheckinoption","operationid":"WwOpenGetCorpCheckinOption","tag":"wwopenoalogic","method":"POST","cate_path":"服务端API-OA-打卡-获取企业所有打卡规则","isExampleError":true,"titleIndex":-1}

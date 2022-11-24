@@ -1,0 +1,1 @@
+{"summary":"添加分组","url":"https://qyapi.weixin.qq.com/cgi-bin/kf/knowledge/add_group","operationid":"AddKnowledgeGroup","tag":"wwopenkfhlogic","method":"POST","cate_path":"服务端API-微信客服-机器人管理-知识库分组管理","isExampleError":true,"titleIndex":0}
