@@ -1,0 +1,1 @@
+{"summary":"获取成员ID列表","url":"https://qyapi.weixin.qq.com/cgi-bin/user/list_id","operationid":"WwOpenListDeptUser","tag":"wwopencorplogic","method":"POST","cate_path":"服务端API-通讯录管理-成员管理-获取成员ID列表","isExampleError":true,"titleIndex":-1}

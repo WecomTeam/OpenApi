@@ -1,0 +1,1 @@
+{"summary":"获取事件类别列表","url":"https://qyapi.weixin.qq.com/cgi-bin/report/grid/list_cata","operationid":"GetCataList","tag":"wwopencrmlogic","method":"POST","cate_path":"服务端API-政民沟通-配置事件类别-获取事件类别列表","isExampleError":false,"titleIndex":-1}

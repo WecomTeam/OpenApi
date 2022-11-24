@@ -1,0 +1,1 @@
+{"summary":"获取「客户数据统计」接待人员明细数据","url":"https://qyapi.weixin.qq.com/cgi-bin/kf/get_servicer_statistic","operationid":"GetServicerStatistic","tag":"wwopenkfhlogic","method":"POST","cate_path":"服务端API-微信客服-统计管理-获取「客户数据统计」接待人员明细数据","isExampleError":true,"titleIndex":-1}

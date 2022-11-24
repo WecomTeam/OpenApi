@@ -1,0 +1,1 @@
+{"summary":"获取「客户数据统计」企业汇总数据","url":"https://qyapi.weixin.qq.com/cgi-bin/kf/get_corp_statistic","operationid":"GetCorpStatistic","tag":"wwopenkfhlogic","method":"POST","cate_path":"服务端API-微信客服-统计管理-获取「客户数据统计」企业汇总数据","isExampleError":true,"titleIndex":-1}

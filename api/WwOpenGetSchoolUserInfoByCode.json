@@ -1,0 +1,1 @@
+{"summary":"获取家校访问用户身份","url":"https://qyapi.weixin.qq.com/cgi-bin/school/getuserinfo","operationid":"WwOpenGetSchoolUserInfoByCode","tag":"wwopencorplogic","method":"GET","cate_path":"服务端API-家校沟通-网页授权登录-获取家校访问用户身份","isExampleError":false,"titleIndex":-1}

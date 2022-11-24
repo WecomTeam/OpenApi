@@ -1,0 +1,1 @@
+{"summary":"**提示：推荐使用新接口“批量获取审批单号”及“获取审批申请详情”，此接口后续将不再维护、逐步下线。**","url":"https://qyapi.weixin.qq.com/cgi-bin/corp/getapprovaldata","operationid":"WwOpenGetSPData","tag":"wwopenoalogic","method":"POST","cate_path":"服务端API-OA-审批-获取审批数据（旧）","isExampleError":true,"titleIndex":0}
