@@ -7,10 +7,10 @@
 <script>
 export default {
   name: 'DocPreview',
-  props: ['apiSchema'],
+  props: ['apiData'],
   watch:{
-    apiSchema(){
-      this.testString = JSON.stringify(this.apiSchema)
+    apiData(){
+      this.testString = JSON.stringify(this.apiData)
     }
   },
   data(){

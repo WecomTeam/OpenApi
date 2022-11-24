@@ -2,20 +2,27 @@
     <div class="mainbox">
 
         <div class="localdoc">
-            <t-tabs theme="card" :value="tabValue"  @change="(newValue) => (tabValue = newValue)">
+            <div class="tabs-switch">
+                <t-tabs theme="card" :value="tabValue"  @change="(newValue) => (tabValue = newValue)">
                 <t-tab-panel value="preview">
                     <template #label>
                         <t-icon name="file"></t-icon><span style="margin-left:5px;">预览</span>
                     </template>
-                    <DocPreviewVue :apiSchema="apiSchema"/>
+                    
                 </t-tab-panel>
                 <t-tab-panel value="edit">
                     <template #label>
                         <t-icon name="edit"></t-icon><span style="margin-left:5px;">编辑</span>
-                    </template>
-                    <DocEditVue />
+                    </template>                    
                 </t-tab-panel>
             </t-tabs>
+            </div>
+            <div class="tabs-content">
+                <DocPreviewVue :hidden="tabValue != 'preview'" :apiData="apiData"/>
+                <DocEditVue :hidden="tabValue != 'edit'" :apiSchema="apiData.schema" />
+            </div>
+
+            
         </div>
         <div class="onlinedoc">
             <iframe style="width:100%;height:100%;border:0 none;"
@@ -47,7 +54,7 @@ export default {
             if(value.api){
                 let schema = await this.fetchApi(value.api);
                 if(schema){
-                    this.apiSchema = schema
+                    this.apiData = schema
                 }
             }
             
@@ -75,7 +82,7 @@ export default {
     data() {
         return {
             tabValue:'preview',
-            apiSchema:{},      
+            apiData:{},      
             onlineDocURL:''
         };
     },
@@ -92,19 +99,21 @@ export default {
 
 .localdoc {
     flex: 1;
-}
-
-.onlinedoc {
-    flex: 1;
-}
-
-.t-tabs {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/deep/ .t-tabs__content {
+.onlinedoc {
+    flex: 1;
+    flex-direction: column;
+}
+
+.tabs-switch {
+    
+}
+
+.tabs-content {
     flex: 1;
     height: 1px;
     overflow-y: auto;
