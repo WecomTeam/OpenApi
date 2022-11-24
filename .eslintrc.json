@@ -1,11 +1,11 @@
 {
     "env": {
-        "es6": true,
+        "es2022": true,
         "node": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "sourceType": "script"
+        "sourceType": "module"
     },
     "rules": {
         "no-console": 0,
@@ -48,7 +48,7 @@
             "error",
             "1tbs"
         ],
-        "camelcase": "error",
+        "camelcase": "warn",
         "comma-dangle": [
             "error",
             "always-multiline"
