@@ -17,6 +17,14 @@
       JsonEditor
     },
     props: ['apiSchema'],
+    watch: {
+      apiSchema: {
+        handle(val) {
+          this.schema = val
+        },
+        deep: true
+      }
+    },
     data() {
       return {
         schema: this.apiSchema
