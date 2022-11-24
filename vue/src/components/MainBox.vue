@@ -13,7 +13,10 @@
                 <t-tab-panel value="edit">
                     <template #label>
                         <t-icon name="edit"></t-icon><span style="margin-left:5px;">编辑</span>
-                    </template>                    
+
+                    </template>
+                    <DocEditVue :apiSchema="apiSchema" @save="onSave"/>
+                    
                 </t-tab-panel>
             </t-tabs>
             </div>
@@ -76,6 +79,16 @@ export default {
         },
         getOnlineDocURL :function(){            
             this.onlineDocURL = `https://open.work.weixin.qq.com/wwopen/common/readDocument/${this.api.doc_id}`
+        },
+        async saveApi(operationid, schema) {
+            await axios.post('/api/info/set', {
+                schema,
+                operationid
+            })
+            console.log('保存成功')
+        },
+        onSave(schema) {
+            this.saveApi(this.api.operationid, schema)
         }
     },
 
