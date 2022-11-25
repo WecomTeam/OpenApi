@@ -1,27 +1,17 @@
 <template>
   <div class="editor__wrapper">
-    <!-- <JsonEditor
-          v-model="schema"
-          mode="code"
-          :expanded-on-start="true"
-          :show-btns="true"
-          @json-save="onSave"
-          :main-menu-bar="false"          
-          :mainMenuBar="false"
-          :navigation-bar="false"
-          :status-bar="false"
-          tabSize="4"
-      /> -->
+    
       
-        <JsonEditorVue class="jse-theme-dark" v-model="schema" :main-menu-bar="true" indentation=" " tabSize="4" mode="code" />
+        <JsonEditorVue class="jse-theme-dark" v-model="schema" :main-menu-bar="false" tabSize="4" mode="code" />
       
     
   </div>
 </template>
   
 <script>
-
+import 'vanilla-jsoneditor/themes/jse-theme-dark.css'
 import JsonEditorVue from 'json-editor-vue'
+
 
 export default {
   name: 'DocEdit',
@@ -52,6 +42,8 @@ export default {
 </script>
   
 <style lang="less" scoped>
+
+@import url(../style/jsoneditorvue-darkmode.css);
 .editor__wrapper {
   height: calc(100vh - 113px);
 
