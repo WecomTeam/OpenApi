@@ -1,5 +1,5 @@
 <template>
-    <t-menu theme="dark" width="300px">
+    <t-menu theme="dark" width="300px" :defaultValue="defaultValue">
 
         <t-submenu v-for="cata in tree" :key="cata.cate_id" :value="cata.category_id" :title="cata.title">
             <template #icon>
@@ -34,23 +34,38 @@
 <script>
 import { categoryTree } from '@/components/catalog/CatalogParse';
 
-console.log(categoryTree)
 export default {
+    props: {
+        defaultValue: String
+    },
     data() {
         return {
             tree: categoryTree,
             currentApi:{}
         }
     },
+    mounted() {
+        this.checkDoc(this.tree)
+    },
     methods:{
         eventApiClick:function(e){
             
             if(e.api != this.currentApi.api){
                 
-                this.currentApi = e            
+                this.currentApi = e
                 this.$emit('onApiChanged',e)
             }
             
+        },
+        checkDoc(category) {
+            category.forEach(cate => {
+                if(cate.is_folder) {
+                    this.checkDoc(cate.children)
+                }
+                if(cate.api === this.defaultValue) {
+                    this.$emit('onApiChanged',cate)
+                }
+            })
         }
     }
 }

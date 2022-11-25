@@ -1,11 +1,9 @@
 <template>
-  
-    <div class="cherry">
-      <div v-html="apiMd.domStr" class=" cherry-markdown">
-        {{testString}}
-      </div>
-    </div>
-  
+<div class="cherry">
+  <div v-html="apiMd.domStr" class="cherry-markdown">
+    无数据
+  </div>
+</div>
 </template>
 
 <script>
