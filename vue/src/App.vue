@@ -39,7 +39,7 @@ export default {
     }
   }, 
   async created(){    
-    let treeRes = await axios.get('/api/category/gettree')
+    let treeRes = await axios.get('/api/category/get')
     console.log(treeRes.data)
   }, 
   components: {

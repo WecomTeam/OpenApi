@@ -8,7 +8,8 @@
         tab-size="4" 
         mode="text" />
         <div class="editor-action">
-          <t-button>保存</t-button>
+          <t-button class="mark__wrapper" @click="onMark">{{isMark ? '标记' : '取消标记'}}</t-button>
+          <t-button @click="onSave">保存</t-button>
         </div>
   </div>
 </template>
@@ -35,12 +36,16 @@ export default {
   },
   data() {
     return {
-      schema: this.apiSchema
+      schema: this.apiSchema,
+      isMark: false
     }
   },
   methods: {
     onSave() {
       this.$emit('save', this.schema)
+    },
+    onMark() {
+      this.isMark = !this.isMark
     }
   }
 }
@@ -67,6 +72,8 @@ export default {
   border-left:1px solid #4f4f4f;
   text-align: right;  
 }
-
+.mark__wrapper {
+  margin-right: 10px;
+}
 </style>
   

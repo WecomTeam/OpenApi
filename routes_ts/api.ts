@@ -58,4 +58,10 @@ router.post('/info/edit', async (req, res, next) => {
   await editApiSchema(operationid, schema)
   res.send({})
 })
+
+router.post('/category/get', async (req, res, next) => {
+  const { operationid } = req.body
+
+  res.send({})
+})
 module.exports = router;
