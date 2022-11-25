@@ -29,6 +29,7 @@
 
 <script>
 import CatalogTree from './components/catalog/CatalogTree.vue'
+import axios from 'axios'
 export default {
   name: 'App',
   data:function(){
@@ -36,7 +37,11 @@ export default {
       currentApi:{},
       defaultApiName: this.$route.params.operationid
     }
-  },  
+  }, 
+  async created(){    
+    let treeRes = await axios.get('/api/category/gettree')
+    console.log(treeRes.data)
+  }, 
   components: {
     CatalogTree
   },

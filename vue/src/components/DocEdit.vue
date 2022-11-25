@@ -1,7 +1,5 @@
 <template>
   <div class="editor">
-    
-      
         <JsonEditorVue class="editor-box jse-theme-dark" v-model="schema" 
         :navigationBar="false"
         :main-menu-bar="false" 
@@ -12,8 +10,6 @@
         <div class="editor-action">
           <t-button>保存</t-button>
         </div>
-      
-    
   </div>
 </template>
   
