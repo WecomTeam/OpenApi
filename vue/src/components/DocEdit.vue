@@ -1,8 +1,17 @@
 <template>
-  <div class="editor__wrapper">
+  <div class="editor">
     
       
-        <JsonEditorVue class="jse-theme-dark" v-model="schema" :main-menu-bar="false" tabSize="4" mode="code" />
+        <JsonEditorVue class="editor-box jse-theme-dark" v-model="schema" 
+        :navigationBar="false"
+        :main-menu-bar="false" 
+        :status-bar="false" 
+        indentation=" " 
+        tab-size="4" 
+        mode="text" />
+        <div class="editor-action">
+          <t-button>保存</t-button>
+        </div>
       
     
   </div>
@@ -44,16 +53,24 @@ export default {
 <style lang="less" scoped>
 
 @import url(../style/jsoneditorvue-darkmode.css);
-.editor__wrapper {
-  height: calc(100vh - 113px);
-
-  &>div {
-    height: 100%;
-  }
+.editor {
+  display: flex;
+  flex-direction: column;
+  height:100%;
+}
+.editor-box{
+  flex:1;
+  height: 1px;
+  overflow-y: auto;
+}
+.editor-action{
+  background:     var(--td-gray-color-12);
+  padding:10px;
+  display: flex;
+  justify-content: flex-end;
+  border-left:1px solid #4f4f4f;
+  text-align: right;  
 }
 
-/deep/.jsoneditor-vue {
-  height: calc(100% - 50px);
-}
 </style>
   

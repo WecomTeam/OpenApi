@@ -24,5 +24,6 @@ export default {
   padding:25px;
   box-sizing: border-box;
   overflow-y:auto;
+  display: block;
 }
 </style>
