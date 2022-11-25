@@ -47,15 +47,18 @@ export default {
     },
     props: ['api'],
     watch: {
-        api:async function (value) {            
-            this.tabValue = 'preview'
-            if(value.api){
-                this.getOnlineDocURL()
-                let schema = await this.fetchApi(value.api);
-                if(schema){
-                    this.apiData = schema
+        api: {
+            async handler(value) {
+                this.tabValue = 'preview'
+                if(value.api){
+                    this.getOnlineDocURL()
+                    let schema = await this.fetchApi(value.api);
+                    if(schema){
+                        this.apiData = schema
+                    }         
                 }
-            }            
+            },
+            deep: true
         }
     },
     methods: {
@@ -64,7 +67,6 @@ export default {
                 operationid: api
             })
             if(res.status == 200){
-                console.log(res)
                 return res.data
             }
             else{
@@ -94,7 +96,13 @@ export default {
     data() {
         return {
             tabValue:'preview',
-            apiData:{},      
+            apiData:{
+                md: {
+                    domStr: '',
+                    md: ''
+                },
+                schema: {}
+            },      
             onlineDocURL:''
         };
     },
@@ -111,14 +119,11 @@ export default {
 }
 
 .localdoc {
-    // padding:15px;
-    // border-radius: 3px;
-    // box-sizing: border-box;
-    // overflow: hidden;
     flex: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 50%;
 }
 
 .onlinedoc {

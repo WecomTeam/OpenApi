@@ -19,7 +19,10 @@ router.post('/info/get', async (req, res, next) => {
           console.error(e)
           res.send({
             schema: jsonData,
-            md: ''
+            md: {
+              domStr: '',
+              md: ''
+            }
         })
       } 
   });

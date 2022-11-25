@@ -14,7 +14,8 @@
     "json-editor-vue": "^0.9.2",
     "tdesign-vue": "^0.50.0",
     "vanilla-jsoneditor": "^0.10.2",
-    "vue": "~2.6.14"
+    "vue": "~2.6.14",
+    "vue-router": "3.6.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

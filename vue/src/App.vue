@@ -17,32 +17,31 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree @onApiChanged="eventApiChanged" />
+        <CatalogTree @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
       </div>
       <div class="body">
-        <MainBoxVue :api="currentApi"/>
+        <router-view :api="currentApi">
+        </router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MainBoxVue from './components/MainBox.vue';
 import CatalogTree from './components/catalog/CatalogTree.vue'
 export default {
   name: 'App',
   data:function(){
     return {
-      currentApi:{}
+      currentApi:{},
+      defaultApiName: this.$route.params.operationid
     }
   },  
   components: {
-    MainBoxVue,
     CatalogTree
   },
   methods:{
     eventApiChanged:function(api){
-      console.log(api)
       this.currentApi = api
     }
   }

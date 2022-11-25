@@ -39,8 +39,6 @@ const parserNode = function (root) {
     }
 }
 
-console.log(category)
-
 let categoryTree = parserNode(category).children || []
 
 export { categoryTree }
