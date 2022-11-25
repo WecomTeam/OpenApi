@@ -85,3 +85,6 @@
 .__dark_theme .cherry-markdown div[data-type='codeBlock']>pre code[class*="language-"] .code-line {
     color: var(--ww_base_black);
 }
+.cherry-markdown .cherry-table{
+    width:100%;
+}

@@ -3,27 +3,22 @@
 
         <div class="localdoc">
             <div class="tabs-switch">
-                <t-tabs theme="card" :value="tabValue"  @change="(newValue) => (tabValue = newValue)">
+                <t-tabs theme="card" :value="tabValue" @change="eventTabSwitch">
                 <t-tab-panel value="preview">
                     <template #label>
                         <t-icon name="file"></t-icon><span style="margin-left:5px;">预览</span>
-                    </template>
-                    
+                    </template>                    
                 </t-tab-panel>
                 <t-tab-panel value="edit">
                     <template #label>
                         <t-icon name="edit"></t-icon><span style="margin-left:5px;">编辑</span>
-
                     </template>
-
-                    <DocEditVue :apiSchema="apiData.schema" @save="onSave"/>
-                    
                 </t-tab-panel>
             </t-tabs>
             </div>
             <div class="tabs-content">
-                <DocPreviewVue :hidden="tabValue != 'preview'" :apiMd="apiData.md"/>
-                <DocEditVue :hidden="tabValue != 'edit'" :apiSchema="apiData.schema" />
+                <DocPreviewVue v-if="tabValue == 'preview'" :apiMd="apiData.md"/>
+                <DocEditVue v-if="(tabValue == 'edit')" :apiSchema="apiData.schema"  @save="onSave"/>                
             </div>
 
             
@@ -89,6 +84,10 @@ export default {
         },
         onSave(schema) {
             this.saveApi(this.api.api, schema)
+        },
+        eventTabSwitch(val){
+            this.tabValue = val;
+            console.log(val)
         }
     },
 
@@ -137,8 +136,7 @@ export default {
 
 .tabs-content {
     flex: 1;
-    height: 1px;
-    overflow-y: auto;
+    height: 1px;    
 }
 </style>
   

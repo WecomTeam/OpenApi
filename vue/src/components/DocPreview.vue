@@ -1,9 +1,11 @@
 <template>
-<div class="cherry">
-  <div v-html="apiMd.domStr" class="docpreview cherry-markdown">
-    {{testString}}
-  </div>
-</div>
+  
+    <div class="cherry">
+      <div v-html="apiMd.domStr" class=" cherry-markdown">
+        {{testString}}
+      </div>
+    </div>
+  
 </template>
 
 <script>
@@ -20,9 +22,9 @@ export default {
 
 
 <style scoped>
-.docpreview{
-  padding:15px;
-  /* color:#f7f7f7; */
-
+.cherry{
+  padding:25px;
+  box-sizing: border-box;
+  overflow-y:auto;
 }
 </style>

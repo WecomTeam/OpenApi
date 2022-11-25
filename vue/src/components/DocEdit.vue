@@ -2,9 +2,14 @@
     <div class="editor__wrapper">
       <JsonEditor
           v-model="schema"
+          mode="code"
           :expanded-on-start="true"
-          :show-btns="true"
+          :show-btns="false"
           @json-save="onSave"
+          :main-menu-bar="false"
+          :navigation-bar="false"
+          :status-bar="false"
+          tabSize="4"
       />
     </div>
   </template>
