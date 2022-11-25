@@ -81,7 +81,13 @@ function genApiMarkdownContent({
 
     const hasMarkAppType = (apiInfo.compat_app || []).length > 0;
 
-    const getRequiredText = isRequired => isRequired ? '是' : '否';
+    const getRequiredText = isRequired => {
+        if(typeof isRequired === 'boolean') {
+            return isRequired ? '是' : '否'
+        } else {
+            return isRequired
+        }
+    };
 
     const requestQueryMd = hasRequestQuery ? ('\n### 查询参数' +
         '\n|  参数 | 必须  | 类型  | 说明  |' +
