@@ -61,7 +61,8 @@ router.post('/info/edit', async (req, res, next) => {
 
 router.post('/category/get', async (req, res, next) => {
   const { operationid } = req.body
-
+  const category = await require('../../config/category.json')
+  const insertMarkToCategory = () => {}
   res.send({})
 })
 module.exports = router;
