@@ -16,13 +16,13 @@
 
                         </t-submenu>
 
-                        <t-menu-item v-else :key="cata2.category_id" :value="cata2.api" @click="eventApiClick(cata2)">{{ cata2.title }}</t-menu-item>
+                        <t-menu-item v-else :key="cata2.category_id" :value="cata2.api" @click="eventApiClick(cata2)">{{ cata2.title }}<CheckCircleFilledIcon style="color: green; margin-left: 5px;" v-if="cata2.is_check"></CheckCircleFilledIcon></t-menu-item>
 
                     </template>
 
                 </t-submenu>
 
-                <t-menu-item v-else :key="cata1.category_id" :value="cata1.api" @click="eventApiClick(cata1)">{{ cata1.title }}</t-menu-item>
+                <t-menu-item v-else :key="cata1.category_id" :value="cata1.api" @click="eventApiClick(cata1)">{{ cata1.title }}<CheckCircleFilledIcon style="color: green; margin-left: 5px;" v-if="cata1.is_check"></CheckCircleFilledIcon></t-menu-item>
 
             </template>
 
@@ -32,21 +32,25 @@
 </template>
 
 <script>
-// import { categoryTree } from '@/components/catalog/CatalogParse';
+import { CheckCircleFilledIcon } from 'tdesign-icons-vue';
 
 export default {
-    props: {        
-        defaultValue: String
+    components: {
+        CheckCircleFilledIcon
+    },
+    props: {
+        defaultValue: String,
+        tree: Array
     },
     data() {
         return {
-            tree: window.globalData.category || [],
             currentApi:{}
         }
     },
-    
-    mounted() {
-        this.checkDoc(this.tree)
+    watch: {
+        tree(val) {
+            this.checkDoc(val)
+        }
     },
     methods:{
         eventApiClick:function(e){

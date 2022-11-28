@@ -16,10 +16,10 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree  @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
+        <CatalogTree @onApiChanged="eventApiChanged" :tree="tree" :defaultValue="defaultApiName"/>
       </div>
       <div class="body">
-        <router-view :api="currentApi">
+        <router-view :api="currentApi" @mark="onMark">
         </router-view>
       </div>
     </div>
@@ -28,22 +28,41 @@
 
 <script>
 import CatalogTree from './components/catalog/CatalogTree.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   data:function(){
     return {
-      currentApi:{},      
-      defaultApiName: this.$route.params.operationid
+      currentApi:{},
+      defaultApiName: this.$route.params.operationid,
+      tree: []
     }
   }, 
-  
   components: {
     CatalogTree
   },
+  async created() {
+    const {data} = await axios.post('/api/category/get')
+    this.tree = data
+  },
   methods:{
-    eventApiChanged:function(api){
+    eventApiChanged(api){
       this.currentApi = api
+    },
+    insertMark(category, operationid, isMark) {
+      category.forEach(cate => {
+        if(cate.is_folder) {
+          this.insertMark(cate.children, operationid, isMark)
+        } else {
+          if(cate.operationid === operationid) {
+            cate.is_check = isMark
+          }
+        }
+      })
+    },
+    onMark(operationid, isMark) {
+      this.insertMark(this.tree, operationid, isMark)
     }
   }
 }

@@ -8,7 +8,7 @@
         tab-size="4" 
         mode="text" />
         <div class="editor-action">
-          <t-button class="mark__wrapper" @click="onMark">{{isMark ? '标记' : '取消标记'}}</t-button>
+          <t-button class="mark__wrapper" @click="onMark" :theme="isMark ? 'default' : 'primary'">{{isMark ? '取消标记' : '标记确认'}}</t-button>
           <t-button @click="onSave">保存</t-button>
         </div>
   </div>
@@ -17,7 +17,7 @@
 <script>
 import 'vanilla-jsoneditor/themes/jse-theme-dark.css'
 import JsonEditorVue from 'json-editor-vue'
-
+import axios from 'axios'
 
 export default {
   name: 'DocEdit',
@@ -44,8 +44,19 @@ export default {
     onSave() {
       this.$emit('save', this.schema)
     },
-    onMark() {
+    async onMark() {
       this.isMark = !this.isMark
+      try {
+        await axios.post('api/interface/mark', {
+          isCheck: this.isMark,
+          operationid: this.schema.operationid
+        })
+      } catch (e) {
+        this.$message.error('接口调用失败')
+        this.isMark = !this.isMark
+      }finally {
+        this.$emit('mark', this.isMark)
+      }
     }
   }
 }
