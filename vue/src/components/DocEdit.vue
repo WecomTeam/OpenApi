@@ -1,12 +1,6 @@
 <template>
   <div class="editor">
-        <JsonEditorVue class="editor-box jse-theme-dark" v-model="schema" 
-        :navigationBar="false"
-        :main-menu-bar="false" 
-        :status-bar="false" 
-        indentation=" " 
-        tab-size="4" 
-        mode="text" />
+        <yaml-editor v-model="schema"></yaml-editor>
         <div class="editor-action">
           <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
           <t-button @click="onSave">保存</t-button>
@@ -15,15 +9,13 @@
 </template>
   
 <script>
-import 'vanilla-jsoneditor/themes/jse-theme-dark.css'
-import JsonEditorVue from 'json-editor-vue'
+import YamlEditor from './YamlEditor/index.vue'
 import axios from 'axios'
 
 export default {
   name: 'DocEdit',
   components: {
-
-    JsonEditorVue
+    YamlEditor
   },
   props: ['apiSchema', 'defaultValue'],
   watch: {
@@ -37,7 +29,7 @@ export default {
   data() {
     return {
       schema: this.apiSchema,
-      is_mark: this.defaultValue
+      is_mark: this.defaultValue,
     }
   },
   methods: {
