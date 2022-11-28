@@ -32,17 +32,27 @@
 </template>
 
 <script>
-import { categoryTree } from '@/components/catalog/CatalogParse';
+// import { categoryTree } from '@/components/catalog/CatalogParse';
 
 export default {
     props: {
+        root:[],
         defaultValue: String
     },
     data() {
         return {
-            tree: categoryTree,
+            tree: [],
             currentApi:{}
         }
+    },
+    watch:{
+        root: {
+            handler(value) {
+                this.tree = value
+            },
+            deep: true
+        }
+        
     },
     mounted() {
         this.checkDoc(this.tree)

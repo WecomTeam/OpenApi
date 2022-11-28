@@ -1,5 +1,4 @@
 <template>
-
   <div class="frame">
     <div class="nav">
       <t-head-menu theme="dark">
@@ -17,7 +16,7 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
+        <CatalogTree :root="categoryTree" @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
       </div>
       <div class="body">
         <router-view :api="currentApi">
@@ -35,12 +34,17 @@ export default {
   data:function(){
     return {
       currentApi:{},
+      categoryTree:[],
       defaultApiName: this.$route.params.operationid
     }
   }, 
   async created(){    
-    let treeRes = await axios.get('/api/category/get')
-    console.log(treeRes.data)
+    let treeRes = await axios.get('/api/category/gettree')
+    try {
+      this.categoryTree = treeRes.data.category || []
+    } catch (error) { 
+      console.log(error)
+    }
   }, 
   components: {
     CatalogTree
