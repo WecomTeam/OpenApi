@@ -18,7 +18,12 @@
             </div>
             <div class="tabs-content">
                 <DocPreviewVue v-if="tabValue == 'preview'" :apiMd="apiData.md"/>
-                <DocEditVue v-if="(tabValue == 'edit')" :apiSchema="apiData.schema" @mark="onMark" @save="onSave"/>                
+                <DocEditVue 
+                    v-if="(tabValue == 'edit')" 
+                    :apiSchema="apiData.schema"
+                    :defaultValue="api.is_check" 
+                    @mark="onMark"
+                @save="onSave"/>                
             </div>
 
             
@@ -87,12 +92,14 @@ export default {
         onSave(schema) {
             this.saveApi(this.api.api, schema)
         },
-        onMark(isMark) {
-            this.$emit('mark', isMark)
+        onMark(is_mark) {
+            this.$emit('mark', {
+                operationid: this.api.api,
+                is_mark: is_mark
+            })
         },
         eventTabSwitch(val){
             this.tabValue = val;
-            console.log(val)
         }
     },
 

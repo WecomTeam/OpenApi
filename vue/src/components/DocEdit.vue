@@ -8,7 +8,7 @@
         tab-size="4" 
         mode="text" />
         <div class="editor-action">
-          <t-button class="mark__wrapper" @click="onMark" :theme="isMark ? 'default' : 'primary'">{{isMark ? '取消标记' : '标记确认'}}</t-button>
+          <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
           <t-button @click="onSave">保存</t-button>
         </div>
   </div>
@@ -25,7 +25,7 @@ export default {
 
     JsonEditorVue
   },
-  props: ['apiSchema'],
+  props: ['apiSchema', 'defaultValue'],
   watch: {
     apiSchema: {
       handler(val) {
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       schema: this.apiSchema,
-      isMark: false
+      is_mark: this.defaultValue
     }
   },
   methods: {
@@ -45,17 +45,17 @@ export default {
       this.$emit('save', this.schema)
     },
     async onMark() {
-      this.isMark = !this.isMark
+      this.is_mark = !this.is_mark
       try {
         await axios.post('api/interface/mark', {
-          isCheck: this.isMark,
+          is_check: this.is_mark,
           operationid: this.schema.operationid
         })
       } catch (e) {
         this.$message.error('接口调用失败')
-        this.isMark = !this.isMark
+        this.is_mark = !this.is_mark
       }finally {
-        this.$emit('mark', this.isMark)
+        this.$emit('mark', this.is_mark)
       }
     }
   }

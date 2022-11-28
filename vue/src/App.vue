@@ -50,19 +50,19 @@ export default {
     eventApiChanged(api){
       this.currentApi = api
     },
-    insertMark(category, operationid, isMark) {
+    insertMark(category, operationid, is_mark) {
       category.forEach(cate => {
         if(cate.is_folder) {
-          this.insertMark(cate.children, operationid, isMark)
+          this.insertMark(cate.children, operationid, is_mark)
         } else {
-          if(cate.operationid === operationid) {
-            cate.is_check = isMark
+          if(cate.api === operationid) {
+            cate.is_check = is_mark
           }
         }
       })
     },
-    onMark(operationid, isMark) {
-      this.insertMark(this.tree, operationid, isMark)
+    onMark({operationid, is_mark}) {
+      this.insertMark(this.tree, operationid, is_mark)
     }
   }
 }
