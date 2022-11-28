@@ -36,4 +36,4 @@ const parseNode = function (root) {
     }
 }
 
-exports.parseTree = parseNode
+export const parseTree = parseNode

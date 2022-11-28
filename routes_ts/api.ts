@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs')
-const parseTree = require('../logic/categoryParse.js')
+import {parseTree} from '../logic/categoryParse.js'
 
 import { genWecomApiDoc } from '../logic/getApiInfo.js'
 import { getApiSchema, editApiSchema } from '../logic/operation.js'
