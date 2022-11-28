@@ -35,25 +35,16 @@
 // import { categoryTree } from '@/components/catalog/CatalogParse';
 
 export default {
-    props: {
-        root:[],
+    props: {        
         defaultValue: String
     },
     data() {
         return {
-            tree: [],
+            tree: window.globalData.category || [],
             currentApi:{}
         }
     },
-    watch:{
-        root: {
-            handler(value) {
-                this.tree = value
-            },
-            deep: true
-        }
-        
-    },
+    
     mounted() {
         this.checkDoc(this.tree)
     },

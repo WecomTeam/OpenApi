@@ -16,7 +16,7 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree :root="categoryTree" @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
+        <CatalogTree  @onApiChanged="eventApiChanged" :defaultValue="defaultApiName"/>
       </div>
       <div class="body">
         <router-view :api="currentApi">
@@ -28,24 +28,16 @@
 
 <script>
 import CatalogTree from './components/catalog/CatalogTree.vue'
-import axios from 'axios'
+
 export default {
   name: 'App',
   data:function(){
     return {
-      currentApi:{},
-      categoryTree:[],
+      currentApi:{},      
       defaultApiName: this.$route.params.operationid
     }
   }, 
-  async created(){    
-    let treeRes = await axios.get('/api/category/gettree')
-    try {
-      this.categoryTree = treeRes.data.category || []
-    } catch (error) { 
-      console.log(error)
-    }
-  }, 
+  
   components: {
     CatalogTree
   },
