@@ -33,7 +33,24 @@ router.post('/info/get', async (req, res, next) => {
 router.post('/info/edit', async (req, res, next) => {
   const { operationid, schema } = req.body
   await editApiSchema(operationid, schema)
-  res.send({})
+  const jsonData = await getApiSchema(operationid)
+  try {
+    const md = genWecomApiDoc(jsonData)
+    res.send({
+      schema: jsonData,
+      md
+    })
+  } catch (e) {
+    console.log(`---- ${operationid} schema解析失败----`)
+    console.error(e)
+    res.send({
+      schema: jsonData,
+      md: {
+        domStr: '',
+        md: ''
+      }
+    })
+  }
 })
 
 router.post('/category/get', async (req, res, next) => {

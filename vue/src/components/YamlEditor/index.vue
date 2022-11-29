@@ -29,11 +29,11 @@ export default {
     }
   },
   watch: {
-    schema(schema) {
-      const value = window.jsyaml.dump(schema)
-      const editorValue = this.getValue()
-      if (value !== editorValue) {
-        // this.yamlEditor.setValue(value)
+    schema(schema, pre) {
+      const value = this.addComment(window.jsyaml.dump(schema))
+      // const editorValue = this.getValue()
+      if (pre.operationid !== schema.operationid) {
+        this.yamlEditor.setValue(value)
       }
     }
   },
@@ -81,10 +81,10 @@ export default {
 }
 .yaml-editor >>> .CodeMirror {
   height: auto;
-  min-height: 300px;
+  min-height: 100%;
 }
 .yaml-editor >>> .CodeMirror-scroll{
-  min-height: 300px;
+  min-height: 100%;
 }
 .yaml-editor >>> .cm-s-rubyblue span.cm-string {
   color: #F08047;
