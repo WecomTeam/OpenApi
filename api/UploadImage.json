@@ -1,1 +1,1 @@
-{"summary":"上传图片","url":"https://qyapi.weixin.qq.com/cgi-bin/media/uploadimg","operationid":"UploadImage","tag":"wwopenlogic","method":"POST","cate_path":"服务端API-素材管理-上传图片","isExampleError":true,"titleIndex":-1}
+{"summary":"上传图片","description":"","path":"","operationid":"UploadImage","tag":"wwopenlogic","method":"POST","cate_path":"服务端API-素材管理-上传图片","permission":"","request":{"auth":[],"body":[],"params":[],"formData":[]},"response":[{"status":200,"description":"","body":[]}],"attention":"","url":"https://qyapi.weixin.qq.com/cgi-bin/media/uploadimg","isExampleError":true}
