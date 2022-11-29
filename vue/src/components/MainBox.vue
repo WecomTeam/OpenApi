@@ -63,13 +63,13 @@ export default {
                 operationid
             })
             this.apiData.md = data.md
-            this.$message.success({content: '保存成功'})
         },
-        async onSave(schema) {
+        async onSave({schema, isSilent}) {
             try {
                 await this.saveApi(this.api.api, schema)
+                if(!isSilent) this.$message.success({content: '保存成功'})
             } catch(e) {
-                this.$message.error({content: '保存失败'})
+                if(!isSilent) this.$message.error({content: '保存失败'})
             }
         },
         onMark(is_mark) {
