@@ -1,9 +1,9 @@
 
 const fs = require('fs');
 const path = require('path');
-
+const jsyaml = require('js-yaml')
 const parseValidFile = operationid => {
-    return path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.json`)
+    return path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.yaml`)
 }
 
 export const getApiSchema = async(operationid) => {
@@ -11,8 +11,11 @@ export const getApiSchema = async(operationid) => {
         const filePath = parseValidFile(operationid)
         const isExist = await fs.existsSync(filePath)
         if(isExist) {
-            const jsonData = await fs.readFileSync(filePath)
-            return JSON.parse(jsonData)
+            const yamlData = await fs.readFileSync(filePath)
+            return {
+                yaml: yamlData.toString(),
+                schema: jsyaml.load(yamlData)
+            }
         } else {
             return {}
         }
@@ -21,12 +24,12 @@ export const getApiSchema = async(operationid) => {
         return {}
     }
 }
-export const editApiSchema = async(operationid, schema) => {
+export const editApiSchema = async(operationid, yamlData) => {
     try {
     const filePath = parseValidFile(operationid)
     const isExist = await fs.existsSync(filePath)
     if(isExist) {
-        await fs.writeFileSync(filePath, JSON.stringify(schema))
+        await fs.writeFileSync(filePath, yamlData)
     } else {
         // 不存在暂不处理
     }
