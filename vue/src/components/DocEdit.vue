@@ -16,11 +16,12 @@ export default {
   components: {
     YamlEditor
   },
-  props: ['apiSchema', 'defaultValue'],
+  props: ['apiSchema', 'currentCheck'],
   watch: {
     apiSchema: {
       handler(val) {
         this.schema = val
+        this.is_mark = this.currentCheck
         this.onSave()
       },
       deep: true
