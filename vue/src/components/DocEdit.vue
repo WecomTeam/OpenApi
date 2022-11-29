@@ -1,9 +1,8 @@
 <template>
   <div class="editor">
-        <yaml-editor v-model="schema"></yaml-editor>
+        <yaml-editor v-model="schema" @input="() => onSave(true)"></yaml-editor>
         <div class="editor-action">
           <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
-          <t-button @click="onSave">保存</t-button>
         </div>
   </div>
 </template>
@@ -17,11 +16,13 @@ export default {
   components: {
     YamlEditor
   },
-  props: ['apiSchema', 'defaultValue'],
+  props: ['apiSchema', 'currentCheck'],
   watch: {
     apiSchema: {
       handler(val) {
         this.schema = val
+        this.is_mark = this.currentCheck
+        this.onSave()
       },
       deep: true
     }
@@ -33,8 +34,11 @@ export default {
     }
   },
   methods: {
-    onSave() {
-      this.$emit('save', this.schema)
+    onSave(isSilent = false) {
+      this.$emit('save', {
+        schema: this.schema,
+        isSilent
+      })
     },
     async onMark() {
       this.is_mark = !this.is_mark

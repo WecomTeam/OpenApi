@@ -3,7 +3,7 @@
         <div class="editorDoc">
             <DocEditVue 
                 :apiSchema="apiData.schema"
-                :defaultValue="api.is_check" 
+                :currentCheck="api.is_check" 
                 @mark="onMark"
             @save="onSave"/>                
         </div>
@@ -63,13 +63,14 @@ export default {
                 operationid
             })
             this.apiData.md = data.md
-            this.$message.success({content: '保存成功'})
         },
-        async onSave(schema) {
+        async onSave({schema}) {
             try {
                 await this.saveApi(this.api.api, schema)
+                // if(!isSilent) this.$message.success({content: '保存成功'})
             } catch(e) {
-                this.$message.error({content: '保存失败'})
+                // if(!isSilent) this.$message.error({content: '保存失败'})
+                console.log(e)
             }
         },
         onMark(is_mark) {

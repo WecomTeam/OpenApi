@@ -12,7 +12,7 @@ import 'codemirror/theme/monokai.css'
 import 'codemirror/mode/yaml/yaml'
 import 'codemirror/addon/lint/lint'
 import 'codemirror/addon/lint/yaml-lint'
-import {throttle} from 'lodash-es'
+import {debounce} from 'lodash-es'
 window.jsyaml = require('js-yaml') // 引入js-yaml为codemirror提高语法检查核心支持
 
 export default {
@@ -47,10 +47,12 @@ export default {
     })
 
     this.yamlEditor.setValue(this.value)
-    const throttledFunc = throttle((cm) => {
+    const throttledFunc = debounce((cm) => {
         const currentValue = cm.getValue()
         this.$emit('changed', window.jsyaml.load(currentValue))
         this.$emit('input', window.jsyaml.load(currentValue))
+    }, 2000, {
+      leading: false
     })
     this.yamlEditor.on('change', throttledFunc)
   },
