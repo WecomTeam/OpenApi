@@ -1,1 +1,0 @@
-{"summary":"##接口定义","description":"","path":"","operationid":"AppChatSend","tag":"wwopenmsglogic","method":"POST","cate_path":"服务端API-消息推送-发送消息到群聊会话-应用推送消息","permission":"","request":{"auth":[],"body":[],"params":[],"formData":[]},"response":[{"status":200,"description":"","body":[]}],"attention":"","url":"https://qyapi.weixin.qq.com/cgi-bin/appchat/send","isExampleError":true}

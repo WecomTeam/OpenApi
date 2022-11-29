@@ -1,1 +1,0 @@
-{"summary":"获取菜单","description":"","path":"","operationid":"WwOpenGetMenu","tag":"wwopenlogic","method":"GET","cate_path":"服务端API-应用管理-自定义菜单-获取菜单","permission":"","request":{"auth":[],"body":[],"params":[],"formData":[]},"response":[{"status":200,"description":"","body":[]}],"attention":"","url":"https://qyapi.weixin.qq.com/cgi-bin/menu/get","isExampleError":false}

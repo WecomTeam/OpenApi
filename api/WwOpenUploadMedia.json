@@ -1,1 +1,0 @@
-{"summary":"上传临时素材","description":"","path":"","operationid":"WwOpenUploadMedia","tag":"wwopenlogic","method":"POST","cate_path":"服务端API-素材管理-上传临时素材","permission":"","request":{"auth":[],"body":[],"params":[],"formData":[]},"response":[{"status":200,"description":"","body":[]}],"attention":"","url":"https://qyapi.weixin.qq.com/cgi-bin/media/upload","isExampleError":true}
