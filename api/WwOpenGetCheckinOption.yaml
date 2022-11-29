@@ -1,0 +1,568 @@
+# 接口中文名
+summary: 获取员工打卡规则
+# 接口详细描述，将展示在接口文档顶部
+description: 企业可通过打卡应用Secret获取的token，获取指定员工指定日期的打卡规则。<br>第三方应用可获取应用可见范围内指定员工指定日期的打卡规则。
+path: https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckinoption
+operationid: WwOpenGetCheckinOption
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-打卡-获取员工打卡规则
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: datetime
+      type: 4
+      description: 需要获取规则的日期当天0点的Unix时间戳
+      is_required: 是
+      default: ''
+      example: 1511971200
+      items: {}
+    - name: useridlist
+      type: 2
+      description: 需要获取打卡规则的用户列表
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: james
+    - name: 用户列表不超过100个，若用户超过100个，请分批获取。
+      example: ''
+      type: 1
+      is_required: 用户在不同日期的规则不一定相同，请按天获取。
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 错误码，详情见错误码说明
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 错误码对应的错误信息提示
+        default: ''
+        example: ok
+        items: {}
+      - name: info
+        type: 2
+        description: 返回的打卡规则列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: userid
+                    type: 1
+                    description: 打卡人员userid
+                    default: ''
+                    example: james
+                    items: {}
+                  - name: group
+                    type: 3
+                    description: 打卡规则相关信息
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: grouptype
+                          type: 4
+                          description: 打卡规则类型。1：固定时间上下班；2：按班次上下班；3：自由上下班 。
+                          default: ''
+                          example: 1
+                          items: {}
+                        - name: groupid
+                          type: 4
+                          description: 打卡规则id
+                          default: ''
+                          example: 69
+                          items: {}
+                        - name: checkindate
+                          type: 2
+                          description: 打卡时间配置
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: workdays
+                                      type: 2
+                                      description: >-
+                                        工作日。若为固定时间上下班或自由上下班，则1到6分别表示星期一到星期六，0表示星期日；若为按班次上下班，则表示拉取班次的日期。
+                                      default: ''
+                                      example: ''
+                                      items:
+                                        properties:
+                                          - name: ''
+                                            is_required: false
+                                            description: ''
+                                            default: ''
+                                            example: 1
+                                    - name: checkintime
+                                      type: 2
+                                      description: 工作日上下班打卡时间信息
+                                      default: ''
+                                      example: ''
+                                      items:
+                                        properties:
+                                          - type: 3
+                                            is_required: false
+                                            items:
+                                              properties:
+                                                - name: work_sec
+                                                  type: 4
+                                                  description: 上班时间，表示为距离当天0点的秒数。
+                                                  default: ''
+                                                  example: 50400
+                                                  items: {}
+                                                - name: off_work_sec
+                                                  type: 4
+                                                  description: 下班时间，表示为距离当天0点的秒数。
+                                                  default: ''
+                                                  example: 72000
+                                                  items: {}
+                                                - name: remind_work_sec
+                                                  type: 4
+                                                  description: 上班提醒时间，表示为距离当天0点的秒数。
+                                                  default: ''
+                                                  example: 49800
+                                                  items: {}
+                                                - name: remind_off_work_sec
+                                                  type: 4
+                                                  description: 下班提醒时间，表示为距离当天0点的秒数。
+                                                  default: ''
+                                                  example: 72000
+                                                  items: {}
+                                    - name: flex_time
+                                      type: 4
+                                      description: >-
+                                        弹性时间（毫秒）只有flex_on_duty_time，flex_off_duty_time不生效时（值为-1）才有意义
+                                      default: ''
+                                      example: 300000
+                                      items: {}
+                                    - name: noneed_offwork
+                                      type: 6
+                                      description: 下班不需要打卡，true为下班不需要打卡，false为下班需要打卡
+                                      default: ''
+                                      example: true
+                                      items: {}
+                                    - name: limit_aheadtime
+                                      type: 4
+                                      description: 打卡时间限制（毫秒）
+                                      default: ''
+                                      example: 10800000
+                                      items: {}
+                                    - name: flex_on_duty_time
+                                      type: 4
+                                      description: 允许迟到时间，单位ms，值为-1使用flex_time
+                                      default: ''
+                                      example: 0
+                                      items: {}
+                                    - name: flex_off_duty_time
+                                      type: 4
+                                      description: 允许早退时间，单位ms，值为-1使用flex_time
+                                      default: ''
+                                      example: 0
+                                      items: {}
+                        - name: spe_workdays
+                          type: 2
+                          description: 特殊日期-必须打卡日期，timestamp表示具体时间
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: timestamp
+                                      type: 4
+                                      description: 特殊日期-必须打卡日期时间戳
+                                      default: ''
+                                      example: 1512144000
+                                      items: {}
+                                    - name: notes
+                                      type: 1
+                                      description: 特殊日期备注
+                                      default: ''
+                                      example: 必须打卡的日期
+                                      items: {}
+                                    - name: checkintime
+                                      type: 2
+                                      description: ''
+                                      is_required: false
+                                      default: ''
+                                      example: ''
+                                      items: {}
+                        - name: spe_offdays
+                          type: 2
+                          description: 特殊日期-不用打卡日期， timestamp表示具体时间
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: timestamp
+                                      type: 4
+                                      description: 特殊日期-不用打卡日期时间戳
+                                      default: ''
+                                      example: 1512057600
+                                      items: {}
+                                    - name: notes
+                                      type: 1
+                                      description: 特殊日期备注
+                                      default: ''
+                                      example: 不需要打卡的日期
+                                      items: {}
+                                    - name: checkintime
+                                      type: 2
+                                      description: ''
+                                      is_required: false
+                                      default: ''
+                                      example: ''
+                                      items: {}
+                        - name: sync_holidays
+                          type: 6
+                          description: 是否同步法定节假日，true为同步，false为不同步，当前排班不支持
+                          default: ''
+                          example: true
+                          items: {}
+                        - name: groupname
+                          type: 1
+                          description: 打卡规则名称
+                          default: ''
+                          example: 打卡规则1
+                          items: {}
+                        - name: need_photo
+                          type: 6
+                          description: 是否打卡必须拍照，true为必须拍照，false为不必须拍照
+                          default: ''
+                          example: true
+                          items: {}
+                        - name: wifimac_infos
+                          type: 2
+                          description: 打卡地点-WiFi打卡信息
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: wifiname
+                                      type: 1
+                                      description: WiFi打卡地点名称
+                                      default: ''
+                                      example: Tencent-WiFi-2
+                                      items: {}
+                                    - name: wifimac
+                                      type: 1
+                                      description: WiFi打卡地点MAC地址/bssid
+                                      default: ''
+                                      example: 70:10:5c:7d:f6:d5
+                                      items: {}
+                        - name: note_can_use_local_pic
+                          type: 6
+                          description: 是否备注时允许上传本地图片，true为允许，false为不允许
+                          default: ''
+                          example: false
+                          items: {}
+                        - name: allow_checkin_offworkday
+                          type: 6
+                          description: 是否非工作日允许打卡,true为允许，false为不允许
+                          default: ''
+                          example: true
+                          items: {}
+                        - name: allow_apply_offworkday
+                          type: 6
+                          description: 是否允许提交补卡申请，true为允许，false为不允许
+                          default: ''
+                          example: true
+                          items: {}
+                        - name: loc_infos
+                          type: 2
+                          description: 打卡地点-位置打卡信息
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: lat
+                                      type: 4
+                                      description: >-
+                                        位置打卡地点纬度，是实际纬度的1000000倍，与腾讯地图一致采用GCJ-02坐标系统标准
+                                      default: ''
+                                      example: 23097490
+                                      items: {}
+                                    - name: lng
+                                      type: 4
+                                      description: >-
+                                        位置打卡地点经度，是实际经度的1000000倍，与腾讯地图一致采用GCJ-02坐标系统标准
+                                      default: ''
+                                      example: 113323750
+                                      items: {}
+                                    - name: loc_title
+                                      type: 1
+                                      description: 位置打卡地点名称
+                                      default: ''
+                                      example: T.I.T创意园
+                                      items: {}
+                                    - name: loc_detail
+                                      type: 1
+                                      description: 位置打卡地点详情
+                                      default: ''
+                                      example: 广东省广州市海珠区新港中路397号
+                                      items: {}
+                                    - name: distance
+                                      type: 4
+                                      description: 允许打卡范围（米）
+                                      default: ''
+                                      example: 300
+                                      items: {}
+                        - name: schedulelist
+                          type: 2
+                          description: 排班信息，只有规则为按班次上下班打卡时才有该配置
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: schedule_id
+                                      type: 4
+                                      description: 班次id
+                                      default: ''
+                                      example: 221
+                                      items: {}
+                                    - name: schedule_name
+                                      type: 1
+                                      description: 班次名称
+                                      default: ''
+                                      example: '2'
+                                      items: {}
+                                    - name: time_section
+                                      type: 2
+                                      description: 班次上下班时段信息
+                                      default: ''
+                                      example: ''
+                                      items:
+                                        properties:
+                                          - type: 3
+                                            is_required: false
+                                            items:
+                                              properties:
+                                                - name: time_id
+                                                  type: 4
+                                                  description: 时段id，为班次中某一堆上下班时间组合的id
+                                                  default: ''
+                                                  example: 1
+                                                  items: {}
+                                                - name: work_sec
+                                                  type: 4
+                                                  description: ''
+                                                  is_required: false
+                                                  default: ''
+                                                  example: 32400
+                                                  items: {}
+                                                - name: off_work_sec
+                                                  type: 4
+                                                  description: ''
+                                                  is_required: false
+                                                  default: ''
+                                                  example: 61200
+                                                  items: {}
+                                                - name: remind_work_sec
+                                                  type: 4
+                                                  description: 上班提醒时间，表示为距离当天0点的秒数。
+                                                  default: ''
+                                                  example: 31800
+                                                  items: {}
+                                                - name: remind_off_work_sec
+                                                  type: 4
+                                                  description: ''
+                                                  is_required: false
+                                                  default: ''
+                                                  example: 61200
+                                                  items: {}
+                                                - name: rest_begin_time
+                                                  type: 4
+                                                  description: 休息开始时间，仅单时段支持，距离0点的秒
+                                                  default: ''
+                                                  example: 43200
+                                                  items: {}
+                                                - name: rest_end_time
+                                                  type: 4
+                                                  description: 休息结束时间，仅单时段支持，距离0点的秒
+                                                  default: ''
+                                                  example: 46800
+                                                  items: {}
+                                                - name: allow_rest
+                                                  type: 6
+                                                  description: 是否允许休息
+                                                  default: ''
+                                                  example: false
+                                                  items: {}
+                                    - name: limit_aheadtime
+                                      type: 4
+                                      description: 允许提前打卡时间
+                                      default: ''
+                                      example: 14400000
+                                      items: {}
+                                    - name: noneed_offwork
+                                      type: 6
+                                      description: 下班不需要打卡
+                                      default: ''
+                                      example: false
+                                      items: {}
+                                    - name: limit_offtime
+                                      type: 4
+                                      description: 下班xx秒后不允许打下班卡
+                                      default: ''
+                                      example: 14400
+                                      items: {}
+                                    - name: flex_on_duty_time
+                                      type: 4
+                                      description: 允许迟到时间，单位ms，值为-1使用flex_time
+                                      default: ''
+                                      example: 0
+                                      items: {}
+                                    - name: flex_off_duty_time
+                                      type: 4
+                                      description: 允许早退时间，单位ms，值为-1使用flex_time
+                                      default: ''
+                                      example: 0
+                                      items: {}
+                                    - name: allow_flex
+                                      type: 6
+                                      description: 是否允许弹性时间
+                                      default: ''
+                                      example: false
+                                      items: {}
+                                    - name: late_rule
+                                      type: 3
+                                      description: 晚走晚到时间规则信息
+                                      default: ''
+                                      example: ''
+                                      items:
+                                        properties:
+                                          - name: allow_offwork_after_time
+                                            type: 6
+                                            description: >-
+                                              是否允许超时下班（下班晚走次日晚到）允许时onwork_flex_time，offwork_after_time才有意义
+                                            default: ''
+                                            example: false
+                                            items: {}
+                                          - name: timerules
+                                            type: 2
+                                            description: 迟到规则时间
+                                            default: ''
+                                            example: ''
+                                            items:
+                                              properties:
+                                                - type: 3
+                                                  is_required: false
+                                                  items:
+                                                    properties:
+                                                      - name: offwork_after_time
+                                                        type: 4
+                                                        description: 晚走的时间 距离最晚一个下班的时间单位：秒
+                                                        default: ''
+                                                        example: 3600
+                                                        items: {}
+                                                      - name: onwork_flex_time
+                                                        type: 4
+                                                        description: 第二天第一个班次允许迟到的弹性时间单位：秒
+                                                        default: ''
+                                                        example: 3600
+                                                        items: {}
+                                    - name: max_allow_arrive_early
+                                      type: 4
+                                      description: 最早可打卡时间限制
+                                      default: ''
+                                      example: 0
+                                      items: {}
+                                    - name: max_allow_arrive_late
+                                      type: 4
+                                      description: >-
+                                        最晚可打卡时间限制，max_allow_arrive_early、max_allow_arrive_early与flex_on_duty_time、flex_off_duty_time互斥，当设置其中一组时，另一组数值置0
+                                      default: ''
+                                      example: 0
+                                      items: {}
+      - name: group.schedulelist.time_section.work_se
+        example: ''
+        type: 1
+        description: 上班时间，表示为距离当天0点的秒数。
+        default: ''
+      - name: group.schedulelist.time_section.offwork_sec
+        example: ''
+        type: 1
+        description: 下班时间，表示为距离当天0点的秒数。
+        default: ''
+      - name: group.schedulelist.time_section.remind_offwork_sec
+        example: ''
+        type: 1
+        description: 下班提醒时间，表示为距离当天0点的秒数。
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

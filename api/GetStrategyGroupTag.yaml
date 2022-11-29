@@ -1,0 +1,179 @@
+# 接口中文名
+summary: 获取指定规则组下的企业客户标签
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get_strategy_tag_list
+operationid: GetStrategyGroupTag
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-客户标签管理-管理企业规则组下的客户标签
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: strategy_id
+      type: 4
+      description: 规则组id
+      is_required: 否
+      default: ''
+      example: 1
+      items: {}
+    - name: tag_id
+      type: 2
+      description: 要查询的标签id
+      is_required: 否
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: etXXXXXXXXXX
+    - name: group_id
+      type: 2
+      description: 要查询的标签组id，返回该标签组以及其下的所有标签信息
+      is_required: 否
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: etZZZZZZZZZZZZZ
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: tag_group
+        type: 2
+        description: 标签组列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: group_id
+                    type: 1
+                    description: 标签组id
+                    default: ''
+                    example: TAG_GROUPID1
+                    items: {}
+                  - name: group_name
+                    type: 1
+                    description: 标签组名称
+                    default: ''
+                    example: GOURP_NAME
+                    items: {}
+                  - name: create_time
+                    type: 4
+                    description: 标签组创建时间
+                    default: ''
+                    example: 1557838797
+                    items: {}
+                  - name: order
+                    type: 4
+                    description: 标签组排序的次序值，order值大的排序靠前。有效的值范围是[0, 2^32)
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: strategy_id
+                    type: 4
+                    description: 标签组所属的规则组id
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: tag
+                    type: 2
+                    description: 标签组内的标签列表
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - type: 3
+                          is_required: false
+                          items:
+                            properties:
+                              - name: id
+                                type: 1
+                                description: 标签id
+                                default: ''
+                                example: TAG_ID2
+                                items: {}
+                              - name: name
+                                type: 1
+                                description: 标签名称
+                                default: ''
+                                example: NAME2
+                                items: {}
+                              - name: create_time
+                                type: 4
+                                description: 标签创建时间
+                                default: ''
+                                example: 1557838797
+                                items: {}
+                              - name: order
+                                type: 4
+                                description: 标签排序的次序值，order值大的排序靠前。有效的值范围是[0, 2^32)
+                                default: ''
+                                example: 2
+                                items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  若tag_id和group_id均为空，则返回所有标签。<br>同时传递tag_id和group_id时，忽略tag_id，**仅以group_id作为过滤条件**。
+isExampleError: false
+isInterface: true

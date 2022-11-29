@@ -1,0 +1,120 @@
+# 接口中文名
+summary: 全量覆盖成员
+# 接口详细描述，将展示在接口文档顶部
+description: >-
+  本接口以userid为主键，全量覆盖企业的通讯录成员，任务完成后企业的通讯录成员与提交的文件完全保持一致。请先下载CSV文件([下载全量覆盖成员模版](https://work.weixin.qq.com/wework_admin/downloadfile/batch_user_sample.csv
+  "下载全量覆盖成员模版"))，根据需求填写文件内容。<br>注意事项：<br>模板中的部门需填写部门ID，多个部门用分号分隔，部门ID必须为数字，根部门的部门id默认为1<br>文件中存在、通讯录中也存在的成员，完全以文件为准<br>文件中存在、通讯录中不存在的成员，执行添加操作<br>通讯录中存在、文件中不存在的成员，执行删除操作。出于安全考虑，下面两种情形系统将中止导入并返回相应的错误码。<br>需要删除的成员多于50人，且多于现有人数的20%以上<br>需要删除的成员少于50人，且多于现有人数的80%以上<br>成员字段更新规则：可自行添加扩展字段。文件中有指定的字段，以指定的字段值为准；文件中没指定的字段，不更新
+path: https://qyapi.weixin.qq.com/cgi-bin/batch/replaceuser
+operationid: BatchReplaceUser
+tag: wwopencorplogic
+method: POST
+cate_path: 服务端API-通讯录管理-异步导入接口-全量覆盖成员
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: 须拥有通讯录的写权限。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: media_id
+      type: 1
+      description: 上传的csv文件的media_id
+      is_required: 是
+      default: ''
+      example: xxxxxx
+      items: {}
+    - name: to_invite
+      type: 6
+      description: 是否邀请新建的成员使用企业微信（将通过微信服务通知或短信或邮件下发邀请，每天自动下发一次，最多持续3个工作日），默认值为true。
+      is_required: 否
+      default: ''
+      example: true
+      items: {}
+    - name: callback
+      type: 3
+      description: 回调信息。如填写该项则任务完成后，通过callback推送事件给企业。具体请参考应用回调模式中的相应选项
+      is_required: 否
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: url
+            type: 1
+            description: 企业应用接收企业微信推送请求的访问协议和地址，支持http或https协议
+            is_required: 否
+            default: ''
+            example: xxx
+            items: {}
+          - name: token
+            type: 1
+            description: 用于生成签名
+            is_required: 否
+            default: ''
+            example: xxx
+            items: {}
+          - name: encodingaeskey
+            type: 1
+            description: 用于消息体的加密，是AES密钥的Base64编码
+            is_required: 否
+            default: ''
+            example: xxx
+            items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: jobid
+        type: 1
+        description: 异步任务id，最大长度为64字节
+        default: ''
+        example: xxxxx
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

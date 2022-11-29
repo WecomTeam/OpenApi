@@ -1,0 +1,390 @@
+# 接口中文名
+summary: 获取汇报统计数据
+# 接口详细描述，将展示在接口文档顶部
+description: >-
+  企业可通过access_token调用本接口，根据汇报表单id查询企业微信“汇报应用”的汇报统计汇总信息。该接口只能拉取到已经汇总的统计数据，对于尚未完成汇总的周期不会返回。
+path: https://qyapi.weixin.qq.com/cgi-bin/oa/journal/get_stat_list
+operationid: OpenGetJournalStatList
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-汇报-获取汇报统计数据
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: template_id
+      type: 1
+      description: 汇报表单id,不多于256字节
+      is_required: 是
+      default: ''
+      example: 3TmALk1ogfgKiQE3e3jRwnTUhMTh8vca1N8zUVNUx
+      items: {}
+    - name: starttime
+      type: 4
+      description: 开始时间
+      is_required: 是
+      default: ''
+      example: 1604160000
+      items: {}
+    - name: endtime
+      type: 4
+      description: 结束时间，时间区间最大长度为一年
+      is_required: 是
+      default: ''
+      example: 1606363092
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 错误码描述
+        default: ''
+        example: ok
+        items: {}
+      - name: stat_list
+        type: 2
+        description: 统计数据列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: template_id
+                    type: 1
+                    description: 汇报表单id
+                    default: ''
+                    example: 3TmALk1ogfgKiQE3e3jRwnTUhMTh8vca1N8zUVNU
+                    items: {}
+                  - name: template_name
+                    type: 1
+                    description: 汇报表单名称
+                    default: ''
+                    example: 日报
+                    items: {}
+                  - name: report_range
+                    type: 3
+                    description: 汇报人员范围
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: user_list
+                          type: 2
+                          description: 指定人集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: userid
+                                      type: 1
+                                      description: 用户id
+                                      default: ''
+                                      example: user1
+                                      items: {}
+                        - name: party_list
+                          type: 2
+                          description: 指定部门集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: open_partyid
+                                      type: 1
+                                      description: 部门id
+                                      default: ''
+                                      example: '1'
+                                      items: {}
+                        - name: tag_list
+                          type: 2
+                          description: 指定标签集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - name: stat_list.white_range.tag_list
+                                is_required: false
+                                description: 指定标签集合
+                                default: ''
+                                example: null
+                  - name: white_range
+                    type: 3
+                    description: 白名单集合
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: user_list
+                          type: 2
+                          description: 指定人集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - name: ''
+                                is_required: false
+                                description: ''
+                                default: ''
+                                example: null
+                        - name: party_list
+                          type: 2
+                          description: ''
+                          is_required: false
+                          default: ''
+                          example: ''
+                          items: {}
+                        - name: tag_list
+                          type: 2
+                          description: 指定标签集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - name: ''
+                                is_required: false
+                                description: ''
+                                default: ''
+                                example: null
+                  - name: receivers
+                    type: 3
+                    description: 固定汇报对象
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: user_list
+                          type: 2
+                          description: ''
+                          is_required: false
+                          default: ''
+                          example: ''
+                          items: {}
+                        - name: tag_list
+                          type: 2
+                          description: ''
+                          is_required: false
+                          default: ''
+                          example: ''
+                          items: {}
+                        - name: leader_list
+                          type: 2
+                          description: 指定上级集合
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - name: ''
+                                is_required: false
+                                description: ''
+                                default: ''
+                                example: null
+                  - name: cycle_begin_time
+                    type: 4
+                    description: 周期开始时间
+                    default: ''
+                    example: 1606147200
+                    items: {}
+                  - name: cycle_end_time
+                    type: 4
+                    description: 周期结束时间
+                    default: ''
+                    example: 1606233600
+                    items: {}
+                  - name: stat_begin_time
+                    type: 4
+                    description: 统计开始时间
+                    default: ''
+                    example: 1606147200
+                    items: {}
+                  - name: stat_end_time
+                    type: 4
+                    description: 统计结束时间
+                    default: ''
+                    example: 1606230000
+                    items: {}
+                  - name: report_list
+                    type: 2
+                    description: 已汇报用户列表
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - type: 3
+                          is_required: false
+                          items:
+                            properties:
+                              - name: user
+                                type: 3
+                                description: 汇报用户
+                                default: ''
+                                example: ''
+                                items:
+                                  properties:
+                                    - name: userid
+                                      type: 1
+                                      description: 用户id
+                                      default: ''
+                                      example: user2
+                                      items: {}
+                              - name: itemlist
+                                type: 2
+                                description: 汇报记录列表
+                                default: ''
+                                example: ''
+                                items:
+                                  properties:
+                                    - type: 3
+                                      is_required: false
+                                      items:
+                                        properties:
+                                          - name: journaluuid
+                                            type: 1
+                                            description: 汇报记录id
+                                            default: ''
+                                            example: >-
+                                              4U9abSUrpY78VNxeNNv3J5TW5e9VLj8cDymH9py1Efpuj5X8QCDQx3stKr69pia3UL8auRjrCMsiRjgzL8mvKnff
+                                            items: {}
+                                          - name: reporttime
+                                            type: 4
+                                            description: 汇报时间
+                                            default: ''
+                                            example: 1606218548
+                                            items: {}
+                                          - name: flag
+                                            type: 4
+                                            description: 是否迟交，1迟交;0非迟交
+                                            default: ''
+                                            example: 0
+                                            items: {}
+                  - name: unreport_list
+                    type: 2
+                    description: 未汇报用户列表
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - type: 3
+                          is_required: false
+                          items:
+                            properties:
+                              - name: user
+                                type: 3
+                                description: 未汇报用户
+                                default: ''
+                                example: ''
+                                items:
+                                  properties:
+                                    - name: userid
+                                      type: 1
+                                      description: 用户id
+                                      default: ''
+                                      example: user3
+                                      items: {}
+                              - name: itemlist
+                                type: 2
+                                description: ''
+                                is_required: false
+                                default: ''
+                                example: ''
+                                items: {}
+                  - name: report_type
+                    type: 4
+                    description: 汇报方式：2按日汇报; 3按周汇报; 4按月汇报
+                    default: ''
+                    example: 2
+                    items: {}
+      - name: stat_list.report_range.tag_list.open_tagid
+        example: ''
+        type: 1
+        description: 标签id
+        default: ''
+      - name: stat_list.white_range.party_list.open_partyid
+        example: ''
+        type: 1
+        description: 部门id
+        default: ''
+      - name: stat_list.white_range.tag_list.open_tagid
+        example: ''
+        type: 1
+        description: 标签id
+        default: ''
+      - name: stat_list.receivers.tag_list.open_tagid
+        example: ''
+        type: 1
+        description: 标签id
+        default: ''
+      - name: stat_list.receivers.leader_list.level
+        example: ''
+        type: 1
+        description: 上级级别从1开始
+        default: ''
+      - name: stat_list.report_list.user.userid
+        example: ''
+        type: 1
+        description: 用户id
+        default: ''
+      - name: stat_list.unreport_list.user.userid
+        example: ''
+        type: 1
+        description: 用户id
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  **错误说明**：<br>$desc 错误码<br>$desc 说明<br>$desc 301065<br>$desc
+  无汇报应用数据拉取权限<br>$desc 301066<br>$desc 请求参数错误<br>$desc 301067<br>$desc 接口内部失败
+isExampleError: false
+isInterface: true

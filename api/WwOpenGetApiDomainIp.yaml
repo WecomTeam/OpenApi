@@ -1,0 +1,90 @@
+# 接口中文名
+summary: 获取企业微信API域名IP段
+# 接口详细描述，将展示在接口文档顶部
+description: >-
+  API域名IP即qyapi.weixin.qq.com的解析地址，由开发者调用企业微信端的接入IP。如果企业需要做防火墙配置，那么可以通过这个接口获取到所有相关的IP段。IP段有变更可能，当IP段变更时，新旧IP段会同时保留一段时间。建议企业每天定时拉取IP段，更新防火墙设置，避免因IP段变更导致网络不通。
+path: https://qyapi.weixin.qq.com/cgi-bin/get_api_domain_ip
+operationid: WwOpenGetApiDomainIp
+tag: wwopenlogic
+method: GET
+cate_path: 服务端API-开发指南-获取企业微信API域名IP段
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: 无限定。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN （[获取ACCESS_TOKEN](#15074)）
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body: []
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: ip_list
+        type: 2
+        description: ''
+        is_required: false
+        default: ''
+        example: ''
+        items: {}
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  API域名IP即qyapi.weixin.qq.com的解析地址，由开发者调用企业微信端的接入IP。如果企业需要做防火墙配置，那么可以通过这个接口获取到所有相关的IP段。IP段有变更可能，当IP段变更时，新旧IP段会同时保留一段时间。建议企业每天定时拉取IP段，更新防火墙设置，避免因IP段变更导致网络不通。<br>**请求方式：**GET（**HTTPS**）<br>**请求地址：**
+  https://qyapi.weixin.qq.com/cgi-bin/get_api_domain_ip?access_token=ACCESS_TOKEN
+  （[获取ACCESS_TOKEN](#15074)）<br>**请求参数说明：**<br>$desc 参数<br>$desc 必须<br>$desc
+  说明<br>$desc access_token<br>$desc 是<br>$desc 调用接口凭证<br>**返回参数说明：**<br>$desc
+  参数<br>$desc 类型<br>$desc 说明<br>$desc ip_list<br>$desc StringArray<br>$desc
+  企业微信服务器IP段<br>$desc errcode<br>$desc int<br>$desc 错误码，0表示成功，非0表示调用失败<br>$desc
+  errmsg<br>$desc string<br>$desc
+  错误信息，调用失败会有相关的错误信息返回<br>根据errcode值非0，判断调用失败。以下是access_token过期的返回示例：<br>{"ip_list":[],"errcode":42001,"errmsg":"access_token
+  expired, hint: [1576065934_28_e0fae07666aa64636023c1fa7e8f49a4], from ip:
+  9.30.0.138, more info at
+  https://open.work.weixin.qq.com/devtool/query?e=42001"}
+isExampleError: false
+isInterface: true

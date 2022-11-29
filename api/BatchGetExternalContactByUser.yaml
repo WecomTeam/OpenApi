@@ -1,0 +1,120 @@
+# 接口中文名
+summary: 批量获取客户详情
+# 接口详细描述，将展示在接口文档顶部
+description: 企业/第三方可通过此接口获取指定成员添加的客户信息列表。
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/batch/get_by_user
+operationid: BatchGetExternalContactByUser
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-客户管理-批量获取客户详情
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  企业需要使用[“客户联系”secret](#13473/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）；<br>第三方应用需具有“企业客户权限->客户基础信息”权限<br>第三方/自建应用调用此接口时，userid需要在相关应用的可见范围内。<br>规则组标签仅可通过[“客户联系”](#13473/开始开发)获取。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: userid_list
+      type: 2
+      description: 企业成员的userid列表，字符串类型，最多支持100个
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: zhangsan
+    - name: cursor
+      type: 1
+      description: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+      is_required: 否
+      default: ''
+      example: ''
+      items: {}
+    - name: limit
+      type: 4
+      description: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+      is_required: 否
+      default: ''
+      example: 100
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: external_contact_list
+        type: 2
+        description: ''
+        is_required: false
+        default: ''
+        example: ''
+        items: {}
+      - name: next_cursor
+        type: 1
+        description: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        default: ''
+        example: r9FqSqsI8fgNbHLHE5QoCP50UIg2cFQbfma3l2QsmwI
+        items: {}
+      - name: external_contact_list.external_contact
+        example: ''
+        type: 1
+        description: 客户的基本信息，可以参考[获取客户详情](#13878)
+        default: ''
+      - name: external_contact_list.follow_info
+        example: ''
+        type: 1
+        description: 企业成员客户跟进信息，可以参考[获取客户详情](#13878)，但标签信息只会返回企业标签和规则组标签的tag_id，个人标签将不再返回
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

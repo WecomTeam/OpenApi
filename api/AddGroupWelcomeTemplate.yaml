@@ -1,0 +1,211 @@
+# 接口中文名
+summary: 添加入群欢迎语素材
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/group_welcome_template/add
+operationid: AddGroupWelcomeTemplate
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-消息推送-入群欢迎语素材管理
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  企业需要使用[“客户联系”secret](#13473/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）。<br>第三方应用需具有“企业客户权限->客户联系->配置入群欢迎语素材”权限
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: text
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: image
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: link
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: miniprogram
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: file
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: video
+      type: 3
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: agentid
+      type: 4
+      description: 授权方安装的应用agentid。**仅旧的第三方多应用套件需要填此参数**
+      is_required: 否
+      default: ''
+      example: 1000014
+      items: {}
+    - name: notify
+      type: 4
+      description: 是否通知成员将这条入群欢迎语应用到客户群中，0-不通知，1-通知， **不填则通知**
+      is_required: 否
+      default: ''
+      example: 1
+      items: {}
+    - name: text.content
+      example: ''
+      type: 1
+      description: 消息文本内容,最长为3000字节
+      is_required: 否
+      default: ''
+    - name: image.media_id
+      example: ''
+      type: 1
+      description: 图片的media_id，可以通过[素材管理](#10112)接口获得
+      is_required: 否
+      default: ''
+    - name: image.pic_url
+      example: ''
+      type: 1
+      description: 图片的链接，**仅可使用[上传图片](#13219)接口得到的链接**
+      is_required: 否
+      default: ''
+    - name: link.title
+      example: ''
+      type: 1
+      description: 图文消息标题，最长为128字节
+      is_required: 是
+      default: ''
+    - name: link.picurl
+      example: ''
+      type: 1
+      description: 图文消息封面的url
+      is_required: 否
+      default: ''
+    - name: link.desc
+      example: ''
+      type: 1
+      description: 图文消息的描述，最长为512字节
+      is_required: 否
+      default: ''
+    - name: link.url
+      example: ''
+      type: 1
+      description: 图文消息的链接
+      is_required: 是
+      default: ''
+    - name: miniprogram.title
+      example: ''
+      type: 1
+      description: 小程序消息标题，最长为64字节
+      is_required: 是
+      default: ''
+    - name: miniprogram.pic_media_id
+      example: ''
+      type: 1
+      description: 小程序消息封面的mediaid，封面图建议尺寸为520\*416
+      is_required: 是
+      default: ''
+    - name: miniprogram.appid
+      example: ''
+      type: 1
+      description: 小程序appid，必须是**关联到企业的小程序应用**
+      is_required: 是
+      default: ''
+    - name: miniprogram.page
+      example: ''
+      type: 1
+      description: 小程序page路径
+      is_required: 是
+      default: ''
+    - name: file.media_id
+      example: ''
+      type: 1
+      description: 文件id，可以通过[素材管理](#10112)、[异步上传临时素材](#42044)接口获得
+      is_required: 是
+      default: ''
+    - name: video.media_id
+      example: ''
+      type: 1
+      description: 视频媒体文件id，可以通过[素材管理](#10112)、[异步上传临时素材](#42044)接口获得
+      is_required: 是
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: template_id
+        type: 1
+        description: 欢迎语素材id
+        default: ''
+        example: msgXXXXXX
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  text中支持配置多个**%NICKNAME%**(大小写敏感)形式的欢迎语，当配置了欢迎语占位符后，发送给客户时会自动替换为客户的昵称;<br>text、image、link、miniprogram、file、video不能全部为空；<br>text与其它消息类型可以同时发送，此时将会以两条消息的形式触达客户<br>text以外的消息类型，只能有一个，如果三者同时填，则按image、link、miniprogram、file、video的优先顺序取参。例如：image与link同时传值，则只有image生效。<br>图片消息中，media_id和pic_url只需填写一个，两者同时填写时使用media_id，二者不可同时为空。
+isExampleError: false
+isInterface: true

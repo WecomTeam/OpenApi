@@ -2,7 +2,7 @@
     <div class="mainbox">
         <div class="editorDoc">
             <DocEditVue 
-                :apiSchema="apiData.schema"
+                :apiYaml="apiData.yaml"
                 :currentCheck="api.is_check" 
                 @mark="onMark"
             @save="onSave"/>                
@@ -32,9 +32,9 @@ export default {
             async handler(value) {
                 if(value.api){
                     this.getOnlineDocURL()
-                    let schema = await this.fetchApi(value.api);
-                    if(schema){
-                        this.apiData = schema
+                    let apiData = await this.fetchApi(value.api);
+                    if(apiData){
+                        this.apiData = apiData
                     }         
                 }
             },
@@ -57,16 +57,16 @@ export default {
         getOnlineDocURL :function(){            
             this.onlineDocURL = `https://open.work.weixin.qq.com/wwopen/common/readDocument/${this.api.doc_id}`
         },
-        async saveApi(operationid, schema) {
+        async saveApi(operationid, yaml) {
             const { data } = await axios.post('/api/info/edit', {
-                schema,
+                yaml,
                 operationid
             })
             this.apiData.md = data.md
         },
-        async onSave({schema}) {
+        async onSave({yaml}) {
             try {
-                await this.saveApi(this.api.api, schema)
+                await this.saveApi(this.api.api, yaml)
                 // if(!isSilent) this.$message.success({content: '保存成功'})
             } catch(e) {
                 // if(!isSilent) this.$message.error({content: '保存失败'})
@@ -92,7 +92,7 @@ export default {
                     domStr: '',
                     md: ''
                 },
-                schema: {}
+                yaml: ''
             },      
             onlineDocURL:''
         };

@@ -1,0 +1,75 @@
+# 接口中文名
+summary: 发起语音电话
+# 接口详细描述，将展示在接口文档顶部
+description: 通过此接口发起语音电话，提醒员工查看应用推送的重要消息。
+path: https://qyapi.weixin.qq.com/cgi-bin/pstncc/call
+operationid: EmergencyRemind
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-紧急通知应用-发起语音电话
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: callee_userid
+      type: 2
+      description: ''
+      is_required: false
+      default: ''
+      example: ''
+      items: {}
+    - name: userid
+      example: ''
+      type: 1
+      description: 唯一标识一通呼叫的id
+      is_required: 用户id
+      default: ''
+    - name: code
+      example: ''
+      type: 1
+      is_required: 呼叫结果状态：0成功发起呼叫，非0则失败
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body: []
+# 注意事项，仅显示于接口的末尾
+attention: "**返回码：**<br>301049\t调用接口的应用未在紧急通知应用中关联<br>301050\t紧急通知应用未开启<br>301051\t紧急通知应用余额不足"
+isExampleError: false
+isInterface: true

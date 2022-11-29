@@ -1,0 +1,169 @@
+# 接口中文名
+summary: 获取部门列表
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/school/department/list
+operationid: GetSchoolDepartmentList
+tag: wwopencrmlogic
+method: GET
+cate_path: 服务端API-家校沟通-部门管理-获取部门列表
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  学校需要使用[“家校沟通”secret](#90001/90143/92313/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）。<br>第三方应用需拥有「家校沟通」使用权限。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body: []
+  params:
+    - name: id
+      example: ''
+      type: 1
+      description: 部门id。获取指定部门及其下的子部门。 如果不填，默认获取全量组织架构
+      is_required: 否
+      default: ''
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: departments
+        type: 2
+        description: 部门列表数据
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: name
+                    type: 1
+                    description: 部门名称
+                    default: ''
+                    example: 一年级一班
+                    items: {}
+                  - name: parentid
+                    type: 4
+                    description: 父亲部门id,根部门该项为0
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: id
+                    type: 4
+                    description: 部门id,根部门固定为1
+                    default: ''
+                    example: 3
+                    items: {}
+                  - name: type
+                    type: 4
+                    description: 部门类型，32位整型，1表示班级，2表示年级，3表示学段，4表示校区，5表示学校（根部门）
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: register_year
+                    type: 4
+                    description: 入学年份，仅标准年级返回，格式为YYYY
+                    default: ''
+                    example: 2018
+                    items: {}
+                  - name: standard_grade
+                    type: 4
+                    description: 标准年级，当为部门为标准年级时返回，返回值具体请参考[标准年级对照表](#19199)
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: order
+                    type: 4
+                    description: 在父部门中的次序值，order值大的排序靠前。有效的值范围是[0, 2^32)，仅在API设置后才返回
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: department_admins
+                    type: 2
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+                  - name: is_graduated
+                    type: 4
+                    description: 是否是已毕业，1表示是，0表示不是。仅部门类型为年级时才返回该字段
+                    default: ''
+                    example: 0
+                    items: {}
+                  - name: open_group_chat
+                    type: 4
+                    description: 是否开启班级群，1表示开启，0表示关闭。仅部门类型为班级时才返回该字段
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: group_chat_id
+                    type: 1
+                    description: 班级群id。仅部门类型为班级时且open_group_chat为1时才返回该字段
+                    default: ''
+                    example: group_chat_id
+                    items: {}
+      - name: department_admins.userid
+        example: ''
+        type: 1
+        description: 部门管理员的userid
+        default: ''
+      - name: department_admins.type
+        example: ''
+        type: 1
+        description: 部门管理员的类型，1表示校区负责人，2表示年级负责人，3表示班主任，4表示任课老师，5表示学段负责人
+        default: ''
+      - name: department_admins.subject
+        example: ''
+        type: 1
+        description: 教师或班主任的科目
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

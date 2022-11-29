@@ -1,0 +1,118 @@
+# 接口中文名
+summary: 创建家长
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/school/user/create_parent
+operationid: SchoolCreateParent
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-家校沟通-学生与家长管理-创建家长
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  学校需要使用[“家校沟通”secret](#90001/90143/92313/开始开发)所获取的accesstoken来调用（[accesstoken如何获取？](https://work.weixin.qq.com/api/doc#10013/第三步：获取access_token)）；<br>第三方应用需拥有「家校沟通」使用和编辑权限。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: parent_userid
+      type: 1
+      description: >-
+        家长UserID。学校内必须唯一，可以与企业通讯录内成员UserID相同。不区分大小写，长度为1~64个字节。只能由数字、字母和“_-@.”四种字符组成，且第一个字符必须是数字或字母。
+      is_required: 是
+      default: ''
+      example: zhangsan_parent_userid
+      items: {}
+    - name: mobile
+      type: 1
+      description: 家长手机号
+      is_required: 是
+      default: ''
+      example: '10000000000'
+      items: {}
+    - name: to_invite
+      type: 6
+      description: 是否发起邀请，默认为true，仅验证的学校才能发起邀请。
+      is_required: 否
+      default: ''
+      example: false
+      items: {}
+    - name: children
+      type: 2
+      description: 家长的孩子列表，最多10
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - type: 3
+            is_required: false
+            items:
+              properties:
+                - name: student_userid
+                  type: 1
+                  description: 学生的UserID
+                  is_required: 是
+                  default: ''
+                  example: lisi
+                  items: {}
+                - name: relation
+                  type: 1
+                  description: 家长与学生的关系，最长32字节
+                  is_required: 是
+                  default: ''
+                  example: 伯父
+                  items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: created
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: 当参数字段超过长度限制，那么整个请求会被拦掉。
+isExampleError: false
+isInterface: true

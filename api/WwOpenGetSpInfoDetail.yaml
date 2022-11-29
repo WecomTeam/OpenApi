@@ -1,0 +1,202 @@
+# 接口中文名
+summary: 获取审批申请详情
+# 接口详细描述，将展示在接口文档顶部
+description: 企业可通过审批应用或自建应用Secret调用本接口，根据审批单号查询企业微信“审批应用”的审批申请详情。
+path: https://qyapi.weixin.qq.com/cgi-bin/oa/getapprovaldetail
+operationid: WwOpenGetSpInfoDetail
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-审批-获取审批申请详情
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: sp_no
+      type: 1
+      description: 审批单编号。
+      is_required: 是
+      default: ''
+      example: '201909270001'
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+      - name: info
+        type: 3
+        description: ''
+        is_required: false
+        default: ''
+        example: ''
+        items: {}
+      - name: 审批编号
+        example: ''
+        type: 1
+        description: 审批申请类型名称（审批模板名称）
+        default: ''
+      - name: '**sp_status**'
+        example: ''
+        type: 1
+        description: '**template_id**'
+        default: ''
+      - name: 审批模板id。可在“获取审批申请详情”、“审批状态变化回调通知”中获得，也可在审批模板的模板编辑页面链接中获得。
+        example: ''
+        type: 1
+        description: 审批申请提交时间,Unix时间戳
+        default: ''
+      - name: '**applyer**'
+        example: ''
+        type: 1
+        description: └ userid
+        default: ''
+      - name: 申请人userid
+        example: ''
+        type: 1
+        description: 申请人所在部门id
+        default: ''
+      - name: '**sp_record**'
+        example: ''
+        type: 1
+        description: └ sp_status
+        default: ''
+      - name: 审批节点状态：1-审批中；2-已同意；3-已驳回；4-已转审；11-已退回；12-已加签；13-已同意并加签
+        example: ''
+        type: 1
+        description: 节点审批方式：1-或签；2-会签
+        default: ''
+      - name: └ details
+        example: ''
+        type: 1
+        description: └ └ approver
+        default: ''
+      - name: 分支审批人
+        example: ''
+        type: 1
+        description: 分支审批人userid
+        default: ''
+      - name: └ └ speech
+        example: ''
+        type: 1
+        description: └ └ sp_status
+        default: ''
+      - name: 分支审批人审批状态：1-审批中；2-已同意；3-已驳回；4-已转审；11-已退回；12-已加签；13-已同意并加签
+        example: ''
+        type: 1
+        description: 节点分支审批人审批操作时间戳，0表示未操作
+        default: ''
+      - name: └ └ media_id
+        example: ''
+        type: 1
+        description: '**notifyer**'
+        default: ''
+      - name: 抄送信息，可能有多个抄送节点
+        example: ''
+        type: 1
+        description: 节点抄送人userid
+        default: ''
+      - name: '**apply_data**'
+        example: ''
+        type: 1
+        description: └ contents
+        default: ''
+      - name: 审批申请详情，由多个表单控件及其内容组成
+        example: ''
+        type: 1
+        description: >-
+          控件类型：Text-文本；Textarea-多行文本；Number-数字；Money-金额；Date-日期/日期+时间；Selector-单选/多选；；Contact-成员/部门；Tips-说明文字；File-附件；Table-明细；Attendance-假勤；Vacation-请假；PunchCorrection-补卡;DateRange-时长
+        default: ''
+      - name: └ └ id
+        example: ''
+        type: 1
+        description: └ └ title
+        default: ''
+      - name: 控件名称 ，若配置了多语言则会包含中英文的控件名称
+        example: ''
+        type: 1
+        description: 控件值 ，包含了申请人在各种类型控件中输入的值，不同控件有不同的值，具体说明详见附录
+        default: ''
+      - name: └ └ hidden
+        example: ''
+        type: 1
+        description: '**comments**'
+        default: ''
+      - name: 审批申请备注信息，可能有多个备注节点
+        example: ''
+        type: 1
+        description: 备注人信息
+        default: ''
+      - name: └ └ userid
+        example: ''
+        type: 1
+        description: └ commenttime
+        default: ''
+      - name: 备注提交时间戳，Unix时间戳
+        example: ''
+        type: 1
+        description: 备注文本内容
+        default: ''
+      - name: └ commentid
+        example: ''
+        type: 1
+        description: └ media_id
+        default: ''
+      - name: >-
+          备注附件id，可能有多个，media_id具体使用请参考：[文档-获取临时素材](https://work.weixin.qq.com/api/doc#90000/90135/90254
+          "获取临时素材")
+        example: ''
+        type: 1
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: 接口频率限制 600次/分钟
+isExampleError: true
+isInterface: true

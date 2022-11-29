@@ -1,0 +1,214 @@
+# 接口中文名
+summary: 获取打卡记录数据
+# 接口详细描述，将展示在接口文档顶部
+description: 企业可通过打卡应用Secret调用本接口，获取指定员工指定时间段内的打卡记录数据。<br>第三方应用可获取应用可见范围内指定员工指定日期的打卡记录数据。
+path: https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckindata
+operationid: WwOpenGetCheckinData
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-打卡-获取打卡记录数据
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: opencheckindatatype
+      type: 4
+      description: 打卡类型。1：上下班打卡；2：外出打卡；3：全部打卡
+      is_required: 是
+      default: ''
+      example: 3
+      items: {}
+    - name: starttime
+      type: 4
+      description: 获取打卡记录的开始时间。Unix时间戳
+      is_required: 是
+      default: ''
+      example: 1492617600
+      items: {}
+    - name: endtime
+      type: 4
+      description: 获取打卡记录的结束时间。Unix时间戳
+      is_required: 是
+      default: ''
+      example: 1492790400
+      items: {}
+    - name: useridlist
+      type: 2
+      description: 需要获取打卡记录的用户列表
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: james
+    - name: 获取记录时间跨度不超过30天
+      example: ''
+      type: 1
+      description: 有打卡记录即可获取打卡数据，与当前"打卡应用"是否开启无关
+      is_required: 用户列表不超过100个。若用户超过100个，请分批获取
+      default: ''
+    - name: 标准打卡时间只对于固定排班和自定义排班两种类型有效
+      example: ''
+      type: 1
+      is_required: 接口调用频率限制为600次/分钟
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+      - name: checkindata
+        type: 2
+        description: ''
+        is_required: false
+        default: ''
+        example: ''
+        items: {}
+      - name: userid
+        example: ''
+        type: 1
+        description: 用户id
+        default: ''
+      - name: groupname
+        example: ''
+        type: 1
+        description: 打卡规则名称
+        default: ''
+      - name: checkin_type
+        example: ''
+        type: 1
+        description: 打卡类型。字符串，目前有：上班打卡，下班打卡，外出打卡
+        default: ''
+      - name: exception_type
+        example: ''
+        type: 1
+        description: 异常类型，字符串，包括：时间异常，地点异常，未打卡，wifi异常，非常用设备。如果有多个异常，以分号间隔
+        default: ''
+      - name: checkin_time
+        example: ''
+        type: 1
+        description: 打卡时间。Unix时间戳
+        default: ''
+      - name: location_title
+        example: ''
+        type: 1
+        description: 打卡地点title
+        default: ''
+      - name: location_detail
+        example: ''
+        type: 1
+        description: 打卡地点详情
+        default: ''
+      - name: wifiname
+        example: ''
+        type: 1
+        description: 打卡wifi名称
+        default: ''
+      - name: notes
+        example: ''
+        type: 1
+        description: 打卡备注
+        default: ''
+      - name: wifimac
+        example: ''
+        type: 1
+        description: 打卡的MAC地址/bssid
+        default: ''
+      - name: mediaids
+        example: ''
+        type: 1
+        description: 打卡的附件media_id，可使用media/get获取附件
+        default: ''
+      - name: lat
+        example: ''
+        type: 1
+        description: 位置打卡地点纬度，是实际纬度的1000000倍，与腾讯地图一致采用GCJ-02坐标系统标准
+        default: ''
+      - name: lng
+        example: ''
+        type: 1
+        description: 位置打卡地点经度，是实际经度的1000000倍，与腾讯地图一致采用GCJ-02坐标系统标准
+        default: ''
+      - name: deviceid
+        example: ''
+        type: 1
+        description: 打卡设备id
+        default: ''
+      - name: sch_checkin_time
+        example: ''
+        type: 1
+        description: 标准打卡时间，指此次打卡时间对应的标准上班时间或标准下班时间
+        default: ''
+      - name: groupid
+        example: ''
+        type: 1
+        description: 规则id，表示打卡记录所属规则的id
+        default: ''
+      - name: schedule_id
+        example: ''
+        type: 1
+        description: 班次id，表示打卡记录所属规则中，所属班次的id
+        default: ''
+      - name: timeline_id
+        example: ''
+        type: 1
+        description: >-
+          时段id，表示打卡记录所属规则中，某一班次中的某一时段的id，如上下班时间为9:00-12:00、13:00-18:00的班次中，9:00-12:00为其中一组时段
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

@@ -1,0 +1,119 @@
+# 接口中文名
+summary: 查询客户接替状态
+# 接口详细描述，将展示在接口文档顶部
+description: 企业和第三方可通过此接口查询在职成员的客户转接情况。
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/transfer_result
+operationid: GetCustomerTransferResult
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-在职继承-查询客户接替状态
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  企业需要使用[“客户联系”secret](#13473/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）。<br>第三方应用需拥有“企业客户权限->客户联系->在职继承”权限<br>接替成员必须在此第三方应用或自建应用的可见范围内。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: handover_userid
+      type: 1
+      description: 原添加成员的```userid```
+      is_required: 是
+      default: ''
+      example: zhangsan
+      items: {}
+    - name: takeover_userid
+      type: 1
+      description: 接替成员的```userid```
+      is_required: 是
+      default: ''
+      example: lisi
+      items: {}
+    - name: cursor
+      type: 1
+      description: 分页查询的cursor，每个分页返回的数据不会超过1000条；不填或为空表示获取第一个分页；
+      is_required: 否
+      default: ''
+      example: CURSOR
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: customer
+        type: 2
+        description: ''
+        is_required: false
+        default: ''
+        example: ''
+        items: {}
+      - name: next_cursor
+        type: 1
+        description: 下个分页的起始cursor
+        default: ''
+        example: NEXT_CURSOR
+        items: {}
+      - name: customer.external_userid
+        example: ''
+        type: 1
+        description: 转接客户的```外部联系人userid```
+        default: ''
+      - name: customer.status
+        example: ''
+        type: 1
+        description: 接替状态， 1-接替完毕 2-等待接替 3-客户拒绝 4-接替成员客户达到上限
+        default: ''
+      - name: customer.takeover_time
+        example: ''
+        type: 1
+        description: 接替客户的时间，如果是等待接替状态，则为未来的自动接替时间
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: 原接口[查询客户接替结果](#23225 )后续将不再更新维护，请使用新接口
+isExampleError: false
+isInterface: true

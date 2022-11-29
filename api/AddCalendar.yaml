@@ -1,0 +1,211 @@
+# 接口中文名
+summary: 创建日历
+# 接口详细描述，将展示在接口文档顶部
+description: '该接口用于通过应用在企业内创建一个日历。<br>注: 企业微信需要更新到3.0.2及以上版本'
+path: https://qyapi.weixin.qq.com/cgi-bin/oa/calendar/add
+operationid: AddCalendar
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-效率工具-日程-日历接口
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: calendar
+      type: 3
+      description: 日历信息
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: organizer
+            type: 1
+            description: 指定的组织者userid。注意该字段指定后不可更新
+            is_required: 是
+            default: ''
+            example: userid1
+            items: {}
+          - name: readonly
+            type: 4
+            description: >-
+              日历组织者对日历是否只读权限（即不可编辑日历，不可在日历上添加日程，仅可作为组织者删除日历）。</br>0-否；1-是。默认为1，即只读
+            is_required: 否
+            default: ''
+            example: 1
+            items: {}
+          - name: set_as_default
+            type: 4
+            description: 是否将该日历设置为组织者的默认日历。</br>0-否；1-是。默认为0，即不设为默认日历</br>**第三方应用不支持使用该参数**
+            is_required: 否
+            default: ''
+            example: 1
+            items: {}
+          - name: summary
+            type: 1
+            description: 日历标题。1 ~ 128 字符
+            is_required: 是
+            default: ''
+            example: test_summary
+            items: {}
+          - name: color
+            type: 1
+            description: 日历在终端上显示的颜色，RGB颜色编码16进制表示，例如："#0000FF" 表示纯蓝色
+            is_required: 是
+            default: ''
+            example: '#FF3030'
+            items: {}
+          - name: description
+            type: 1
+            description: 日历描述。0 ~ 512 字符
+            is_required: 否
+            default: ''
+            example: test_describe
+            items: {}
+          - name: shares
+            type: 2
+            description: 日历共享成员列表。最多2000人
+            is_required: 否
+            default: ''
+            example: ''
+            items:
+              properties:
+                - type: 3
+                  is_required: false
+                  items:
+                    properties:
+                      - name: userid
+                        type: 1
+                        description: 日历共享成员的id
+                        is_required: 是
+                        default: ''
+                        example: userid3
+                        items: {}
+                      - name: readonly
+                        type: 4
+                        description: >-
+                          共享成员对日历是否只读权限（即不可编辑日历，不可在日历上添加日程，仅可以退出日历）。</br>0-否；1-是。默认为1，即只读
+                        is_required: 否
+                        default: ''
+                        example: 1
+                        items: {}
+          - name: is_public
+            type: 4
+            description: 是否公共日历。0-否；1-是。注意：每个人最多可创建或订阅100个公共日历。该属性不可更新
+            is_required: 否
+            default: ''
+            example: 1
+            items: {}
+          - name: public_range
+            type: 3
+            description: 公开范围。仅当是公共日历时有效
+            is_required: 否
+            default: ''
+            example: ''
+            items:
+              properties:
+                - name: userids
+                  type: 2
+                  description: 公开的成员列表范围 。最多指定1000个成员
+                  is_required: 否
+                  default: ''
+                  example: ''
+                  items:
+                    properties:
+                      - name: ''
+                        is_required: false
+                        description: ''
+                        default: ''
+                        example: abel
+                - name: partyids
+                  type: 2
+                  description: 公开的部门列表范围 。最多指定100个部门
+                  is_required: 否
+                  default: ''
+                  example: ''
+                  items:
+                    properties:
+                      - name: ''
+                        is_required: false
+                        description: ''
+                        default: ''
+                        example: 1232
+          - name: is_corp_calendar
+            type: 4
+            description: >-
+              是否全员日历。0-否；1-是。注意：</br>1. 每个企业最多可创建20个全员日历</br>2.
+              全员日历也是公共日历的一种，需要指定```public_range```</br>3.
+              全员日历不支持指定颜色、默认日历、只读权限</br>4. 该属性不可更新
+            is_required: 否
+            default: ''
+            example: 1
+            items: {}
+    - name: agentid
+      type: 4
+      description: 授权方安装的应用agentid。**仅旧的第三方多应用套件需要填此参数**
+      is_required: 否
+      default: ''
+      example: 1000014
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 错误码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 错误码说明
+        default: ''
+        example: ok
+        items: {}
+      - name: cal_id
+        type: 1
+        description: 日历ID
+        default: ''
+        example: wcjgewCwAAqeJcPI1d8Pwbjt7nttzAAA
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: false
+isInterface: true

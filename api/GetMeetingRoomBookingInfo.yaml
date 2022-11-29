@@ -1,0 +1,176 @@
+# 接口中文名
+summary: 查询会议室的预定信息
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/oa/meetingroom/get_booking_info
+operationid: GetMeetingRoomBookingInfo
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-会议室-会议室预定管理
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: meetingroom_id
+      type: 4
+      description: 会议室id
+      is_required: 否
+      default: ''
+      example: 1
+      items: {}
+    - name: start_time
+      type: 4
+      description: 查询预定的起始时间，默认为当前时间
+      is_required: 否
+      default: ''
+      example: 1593532800
+      items: {}
+    - name: end_time
+      type: 4
+      description: 查询预定的结束时间， 默认为明日0时
+      is_required: 否
+      default: ''
+      example: 1593619200
+      items: {}
+    - name: city
+      type: 1
+      description: 会议室所在城市
+      is_required: 否
+      default: ''
+      example: 深圳
+      items: {}
+    - name: building
+      type: 1
+      description: 会议室所在楼宇
+      is_required: 否
+      default: ''
+      example: 腾讯大厦
+      items: {}
+    - name: floor
+      type: 1
+      description: 会议室所在楼层
+      is_required: 否
+      default: ''
+      example: 18F
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: booking_list
+        type: 2
+        description: 会议室预订信息列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: meetingroom_id
+                    type: 4
+                    description: 会议室id
+                    default: ''
+                    example: 2
+                    items: {}
+                  - name: schedule
+                    type: 2
+                    description: 该会议室查询时间段内的预定情况
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - type: 3
+                          is_required: false
+                          items:
+                            properties:
+                              - name: meeting_id
+                                type: 1
+                                description: 会议的id
+                                default: ''
+                                example: mtebsada6e027c123cbafAAA
+                                items: {}
+                              - name: schedule_id
+                                type: 1
+                                description: >-
+                                  会议关联日程的id，若会议室已取消预定（未保留日历），则schedule_id将无法再获取到日程详情
+                                default: ''
+                                example: 17c7d2bd9f20d652840f72f59e796AAA
+                                items: {}
+                              - name: start_time
+                                type: 4
+                                description: 开始时间的时间戳
+                                default: ''
+                                example: 1593532800
+                                items: {}
+                              - name: end_time
+                                type: 4
+                                description: 结束时间的时间戳
+                                default: ''
+                                example: 1593662400
+                                items: {}
+                              - name: booker
+                                type: 1
+                                description: 预定人的userid
+                                default: ''
+                                example: zhangsan
+                                items: {}
+                              - name: status
+                                type: 4
+                                description: 会议室的预定状态，0：已预定、1：已取消、2：申请中、3：审批中
+                                default: ''
+                                example: 0
+                                items: {}
+# 注意事项，仅显示于接口的末尾
+attention: 如果需要根据位置信息查询，则需要保证其上一级的位置信息已填写，即如需使用楼宇进行过滤，则必须同时填写城市字段。
+isExampleError: true
+isInterface: true

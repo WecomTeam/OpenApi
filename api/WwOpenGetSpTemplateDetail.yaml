@@ -1,0 +1,165 @@
+# 接口中文名
+summary: 获取审批模板详情
+# 接口详细描述，将展示在接口文档顶部
+description: 企业可通过审批应用或自建应用Secret调用本接口，获取企业微信“审批应用”内指定审批模板的详情。
+path: https://qyapi.weixin.qq.com/cgi-bin/oa/gettemplatedetail
+operationid: WwOpenGetSpTemplateDetail
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-审批-获取审批模板详情
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: template_id
+      type: 1
+      description: 模板的唯一标识id。可在“获取审批单据详情”、“审批状态变化回调通知”中获得，也可在审批模板的模板编辑页面浏览器Url链接中获得。
+      is_required: 是
+      default: ''
+      example: ZLqk8pcsAoXZ1eYa6vpAgfX28MPdYU3ayMaSPHaaa
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+      - name: template_names
+        type: 2
+        description: 模板名称，若配置了多语言则会包含中英文的模板名称，默认为zh_CN中文
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: text
+                    type: 1
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: 全字段
+                    items: {}
+                  - name: lang
+                    type: 1
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: zh_CN
+                    items: {}
+      - name: template_content
+        type: 3
+        description: 模板控件信息
+        default: ''
+        example: ''
+        items:
+          properties:
+            - name: controls
+              type: 2
+              description: ''
+              is_required: false
+              default: ''
+              example: ''
+              items: {}
+      - name: └ controls
+        example: ''
+        type: 1
+        description: 模板控件数组。模板详情由多个不同类型的控件组成，控件类型详细说明见附录。
+        default: ''
+      - name: └ └ property
+        example: ''
+        type: 1
+        description: 模板控件属性，包含了模板内控件的各种属性信息
+        default: ''
+      - name: └ └ └ control
+        example: ''
+        type: 1
+        description: >-
+          控件类型：Text-文本；Textarea-多行文本；Number-数字；Money-金额；Date-日期/日期+时间；Selector-单选/多选；Contact-成员/部门；Tips-说明文字；File-附件；Table-明细；Attendance-假勤控件；Vacation-请假控件；Location-位置；RelatedApproval-关联审批单；Formula-公式；DateRange-时长
+        default: ''
+      - name: └ └ └ id
+        example: ''
+        type: 1
+        description: 控件id
+        default: ''
+      - name: └ └ └ title
+        example: ''
+        type: 1
+        description: 控件名称，若配置了多语言则会包含中英文的控件名称，默认为zh_CN中文
+        default: ''
+      - name: └ └ └ placeholder
+        example: ''
+        type: 1
+        description: 控件说明，向申请者展示的控件填写说明，若配置了多语言则会包含中英文的控件说明，默认为zh_CN中文
+        default: ''
+      - name: └ └ └ require
+        example: ''
+        type: 1
+        description: 是否必填：1-必填；0-非必填
+        default: ''
+      - name: └ └ └ un_print
+        example: ''
+        type: 1
+        description: 是否参与打印：1-不参与打印；0-参与打印
+        default: ''
+      - name: └ └ config
+        example: ''
+        type: 1
+        description: >-
+          模板控件配置，包含了部分控件类型的附加类型、属性，详见附录说明。目前有配置信息的控件类型有：Date-日期/日期+时间；Selector-单选/多选；Contact-成员/部门；Table-明细；Attendance-假勤组件（请假、外出、出差、加班）
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  1.审批应用的Secret可获取企业自建模板及第三方服务商添加的模板详情；自建应用的Secret可获取企业自建模板的模板详情。<br>2.接口调用频率限制为600次/分钟。
+isExampleError: true
+isInterface: true

@@ -1,0 +1,241 @@
+# 接口中文名
+summary: 获取企业全部的发表列表
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get_moment_list
+operationid: GetMomentList
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-客户朋友圈-获取客户朋友圈全部的发表记录
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  企业需要使用[“客户联系”secret](#13473/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）。<br>自建应用调用，只会返回应用可见范围内用户的发送情况。<br>第三方应用调用需要企业授权**客户朋友圈**下**获取企业全部的发表记录**的权限
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: start_time
+      type: 4
+      description: 朋友圈记录开始时间。Unix时间戳
+      is_required: 是
+      default: ''
+      example: 1605000000
+      items: {}
+    - name: end_time
+      type: 4
+      description: 朋友圈记录结束时间。Unix时间戳
+      is_required: 是
+      default: ''
+      example: 1605172726
+      items: {}
+    - name: creator
+      type: 1
+      description: 朋友圈创建人的userid
+      is_required: 否
+      default: ''
+      example: zhangsan
+      items: {}
+    - name: filter_type
+      type: 4
+      description: 朋友圈类型。0：企业发表 1：个人发表 2：所有，包括个人创建以及企业创建，默认情况下为所有类型
+      is_required: 否
+      default: ''
+      example: 1
+      items: {}
+    - name: cursor
+      type: 1
+      description: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+      is_required: 否
+      default: ''
+      example: CURSOR
+      items: {}
+    - name: limit
+      type: 4
+      description: 返回的最大记录数，整型，最大值20，默认值20，超过最大值时取默认值
+      is_required: 否
+      default: ''
+      example: 10
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: next_cursor
+        type: 1
+        description: 分页游标，下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+        default: ''
+        example: CURSOR
+        items: {}
+      - name: moment_list
+        type: 2
+        description: 朋友圈列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: moment_id
+                    type: 1
+                    description: 朋友圈id
+                    default: ''
+                    example: momxxx
+                    items: {}
+                  - name: creator
+                    type: 1
+                    description: 朋友圈创建者userid，[企业发表内容到客户的朋友圈](#34646 )接口创建的朋友圈不再返回该字段
+                    default: ''
+                    example: xxxx
+                    items: {}
+                  - name: create_time
+                    type: 4
+                    description: 创建时间
+                    default: ''
+                    example: 1605000000
+                    items: {}
+                  - name: create_type
+                    type: 4
+                    description: 朋友圈创建来源。0：企业 1：个人
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: visible_type
+                    type: 4
+                    description: 可见范围类型。0：部分可见 1：公开
+                    default: ''
+                    example: 1
+                    items: {}
+                  - name: text
+                    type: 3
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+                  - name: image
+                    type: 2
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+                  - name: video
+                    type: 3
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+                  - name: link
+                    type: 3
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+                  - name: location
+                    type: 3
+                    description: ''
+                    is_required: false
+                    default: ''
+                    example: ''
+                    items: {}
+      - name: moment_list.text.content
+        example: ''
+        type: 1
+        description: 文本消息结构
+        default: ''
+      - name: moment_list.image.media_id
+        example: ''
+        type: 1
+        description: 图片的media_id列表，可以通过[获取临时素材](#10115 )下载资源
+        default: ''
+      - name: moment_list.video.media_id
+        example: ''
+        type: 1
+        description: 视频media_id，可以通过[获取临时素材](#10115 )下载资源
+        default: ''
+      - name: moment_list.video.thumb_media_id
+        example: ''
+        type: 1
+        description: 视频封面media_id，可以通过[获取临时素材](#10115 )下载资源
+        default: ''
+      - name: moment_list.link.title
+        example: ''
+        type: 1
+        description: 网页链接标题
+        default: ''
+      - name: moment_list.link.url
+        example: ''
+        type: 1
+        description: 网页链接url
+        default: ''
+      - name: moment_list.location.latitude
+        example: ''
+        type: 1
+        description: 地理位置纬度
+        default: ''
+      - name: moment_list.location.longitude
+        example: ''
+        type: 1
+        description: 地理位置经度
+        default: ''
+      - name: moment_list.location.name
+        example: ''
+        type: 1
+        description: 地理位置名称
+        default: ''
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  **补充说明:**<br>朋友圈记录的起止时间间隔不能超过30天<br>在朋友圈发表列表中，按时间只能取到(start_time,
+  end_time)范围内的数据<br>web管理端会展示企业成员所有已经发表的朋友圈（包括已经删除朋友圈），而API接口将不会返回已经删除的朋友圈记录
+isExampleError: false
+isInterface: true

@@ -1,0 +1,219 @@
+# 接口中文名
+summary: 获取打卡人员排班信息
+# 接口详细描述，将展示在接口文档顶部
+description: >-
+  企业可通过打卡应用Secret调用本接口，获取打卡规则为“按班次上下班”规则的指定员工指定时间段内的排班信息。<br>第三方应用获取应用可见范围内、打卡规则为“按班次上下班”规则的指定员工指定时间段内的排班信息。
+path: https://qyapi.weixin.qq.com/cgi-bin/checkin/getcheckinschedulist
+operationid: WwOpenGetUserSchedulist
+tag: wwopenoalogic
+method: POST
+cate_path: 服务端API-OA-打卡-获取打卡人员排班信息
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: ''
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: starttime
+      type: 4
+      description: 获取排班信息的开始时间。Unix时间戳
+      is_required: 否
+      default: ''
+      example: 1492617600
+      items: {}
+    - name: endtime
+      type: 4
+      description: 获取排班信息的结束时间。Unix时间戳（与starttime跨度不超过一个月）
+      is_required: 否
+      default: ''
+      example: 1492790400
+      items: {}
+    - name: useridlist
+      type: 2
+      description: 需要获取排班信息的用户列表（不超过100个）
+      is_required: 否
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: ''
+            is_required: false
+            description: ''
+            default: ''
+            example: james
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: schedule_list
+        type: 2
+        description: 排班表信息
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: userid
+                    type: 1
+                    description: 打卡人员userid
+                    default: ''
+                    example: james
+                    items: {}
+                  - name: yearmonth
+                    type: 4
+                    description: 排班表月份，格式为年月，如202011
+                    default: ''
+                    example: 202011
+                    items: {}
+                  - name: groupid
+                    type: 4
+                    description: 打卡规则id
+                    default: ''
+                    example: 11
+                    items: {}
+                  - name: groupname
+                    type: 1
+                    description: 打卡规则名
+                    default: ''
+                    example: 排班
+                    items: {}
+                  - name: schedule
+                    type: 3
+                    description: 个人排班信息
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: scheduleList
+                          type: 2
+                          description: 个人排班表信息
+                          default: ''
+                          example: ''
+                          items:
+                            properties:
+                              - type: 3
+                                is_required: false
+                                items:
+                                  properties:
+                                    - name: day
+                                      type: 4
+                                      description: 排班日期，为表示当月第几天的数字
+                                      default: ''
+                                      example: 30
+                                      items: {}
+                                    - name: schedule_info
+                                      type: 3
+                                      description: 个人当日排班信息
+                                      default: ''
+                                      example: ''
+                                      items:
+                                        properties:
+                                          - name: schedule_id
+                                            type: 4
+                                            description: 当日安排班次id，班次id也可在打卡规则中查询获得
+                                            default: ''
+                                            example: 0
+                                            items: {}
+                                          - name: schedule_name
+                                            type: 1
+                                            description: 班次名称
+                                            default: ''
+                                            example: 休息
+                                            items: {}
+                                          - name: time_section
+                                            type: 2
+                                            description: 班次上下班时段信息
+                                            default: ''
+                                            example: ''
+                                            items:
+                                              properties:
+                                                - type: 3
+                                                  is_required: false
+                                                  items:
+                                                    properties:
+                                                      - name: id
+                                                        type: 4
+                                                        description: 时段id，为班次中某一堆上下班时间组合的id
+                                                        default: ''
+                                                        example: 2
+                                                        items: {}
+                                                      - name: work_sec
+                                                        type: 4
+                                                        description: 上班时间。距当天00:00的秒数
+                                                        default: ''
+                                                        example: 64800
+                                                        items: {}
+                                                      - name: off_work_sec
+                                                        type: 4
+                                                        description: 下班时间。距当天00:00的秒数
+                                                        default: ''
+                                                        example: 79200
+                                                        items: {}
+                                                      - name: remind_work_sec
+                                                        type: 4
+                                                        description: 上班提醒时间。距当天00:00的秒数
+                                                        default: ''
+                                                        example: 64800
+                                                        items: {}
+                                                      - name: remind_off_work_sec
+                                                        type: 4
+                                                        description: 下班提醒时间。距当天00:00的秒数
+                                                        default: ''
+                                                        example: 79200
+                                                        items: {}
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 错误码描述
+        default: ''
+        example: ok
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  **调用频率**:<br>接口调用频率限制为60次/分钟。<br>**错误说明**:<br>$desc 错误码<br>$desc 说明<br>$desc
+  301021<br>$desc userid错误<br>$desc 301070<br>$desc 系统错误，请稍后再试<br>$desc
+  301075<br>$desc 输入参数错误
+isExampleError: false
+isInterface: true

@@ -1,0 +1,119 @@
+# 接口中文名
+summary: 获取互联企业部门成员
+# 接口详细描述，将展示在接口文档顶部
+description: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/linkedcorp/user/simplelist
+operationid: WwOpenListCircleSimpleUser
+tag: wwopencorplogic
+method: POST
+cate_path: 服务端API-通讯录管理-互联企业-获取互联企业部门成员
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: 仅自建应用可调用，应用须拥有指定部门的查看权限。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: department_id
+      type: 1
+      description: >-
+        该字段用的是互联应用可见范围接口返回的department_ids参数，用的是 linkedid + ’/‘ + department_id
+        拼成的字符串
+      is_required: 是
+      default: ''
+      example: LINKEDID/DEPARTMENTID
+      items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: userlist
+        type: 2
+        description: 成员列表
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: userid
+                    type: 1
+                    description: 成员UserID。对应管理端的帐号
+                    default: ''
+                    example: lisi
+                    items: {}
+                  - name: name
+                    type: 1
+                    description: 成员真实名称
+                    default: ''
+                    example: 李四
+                    items: {}
+                  - name: department
+                    type: 2
+                    description: 成员所属部门id列表，这个字段只会返回传入的department_id所属的互联企业里的部门id
+                    default: ''
+                    example: ''
+                    items:
+                      properties:
+                        - name: ''
+                          is_required: false
+                          description: ''
+                          default: ''
+                          example: LINKEDID/1
+                  - name: corpid
+                    type: 1
+                    description: 所属企业的corpid
+                    default: ''
+                    example: xxxxxx
+                    items: {}
+# 注意事项，仅显示于接口的末尾
+attention: 如需获取该部门及其子部门的所有成员，需先获取该部门下的子部门，然后再获取子部门下的部门成员，逐层递归获取。
+isExampleError: false
+isInterface: true

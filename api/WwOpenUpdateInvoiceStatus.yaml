@@ -1,0 +1,114 @@
+# 接口中文名
+summary: 批量更新发票状态
+# 接口详细描述，将展示在接口文档顶部
+description: '**接口说明：**发票平台可以通过该接口对某个成员的一批发票进行锁定、解锁和报销操作。注意，报销状态为不可逆状态，请开发者慎重调用。'
+path: https://qyapi.weixin.qq.com/cgi-bin/card/invoice/reimburse/updatestatusbatch
+operationid: WwOpenUpdateInvoiceStatus
+tag: wwopenlogic
+method: POST
+cate_path: 服务端API-电子发票-批量更新发票状态
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: 仅认证的企业微信账号有接口权限
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: openid
+      type: 1
+      description: 用户openid，可用["userid与openid互换接口"](#11279)获取
+      is_required: 是
+      default: ''
+      example: OPENID
+      items: {}
+    - name: reimburse_status
+      type: 1
+      description: >-
+        发票报销状态
+        INVOICE_REIMBURSE_INIT：发票初始状态，未锁定；INVOICE_REIMBURSE_LOCK：发票已锁定，无法重复提交报销;INVOICE_REIMBURSE_CLOSURE:发票已核销，从用户卡包中移除
+      is_required: 是
+      default: ''
+      example: INVOICE_REIMBURSE_INIT
+      items: {}
+    - name: invoice_list
+      type: 2
+      description: 发票列表，必须全部属于同一个openid
+      is_required: 是
+      default: ''
+      example: ''
+      items:
+        properties:
+          - type: 3
+            is_required: false
+            items:
+              properties:
+                - name: card_id
+                  type: 1
+                  description: 发票卡券的card_id
+                  is_required: 是
+                  default: ''
+                  example: cardid_2
+                  items: {}
+                - name: encrypt_code
+                  type: 1
+                  description: 发票卡券的加密code，和card_id共同构成一张发票卡券的唯一标识
+                  is_required: 是
+                  default: ''
+                  example: encrypt_code_2
+                  items: {}
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  注：<br>报销方须保证在报销、锁定、解锁后及时将状态同步至微信端，保证用户发票可以正常使用<br>批量更新发票状态接口为事务性操作，如果其中一张发票更新失败，列表中的其它发票状态更新也会无法执行，恢复到接口调用前的状态
+isExampleError: false
+isInterface: true

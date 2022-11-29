@@ -1,0 +1,112 @@
+# 接口中文名
+summary: 分配在职成员的客户群
+# 接口详细描述，将展示在接口文档顶部
+description: 企业可通过此接口，将在职成员为群主的群，分配给另一个客服成员。
+path: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/groupchat/onjob_transfer
+operationid: CustomerGroupTransferOnJobCreator
+tag: wwopencrmlogic
+method: POST
+cate_path: 服务端API-客户联系-在职继承-分配在职成员的客户群
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: >-
+  企业需要使用[“客户联系”secret](#13473/开始开发)或配置到“[可调用应用](#13473/开始开发)”列表中的自建应用secret所获取的accesstoken来调用（[accesstoken如何获取？](#10013/第三步：获取access_token)）。<br>第三方应用需拥有“企业客户权限->客户联系->分配在职成员的客户群”权限<br>对于第三方/自建应用，群主必须在应用的可见范围。
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: chat_id_list
+      example: ''
+      type: 1
+      description: 需要转群主的客户群ID列表。取值范围： 1 ~ 100
+      is_required: 是
+      default: ''
+    - name: new_owner
+      example: ''
+      type: 1
+      description: 新群主ID
+      is_required: 是
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+        example: ok
+        items: {}
+      - name: failed_chat_list
+        type: 2
+        description: 没能成功继承的群
+        default: ''
+        example: ''
+        items:
+          properties:
+            - type: 3
+              is_required: false
+              items:
+                properties:
+                  - name: chat_id
+                    type: 1
+                    description: 没能成功继承的群ID
+                    default: ''
+                    example: wrOgQhDgAAcwMTB7YmDkbeBsgT_KAAAA
+                    items: {}
+                  - name: errcode
+                    type: 4
+                    description: 没能成功继承的群，错误码
+                    default: ''
+                    example: 90501
+                    items: {}
+                  - name: errmsg
+                    type: 1
+                    description: 没能成功继承的群，错误描述
+                    default: ''
+                    example: chat is not external group chat
+                    items: {}
+# 注意事项，仅显示于接口的末尾
+attention: >-
+  **注意：**<br>继承给的新群主，必须是配置了客户联系功能的成员<br>继承给的新群主，必须有设置实名<br>继承给的新群主，必须有激活企业微信<br>同一个人的群，限制每天最多分配300个给新群主<br>为保障客户服务体验，90个自然日内，在职成员的每个客户群仅可被转接2次。
+isExampleError: false
+isInterface: true
