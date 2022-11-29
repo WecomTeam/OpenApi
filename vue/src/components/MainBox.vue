@@ -9,6 +9,7 @@
         </div>
         <div class="previewDoc">
             <DocPreviewVue :apiMd="apiData.md"/>
+            <t-button class="open_btn" @click="onOpen">接口文档</t-button>
         </div>
     </div>
 </template>
@@ -77,6 +78,9 @@ export default {
                 is_mark: is_mark
             })
         },
+        onOpen() {
+            window.open(this.onlineDocURL)
+        }
     },
 
     data() {
@@ -115,6 +119,11 @@ export default {
     flex: 1;
     height: 100%;
     width: 50%;
+}
+.open_btn {
+    position: absolute;
+    right: 25px;
+    top: 74px;
 }
 </style>
   
