@@ -16,7 +16,7 @@
     </div>
     <div class="main">
       <div class="siderbar">
-        <CatalogTree @onApiChanged="eventApiChanged" :tree="tree" :defaultValue="defaultApiName"/>
+        <CategoryTree @onApiChanged="eventApiChanged" :tree="tree" :defaultValue="defaultApiName"/>
       </div>
       <div class="body">
         <router-view :api="currentApi" @mark="onMark">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import CatalogTree from './components/catalog/CatalogTree.vue'
+import CategoryTree from './components/catalog/CategoryTree.vue'
 import axios from 'axios'
 
 export default {
@@ -40,7 +40,7 @@ export default {
     }
   }, 
   components: {
-    CatalogTree
+    CategoryTree
   },
   async created() {
     const {data} = await axios.post('/api/category/get')

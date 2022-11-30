@@ -26,12 +26,21 @@ const parseNode = function (root) {
     }
 
     else {
+        const keys = Object.keys(root.children)
         return {
-            is_folder:false,
-            doc_id:root.doc_id,
-            title:root.title,
+            is_folder:true,
+            title: root.title,
             category_id: root.category_id,
-            api:getApiID(root)
+            doc_id:root.doc_id,
+            children: keys.map(key => {
+                return {
+                    is_folder:false,
+                    title: root.children[key],
+                    api: key,
+                    doc_id:root.doc_id,
+                    category_id: root.category_id,
+                }
+            })
         }
     }
 }
