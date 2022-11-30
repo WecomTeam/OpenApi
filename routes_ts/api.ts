@@ -77,7 +77,7 @@ router.post('/interface/mark', async (req, res, next) => {
   }
   const markMap = JSON.parse(await fs.readFileSync(path.join(__dirname, '../../configs/markMap.json'), 'utf-8'))
   markMap[operationid] = !!is_check
-  await fs.writeFileSync(path.join(__dirname, '../../configs/markMap.json'), JSON.stringify(markMap))
+  await fs.writeFileSync(path.join(__dirname, '../../configs/markMap.json'), JSON.stringify(markMap, null, 2))
   res.send({})
 })
 module.exports = router;

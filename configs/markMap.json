@@ -1,1 +1,8 @@
-{"WwOpenGetUser":true,"GetNotifyQRCode":false,"WwOpenUpdateUser":true,"WwOpenCreateUser":true}
+{
+  "WwOpenGetUser": true,
+  "GetNotifyQRCode": false,
+  "WwOpenUpdateUser": true,
+  "WwOpenCreateUser": true,
+  "WwOpenDeleteUser": true,
+  "WwOpenBatchDeleteUser": true
+}
