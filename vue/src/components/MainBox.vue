@@ -30,8 +30,8 @@ export default {
     props: ['api'],
     watch: {
         api: {
-            async handler(value) {
-                if(value.api){
+            async handler(value, pre) {
+                if(value.api !== pre.api){
                     this.getOnlineDocURL()
                     let apiData = await this.fetchApi(value.api);
                     if(apiData){
@@ -39,7 +39,6 @@ export default {
                     }         
                 }
             },
-            deep: true
         }
     },
     methods: {

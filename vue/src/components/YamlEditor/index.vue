@@ -45,12 +45,12 @@ export default {
       lineWrapping: true
     })
 
-    this.yamlEditor.setValue(this.value)
+    this.yamlEditor.setValue(this.yaml)
     const throttledFunc = debounce((cm) => {
         const currentValue = cm.getValue()
         this.$emit('changed', currentValue)
         this.$emit('input', currentValue)
-    }, 2000, {
+    }, 1000, {
       leading: false
     })
     this.yamlEditor.on('change', throttledFunc)

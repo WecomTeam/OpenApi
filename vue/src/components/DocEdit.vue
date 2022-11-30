@@ -1,6 +1,6 @@
 <template>
   <div class="editor">
-        <yaml-editor v-model="yaml" @input="() => onSave(true)"></yaml-editor>
+        <yaml-editor :yaml="yaml" @input="(yaml) => onSave(yaml, true)"></yaml-editor>
         <div class="editor-action">
           <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
         </div>
@@ -22,7 +22,6 @@ export default {
       handler(val) {
         this.yaml = val
         this.is_mark = this.currentCheck
-        this.onSave()
       },
       deep: true
     }
@@ -34,9 +33,9 @@ export default {
     }
   },
   methods: {
-    onSave(isSilent = false) {
+    onSave(yaml, isSilent = false) {
       this.$emit('save', {
-        yaml: this.yaml,
+        yaml: yaml,
         isSilent
       })
     },
