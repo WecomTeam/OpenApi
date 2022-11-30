@@ -48,6 +48,9 @@ export default {
   },
   methods:{
     eventApiChanged(api){
+      if(api.api !== this.$route.params.operationid) {
+        this.$router.push(api.api)
+      }
       this.currentApi = api
     },
     insertMark(category, operationid, is_mark) {
