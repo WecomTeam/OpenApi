@@ -16,13 +16,13 @@
 
                         </t-submenu>
 
-                        <t-menu-item v-else :key="cata2.category_id" :value="cata2.api" @click="eventApiClick(cata2)">{{ cata2.title }}<CheckCircleFilledIcon style="color: green; margin-left: 5px;" v-if="cata2.is_check"></CheckCircleFilledIcon></t-menu-item>
+                        <t-menu-item v-else :key="cata2.category_id" :value="cata2.api" @click="eventApiClick(cata2)"><span class="menu-api-item">{{ cata2.title }}<t-icon class="menu-api-item-checked" size="16px" name="check"  v-if="cata2.is_check"></t-icon></span></t-menu-item>
 
                     </template>
 
                 </t-submenu>
 
-                <t-menu-item v-else :key="cata1.category_id" :value="cata1.api" @click="eventApiClick(cata1)">{{ cata1.title }}<CheckCircleFilledIcon style="color: green; margin-left: 5px;" v-if="cata1.is_check"></CheckCircleFilledIcon></t-menu-item>
+                <t-menu-item v-else :key="cata1.category_id" :value="cata1.api" @click="eventApiClick(cata1)"><span class="menu-api-item">{{ cata1.title }}<t-icon class="menu-api-item-checked" name="check" size="16px"  v-if="cata1.is_check"></t-icon></span></t-menu-item>
 
             </template>
 
@@ -32,11 +32,10 @@
 </template>
 
 <script>
-import { CheckCircleFilledIcon } from 'tdesign-icons-vue';
 
 export default {
     components: {
-        CheckCircleFilledIcon
+    
     },
     props: {
         defaultValue: String,
@@ -76,3 +75,17 @@ export default {
 }
 
 </script>
+<style scoped>
+.menu-api-item{    
+    position: relative;
+    padding-left:20px
+}
+.menu-api-item-checked{
+    width: 16px !important;;
+    height: 16px !important;;
+    position: absolute;
+    left: 0px;
+    top:50%;
+    margin-top: -8px;
+}
+</style>
