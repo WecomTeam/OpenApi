@@ -8,7 +8,7 @@ tag: wwopencorplogic
 method: POST
 cate_path: 服务端API-通讯录管理-部门管理-更新部门
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 应用须拥有指定部门的管理权限。如若要移动部门，需要有新父部门的管理权限。<br>第三方仅通讯录应用可以调用。<br>注意，部门的最大层级为15层；部门总数不能超过3万个；每个部门下的节点不能超过3万个。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -99,8 +99,6 @@ response:
         example: updated
         items: {}
 # 注意事项，仅显示于接口的末尾
-attention: >-
-  ** 权限说明
-  ：**<br>应用须拥有指定部门的管理权限。如若要移动部门，需要有新父部门的管理权限。<br>第三方仅通讯录应用可以调用。<br>注意，部门的最大层级为15层；部门总数不能超过3万个；每个部门下的节点不能超过3万个。
+attention: ''
 isExampleError: false
 isInterface: true

@@ -1,20 +1,15 @@
 # 接口中文名
 summary: 获取子部门ID列表
 # 接口详细描述，将展示在接口文档顶部
-description: ''
+description: >-
+  | 应用类型  | 权限说明  |<br> | ------------ | ------------ |<br>|  第三方普通应用 | 若企业授权了“组织架构信息”权限，可获取企业所有部门id; 若未授权“组织架构信息”权限，只能拉取token对应的应用的权限范围内的部门列表  |<br>|  第三方通讯录应用 |  可获取企业所有部门id |<br>|  代开发自建应用 | 只能拉取token对应的应用的权限范围内的部门列表  |<br>|  普通自建应用 | 只能拉取token对应的应用的权限范围内的部门列表  |<br>|  通讯录同步助手| 可获取企业所有部门id  |
 path: https://qyapi.weixin.qq.com/cgi-bin/department/simplelist
 operationid: WwOpenGetSubPartyIdList
 tag: wwopencorplogic
 method: GET
 cate_path: 服务端API-通讯录管理-部门管理-获取子部门ID列表
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: >-
-  $desc 应用类型<br>$desc 权限说明<br>$desc 第三方普通应用<br>$desc
-  若企业授权了“组织架构信息”权限，可获取企业所有部门id;
-  若未授权“组织架构信息”权限，只能拉取token对应的应用的权限范围内的部门列表<br>$desc 第三方通讯录应用<br>$desc
-  可获取企业所有部门id<br>$desc 代开发自建应用<br>$desc 只能拉取token对应的应用的权限范围内的部门列表<br>$desc
-  普通自建应用<br>$desc 只能拉取token对应的应用的权限范围内的部门列表<br>$desc 通讯录同步助手<br>$desc
-  可获取企业所有部门id
+permission: ''
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数

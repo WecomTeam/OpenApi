@@ -14,5 +14,11 @@
   "WwOpenGetCorpJoinQrCode": true,
   "WwOpenGetUserId": true,
   "WwOpenGetUserIdByEmail": true,
-  "WwOpenListDeptUser": true
+  "WwOpenListDeptUser": true,
+  "WwOpenCreateParty": true,
+  "WwOpenUpdateParty": true,
+  "WwOpenDeleteParty": true,
+  "WwOpenGetParty": true,
+  "WwOpenGetSubPartyIdList": true,
+  "WwOpenGetPartyDetail": true
 }
