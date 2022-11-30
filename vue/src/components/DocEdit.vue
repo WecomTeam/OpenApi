@@ -76,7 +76,6 @@ export default {
   padding:10px;
   display: flex;
   justify-content: flex-end;
-  border-left:1px solid #4f4f4f;
   text-align: right;  
 }
 .mark__wrapper {
