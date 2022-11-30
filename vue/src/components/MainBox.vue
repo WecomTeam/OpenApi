@@ -3,6 +3,7 @@
         <div class="editorDoc">
             <DocEditVue 
                 :apiYaml="apiData.yaml"
+                :operationid="api.api"
                 :currentCheck="api.is_check" 
                 @mark="onMark"
             @save="onSave"/>                

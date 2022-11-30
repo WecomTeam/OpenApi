@@ -16,7 +16,7 @@ export default {
   components: {
     YamlEditor
   },
-  props: ['apiYaml', 'currentCheck'],
+  props: ['apiYaml', 'currentCheck', 'operationid'],
   watch: {
     apiYaml: {
       handler(val) {
@@ -45,7 +45,7 @@ export default {
       try {
         await axios.post('api/interface/mark', {
           is_check: this.is_mark,
-          operationid: this.schema.operationid
+          operationid: this.operationid
         })
       } catch (e) {
         this.$message.error('接口调用失败')

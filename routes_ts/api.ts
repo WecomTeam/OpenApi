@@ -33,7 +33,7 @@ router.post('/info/get', async (req, res, next) => {
 router.post('/info/edit', async (req, res, next) => {
   const { operationid, yaml } = req.body
   await editApiSchema(operationid, yaml)
-  const {newYaml, schema} = await getApiSchema(operationid)
+  const {yaml: newYaml, schema} = await getApiSchema(operationid)
   try {
     const md = genWecomApiDoc(schema)
     res.send({
