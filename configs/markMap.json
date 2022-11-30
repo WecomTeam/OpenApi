@@ -4,5 +4,8 @@
   "WwOpenUpdateUser": true,
   "WwOpenCreateUser": true,
   "WwOpenDeleteUser": true,
-  "WwOpenBatchDeleteUser": true
+  "WwOpenBatchDeleteUser": true,
+  "WwOpenListSimpleUser": true,
+  "WwOpenListUser": true,
+  "ConverToOpenId": true
 }
