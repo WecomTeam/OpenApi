@@ -7,5 +7,12 @@
   "WwOpenBatchDeleteUser": true,
   "WwOpenListSimpleUser": true,
   "WwOpenListUser": true,
-  "ConverToOpenId": true
+  "ConverToOpenId": true,
+  "WwConvertOpenUserId": true,
+  "WwOpenAuthSucc": true,
+  "BatchInvite": true,
+  "WwOpenGetCorpJoinQrCode": true,
+  "WwOpenGetUserId": true,
+  "WwOpenGetUserIdByEmail": true,
+  "WwOpenListDeptUser": true
 }

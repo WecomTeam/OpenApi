@@ -2,13 +2,13 @@
 summary: 获取成员ID列表
 # 接口详细描述，将展示在接口文档顶部
 description: ''
-path: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/user/list_id
 operationid: WwOpenListDeptUser
 tag: wwopencorplogic
 method: POST
 cate_path: 服务端API-通讯录管理-成员管理-获取成员ID列表
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 仅支持通过“通讯录同步secret”调用。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -27,8 +27,26 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
-  body: []
+  auth: 
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body: 
+    - name: cursor
+      example: xxxxxxx
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+    - name: limit
+      example: 1000
+      type: 4
+      description: ''
+      is_required: true
+      default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -44,8 +62,48 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body: 
+    - name: errcode
+      example: 1000
+      type: 4
+      description: ''
+      is_required: true
+      default: ''
+    - name: errmsg
+      example: ok
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+    - name: next_cursor
+      example: aaaaaaaaa
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+    - name: dept_user
+      example: 1000
+      type: 2
+      description: ''
+      is_required: true
+      default: ''
+      items:
+        properties:
+          - type: 3
+            items:
+              properties:
+                - name: userid
+                  example: 1000
+                  type: 4
+                  description: ''
+                  is_required: true
+                  default: ''
+                - name: department
+                  example: 1000
+                  type: 4
+                  description: ''
+                  is_required: true
+                  default: ''
 # 注意事项，仅显示于接口的末尾
-attention: ''
-url: https://qyapi.weixin.qq.com/cgi-bin/user/list_id
+attention: 为保障企业数据安全，应用应当尽量减少通过服务端接口获取通讯录信息，尤其是成员的敏感字段。<br><br>若需要获取员工基本信息（姓名、部门名）<br>企业：企业自建应用可通过「读取成员」等通讯录接口获取。<br>服务商：代开发应用经企业管理员授权后可通过「读取成员」等通讯录接口获取。第三方应用不可直接获取姓名和部门名，可以通过“通讯录展示组件”在页面内展示姓名和部门名，完成应用功能。<br><br>若需要获取员工敏感信息（手机号、邮箱）<br>企业：<br>企业在6月20日前创建的自建应用可通过「读取成员」等通讯录接口获取。<br>企业在6月20日后创建的自建应用经员工自主授权敏感信息后获取。<br>服务商：代开发应用经企业管理员授权且员工自主授权敏感信息后可获取。第三方应用不可获取员工的手机号和邮箱。
 isExampleError: true

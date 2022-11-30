@@ -1,14 +1,14 @@
 # 接口中文名
 summary: 邀请成员
 # 接口详细描述，将展示在接口文档顶部
-description: ''
-path: ''
+description: 企业可通过接口批量邀请成员使用企业微信，邀请后将通过短信或邮件下发通知。
+path: https://qyapi.weixin.qq.com/cgi-bin/batch/invite
 operationid: BatchInvite
 tag: wwopencorplogic
 method: POST
 cate_path: 服务端API-通讯录管理-成员管理-邀请成员
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 须拥有指定成员、部门或标签的查看权限。<br>第三方仅通讯录应用可调用。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -27,8 +27,32 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
-  body: []
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: 调用接口凭证
+      is_required: true
+      default: ''
+  body:
+    - name: user
+      example: UserID1
+      type: 1
+      description: 成员ID列表, 最多支持1000个。
+      is_required: true
+      default: ''
+    - name: party
+      example: PartyID1
+      type: 1
+      description: 部门ID列表, 最多支持1000个。
+      is_required: true
+      default: ''
+    - name: tag
+      example: TagID1
+      type: 1
+      description: 标签ID列表，最多支持100个。
+      is_required: true
+      default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -44,8 +68,55 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body: 
+      - name: errcode
+        example: 0
+        type: 4
+        description: 返回码
+        is_required: true
+        default: ''
+      - name: errmsg
+        example: ok
+        type: 1
+        description: 对返回码的文本描述内容
+        is_required: true
+        default: ''
+      - name: invaliduser
+        example: ''
+        type: 2
+        description: 非法成员列表
+        is_required: true
+        default: ''
+        items:
+            properties:
+                - name: user
+                  type: 1
+                  default: ''
+                  example: UserID1
+      - name: invalidparty
+        example: ''
+        type: 2
+        description: 非法部门列表
+        is_required: true
+        default: ''
+        items:
+            properties:
+                - name: user
+                  type: 1
+                  default: ''
+                  example: PartyID1
+      - name: invalidtag
+        example: ''
+        type: 2
+        description: 非法标签列表
+        is_required: true
+        default: ''
+        items:
+            properties:
+                - name: user
+                  type: 1
+                  default: ''
+                  example: TagID1
 # 注意事项，仅显示于接口的末尾
-attention: ''
-url: https://qyapi.weixin.qq.com/cgi-bin/batch/invite
+attention: user, party, tag三者不能同时为空；<br>如果部分接收人无权限或不存在，邀请仍然执行，但会返回无效的部分（即invaliduser或invalidparty或invalidtag）;<br>同一用户只须邀请一次，被邀请的用户如果未安装企业微信，在3天内每天会收到一次通知，最多持续3天。<br>因为邀请频率是异步检查的，所以调用接口返回成功，并不代表接收者一定能收到邀请消息（可能受上述频率限制无法接收）。
 isExampleError: true
