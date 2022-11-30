@@ -15,7 +15,9 @@
     <!-- built files will be auto injected -->
     <script>
        try {
-          window.globalData = JSON.parse('<?- global_data_string ?>');
+          window._settings = {
+            categoryTree: JSON.parse('<?- global_category_tree_string ?>')
+          };
       } catch (error) {
         
       }

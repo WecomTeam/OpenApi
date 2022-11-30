@@ -1,31 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const categoryParse = require("../logic/categoryParse.js");
+const path = require('path')
 import { parseTree } from '../logic/categoryParse.js'
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  // res.render('index', { title: 'Express' });
-
+router.get('/', async (req, res, next) => {
   try {
-    fs.readFile('./configs/category.json', 'utf8', function (err, data) {
-      if (err) {
-        console.log(err)
-        res.send(err)
-      }
-      else {
-        let category = JSON.parse(data) || {}
-        let categoryTree = parseTree(category).children || []
-        let global_data = { category: categoryTree }
-        res.render('../vue/dist/index.ejs', { global_data_string: JSON.stringify(global_data) });
-      }
-      // Display the file content
-
-
-    });
+    const category = await require('../../configs/category.json')
+    const markMap = JSON.parse(await fs.readFileSync(path.join(__dirname, '../../configs/markMap.json'), 'utf-8'))
+    const categoryTree = parseTree(category).children || []
+    const insertMark = category => {
+      category.forEach(cate => {
+        if(!cate.is_folder) {
+          cate.is_check = !!markMap[cate.api]
+        } else {
+          insertMark(cate.children)
+        }
+      })
+    }
+    insertMark(categoryTree)
+    res.render('../vue/dist/index.ejs', { global_category_tree_string: JSON.stringify(categoryTree) });
   } catch (error) {
-    console.log(error)
     res.send(error)
   }
 

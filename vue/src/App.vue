@@ -36,7 +36,7 @@ export default {
     return {
       currentApi:{},
       defaultApiName: this.$route.params.operationid,
-      tree: []
+      tree: window._settings?.categoryTree || []
     }
   }, 
   components: {
