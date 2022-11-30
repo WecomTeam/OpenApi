@@ -112,7 +112,7 @@ function genApiMarkdownContent({
     const urlMd = doc_id ? `[${apiInfo.path}](https://developer.work.weixin.qq.com/interface/${doc_id}/${apiSummary.api_id})` : apiInfo.path;
     const permissionDesc = apiInfo.permission?.trim() ? `\n| 权限说明 | ${apiInfo.permission?.trim()}|` : '';
     const attention = apiInfo.attention ? `\n## 注意事项\n${apiInfo.attention}\n` : '';
-    const markdown = '# ' + apiInfo.summary + '\n' + apiInfo.description.trim() +
+    const markdown = '# ' + apiInfo.summary + '\n' + apiInfo.description.trim().replace(/<br>/g, '\n') +
         '\n## 请求\n### 基本信息' +
         '\n| 条目 | 说明|' +
         '\n| :------------ | :------------ |' +
