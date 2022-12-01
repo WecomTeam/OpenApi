@@ -55,7 +55,7 @@ export default {
             
         },
         getOnlineDocURL :function(){            
-            this.onlineDocURL = `https://open.work.weixin.qq.com/wwopen/common/readDocument/${this.api.doc_id}`
+            this.onlineDocURL = `https://developer.work.weixin.qq.com/document/path/${this.api.category_id}`
         },
         async saveApi(operationid, yaml) {
             const { data } = await axios.post('/api/info/edit', {
