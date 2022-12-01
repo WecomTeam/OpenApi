@@ -8,7 +8,7 @@ tag: wwopenlogic
 method: POST
 cate_path: 服务端API-应用管理-设置工作台自定义展示
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: 可设置当前凭证对应的应用；
+permission: 可设置当前凭证对应的应用
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
