@@ -34,9 +34,9 @@ yarn start
 
 | 字段      | 说明 | 备注 |
 | ----------- | ----------- | ----------- |
-| 基本信息 | 包括接口名称、调用url、调用方式等接口纬度的内容 | 参考 接口基本信息 |
-| `request` | 请求信息 | 具体参考 request |
-| `response`| 响应信息 | 具体参考 response |
+| 基本信息 | 包括接口名称、调用url、调用方式等接口纬度的内容 | 参考 [接口基本信息](#1基本信息) |
+| `request` | 请求信息 | 具体参考 [request](#2请求信息-request) |
+| `response`| 响应信息 | 具体参考 [response](#3响应信息-response) |
 
 
 
@@ -61,9 +61,9 @@ request 由四部分内容组成，
 | 字段      | 说明 | 备注 |
 | ----------- | ----------- | ----------- |
 | `auth` | 接口调用凭证信息 |  |
-| `params` | 带在 URL 里的 `query` 参数 | `[schema]`，参考 `schema` 定义，除开 `accesstoken` 之外的 `query` 参数 |
-| `body`| 接口调用类型为 `POST` 时的调用参数| `[schema]`，参考 `schema` 定义 |
-| `formData`| 表示附件上下传接口中的附件数据 | `[schema]`，参考 `schema` 定义 |
+| `params` | 带在 URL 里的 `query` 参数 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义，除开 `accesstoken` 之外的 `query` 参数 |
+| `body`| 接口调用类型为 `POST` 时的调用参数| `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
+| `formData`| 表示附件上下传接口中的附件数据 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
 
 
 ### 3、响应信息 `response`
@@ -72,7 +72,7 @@ request 由四部分内容组成，
 | ----------- | ----------- | ----------- |
 | `status` | 接口返回状态码 | 因为企业微信的接口错误码统一管理，所以 `status` 固定为 200 |
 | `description` | 接口返回描述 |  |
-| `body`| 接口返回的实际信息 | `[schema]`，参考 `schema` 定义 |
+| `body`| 接口返回的实际信息 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
 
 ### 4、接口基本定义 `schema`
 
