@@ -84,7 +84,7 @@ request 由四部分内容组成，
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
 | auth | 接口调用凭证信息 |  |
-| params | 带在 URL 里的 `query` 参数 | `[schema]`，参考 [schema](#4字段基本定义-schema) 定义，除开 `accesstoken` 之外的 `query` 参数 |
+| params | 带在 URL 里的 `query` 参数 | `[schema]` 参考 [schema](#4字段基本定义-schema) 定义 <br />除开 `accesstoken` 之外的 `query` 参数 |
 | body | 接口调用类型为 `POST` 时的调用参数| `[schema]`，参考 [schema](#4字段基本定义-schema) 定义 |
 | formData | 表示附件上下传接口中的附件数据 | `[schema]`，参考 [schema](#4字段基本定义-schema) 定义 |
 
@@ -104,15 +104,27 @@ request 由四部分内容组成，
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
 | name | 字段名 | 比如 name |
-| type | 字段类型 | 1(string) \| 2(array) \| 3(object) \| 4(number) \| 5(file) \| 6(boolean) |
+| type | 字段类型 | 1 : string  <br /> 2 : array  <br /> 3 : object  <br /> 4 : number  <br /> 5 : file  <br /> 6 : boolean |
 | description | 字段描述信息 | markdown格式 |
 | is_required | 是否必填 |  true \| false |
 | default | 字段的默认值 | 如果没有，可以不填 |
-| example | 字段示例值 | 比如：张三 |
+| example | 字段示例值 | 比如：zhangsan |
 | items | 仅 type 为 2 时填写 | `{properties: [schema]}`，参考 [schema](#4字段基本定义-schema) 定义 |
 
+比如，对于成员名称 `name` 这个字段，对应的 `YAML` 描述为：
 
-## YAML 样例
+
+```yaml
+- name: name
+  type: 1
+  description: 成员名称
+  is_required: true
+  example: zhangsan
+  default: ~ 
+  items: {} 
+```
+
+## 完整 YAML 样例
 ``` yaml
 summary: 创建部门
 description: ''
@@ -124,6 +136,7 @@ cate_path: 服务端API-通讯录管理-部门管理-创建部门
 permission: 应用须拥有父部门的管理权限。
   第三方仅通讯录应用可以调用。
   注意，部门的最大层级为15层；部门总数不能超过3万个；每个部门下的节点不能超过3万个。建议保证创建的部门和对应部门成员是串行化处理。
+  
 
 request:
   auth:
