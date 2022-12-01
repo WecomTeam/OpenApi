@@ -199,7 +199,57 @@ request:
             is_required: false
             default: ''
             example: ''
-            items: {}
+            items: 
+              properties:
+                - type: 3
+                  items:
+                    properties:
+                      - name: type
+                        example: 0
+                        type: 4
+                        description: '属性类型: 0-文本 1-网页 2-小程序'
+                        is_required: 是
+                        default: ''
+                      - name: name
+                        example: 文本名称
+                        type: 1
+                        description: 属性名称： 需要先确保在管理端有创建该属性，否则会忽略
+                        is_required: 是
+                        default: ''
+                      - name: text
+                        example: ''
+                        type: 3
+                        description: 文本类型的属性
+                        is_required: 否
+                        default: ''
+                        items:
+                          properties:
+                            - name: value
+                              example: 文本
+                              type: 1
+                              description: 文本属性内容，长度限制64个UTF8字符
+                              is_required: 是
+                              default: ''
+                      - name: web
+                        example: ''
+                        type: 3
+                        description: 网页类型的属性，url和title字段要么同时为空表示清除该属性，要么同时不为空
+                        is_required: 否
+                        default: ''
+                        items:
+                          properties:
+                            - name: url
+                              example: http://www.test.com
+                              type: 1
+                              description: 网页的url,必须包含http或者https头
+                              is_required: 是
+                              default: ''
+                            - name: title
+                              example: 标题
+                              type: 1
+                              description: 网页的展示标题,长度限制12个UTF8字符
+                              is_required: 是
+                              default: ''
     - name: to_invite
       type: 6
       description: 是否邀请该成员使用企业微信（将通过微信服务通知或短信或邮件下发邀请，每天自动下发一次，最多持续3个工作日），默认值为true。
@@ -239,7 +289,7 @@ request:
               properties:
                 - name: nickname
                   type: 1
-                  description: 视频号名字（设置后，成员将对外展示该视频号）
+                  description: 视频号名字（设置后，成员将对外展示该视频号）。须从企业绑定到企业微信的视频号中选择，可在“我的企业”页中查看绑定的视频号
                   is_required: false
                   default: ''
                   example: 视频号名称
@@ -332,54 +382,6 @@ request:
                               is_required: false
                               default: ''
                               example: miniprogram
-    - name: extattr.type
-      example: ''
-      type: 1
-      description: '属性类型: 0-文本 1-网页 2-小程序'
-      is_required: 是
-      default: ''
-    - name: extattr.name
-      example: ''
-      type: 1
-      description: 属性名称： 需要先确保在管理端有创建该属性，否则会忽略
-      is_required: 是
-      default: ''
-    - name: extattr.text
-      example: ''
-      type: 1
-      description: 文本类型的属性
-      is_required: 否
-      default: ''
-    - name: extattr.text.value
-      example: ''
-      type: 1
-      description: 文本属性内容，长度限制64个UTF8字符
-      is_required: 是
-      default: ''
-    - name: extattr.web
-      example: ''
-      type: 1
-      description: 网页类型的属性，url和title字段要么同时为空表示清除该属性，要么同时不为空
-      is_required: 否
-      default: ''
-    - name: extattr.web.url
-      example: ''
-      type: 1
-      description: 网页的url,必须包含http或者https头
-      is_required: 是
-      default: ''
-    - name: extattr.web.title
-      example: ''
-      type: 1
-      description: 网页的展示标题,长度限制12个UTF8字符
-      is_required: 是
-      default: ''
-    - name: nickname
-      example: ''
-      type: 1
-      description: 视频号名字（设置后，成员将对外展示该视频号）。须从企业绑定到企业微信的视频号中选择，可在“我的企业”页中查看绑定的视频号
-      is_required: 否
-      default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
