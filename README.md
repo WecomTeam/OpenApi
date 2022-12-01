@@ -47,7 +47,7 @@ yarn start
 | summary | 接口的名称 | 接口的名称不一定是对应文档的名称，一篇文档可能会有多个接口 |
 | description | 接口的描述 | 在文档中显示在最前面的对于接口描述相关的内容信息|
 | path | 接口调用路径| 须是 `https://` 开头的 URL，且需要去掉 `?accsstoken=xxx` 等其他 query 参数 |
-| method | 接口调用类型| 仅 `GET` `POST` 两个可选，须大写 |
+| method | 接口调用类型| 仅 `GET`、`POST` 两个可选值，必须大写 |
 | permission | 权限描述信息| 用于展示接口的一些权限内容 |
 | attention | 额外的注意事项| 仅显示于接口的末尾 |
 | operationid | 接口内部调用ID| 无须更改 |
@@ -61,9 +61,9 @@ request 由四部分内容组成，
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
 | auth | 接口调用凭证信息 |  |
-| params | 带在 URL 里的 `query` 参数 | [schema]`，参考 [schema](#4接口基本定义-schema) 定义，除开 `accesstoken` 之外的 `query` 参数 |
-| body | 接口调用类型为 `POST` 时的调用参数| [schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
-| formData | 表示附件上下传接口中的附件数据 | [schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
+| params | 带在 URL 里的 `query` 参数 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义，除开 `accesstoken` 之外的 `query` 参数 |
+| body | 接口调用类型为 `POST` 时的调用参数| `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
+| formData | 表示附件上下传接口中的附件数据 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
 
 
 ### 3、响应信息 `response`
@@ -72,7 +72,7 @@ request 由四部分内容组成，
 | :----------- | :----------- | :----------- |
 | status | 接口返回状态码 | 因为企业微信的接口错误码统一管理，所以 `status` 固定为 200 |
 | description | 接口返回描述 |  |
-| body | 接口返回的实际信息 | [schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
+| body | 接口返回的实际信息 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
 
 ### 4、接口基本定义 `schema`
 
