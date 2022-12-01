@@ -20,5 +20,7 @@
   "WwOpenDeleteParty": true,
   "WwOpenGetParty": true,
   "WwOpenGetSubPartyIdList": true,
-  "WwOpenGetPartyDetail": true
+  "WwOpenGetPartyDetail": true,
+  "WwUpdateTagname": true,
+  "WwDelTag": true
 }
