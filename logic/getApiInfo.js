@@ -130,8 +130,8 @@ function genApiMarkdownContent({
         '\n### 响应示例' +
         '\n```' +
         `\n${resExample}` +
-        '\n```' +
-        attention;
+        '\n```\n' +
+        attention.trim().replace(/<br>/g, '\n');
 
 
     return markdown;
