@@ -4,19 +4,35 @@
         v-for="subCate in cate.children"
     >
         <t-submenu
-        v-if="subCate.is_folder"
+        v-if="subCate.is_folder && subCate.children[0].is_folder"
         :key="subCate.category_id"
         :value="subCate.category_id"
         :title="subCate.title">
             <categoryItem @apiClick="eventApiClick" :key="subCate.category_id" :cate="subCate"></categoryItem>
         </t-submenu>
-        <t-menu-item
-            v-else
-            :key="subCate.api"
-            :value="subCate.api"
-            @click="eventApiClick(subCate)">
-            <span class="menu-api-item">{{ subCate.title }}<t-icon class="menu-api-item-checked" size="16px" name="check"  v-if="subCate.is_check"></t-icon></span>
-        </t-menu-item>
+        <template v-else-if="subCate.is_folder && subCate.children.length > 1">
+            <t-submenu
+            :key="subCate.category_id"
+            :value="subCate.category_id"
+            :title="subCate.title">
+                <t-menu-item
+                    v-for="subSubCate in subCate.children"
+                    :key="subSubCate.api"
+                    :value="subSubCate.api"
+                    @click="eventApiClick(subSubCate)">
+                    <span class="menu-api-item">{{ subSubCate.title }}<t-icon class="menu-api-item-checked" size="16px" name="check"  v-if="subSubCate.is_check"></t-icon></span>
+                </t-menu-item>
+            </t-submenu>
+        </template>
+        <template v-else>
+            <t-menu-item
+                    v-for="subSubCate in subCate.children"
+                    :key="subSubCate.api"
+                    :value="subSubCate.api"
+                    @click="eventApiClick(subSubCate)">
+                    <span class="menu-api-item">{{ subSubCate.title }}<t-icon class="menu-api-item-checked" size="16px" name="check"  v-if="subSubCate.is_check"></t-icon></span>
+                </t-menu-item>
+        </template>
     </template>
 </div>
     
