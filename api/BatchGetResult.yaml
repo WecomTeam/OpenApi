@@ -97,7 +97,7 @@ response:
         items: {}
       - name: result
         type: 2
-        description: 详细的处理结果，具体格式参考下面说明。当任务完成后此字段有效
+        description: 详细的处理结果，具体格式参考注意事项。当任务完成后此字段有效
         default: ''
         example: ''
         items:
@@ -108,12 +108,24 @@ response:
                 properties: []
 # 注意事项，仅显示于接口的末尾
 attention: >-
-  **result结构：type为sync_user、replace_user时：**<br>$desc 参数<br>$desc 说明<br>$desc
-  userid<br>$desc 成员UserID。对应管理端的帐号<br>$desc errcode<br>$desc
-  该成员对应操作的结果错误码<br>$desc errmsg<br>$desc
-  错误信息，例如无权限错误，键值冲突，格式错误等<br>**result结构：type为replace_party时：**<br>$desc
-  参数<br>$desc 说明<br>$desc action<br>$desc 操作类型（按位或）：1 新建部门 ，2 更改部门名称， 4 移动部门， 8
-  修改部门排序<br>$desc partyid<br>$desc 部门ID<br>$desc errcode<br>$desc
-  该部门对应操作的结果错误码<br>$desc errmsg<br>$desc 错误信息，例如无权限错误，键值冲突，格式错误等
+  **result结构：type为sync_user、replace_user时：**
+  <br>|参数|说明|
+  <br>|--|--|
+  <br>|userid|成员UserID。对应管理端的帐号|
+  <br>|errcode|该成员对应操作的结果错误码|
+  <br>|errmsg|错误信息，例如无权限错误，键值冲突，格式错误等|
+  <br>```<br>"result": [<br>	{<br>	 	"userid":"lisi",<br>	 	"errcode":0,<br>	 	"errmsg":"ok"<br>	},<br>	{<br>	 	"userid":"zhangsan",<br>	 	"errcode":0,<br>	 	"errmsg":"ok"<br>	}<br>]
+  
+  ```
+  <br>**result结构：type为replace_party时：**
+  <br>|参数|说明|
+  <br>|--|--|
+  <br>|action|操作类型（按位或）：1 新建部门 ，2 更改部门名称， 4 移动部门， 8 修改部门排序|
+  <br>|partyid|部门ID|
+  <br>|errcode|该部门对应操作的结果错误码|
+  <br>|errmsg|错误信息，例如无权限错误，键值冲突，格式错误等|
+  <br>```<br>"result": [<br>	{<br>	 	"action":1,<br>	 	"partyid":1,<br>	 	"errcode":0,<br>	 	"errmsg":"ok"<br>	},<br>	{<br>	 	"action":1,<br>	 	"partyid":1,<br>	 	"errcode":0,<br>	 	"errmsg":"ok"<br>	}<br>]
+  
+  ```
 isExampleError: true
 isInterface: true

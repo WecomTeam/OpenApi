@@ -22,5 +22,11 @@
   "WwOpenGetSubPartyIdList": true,
   "WwOpenGetPartyDetail": true,
   "WwUpdateTagname": true,
-  "WwDelTag": true
+  "WwDelTag": true,
+  "WwGetTagUser": true,
+  "WwGetTagList": true,
+  "BatchSyncUser": true,
+  "BatchReplaceUser": true,
+  "BatchReplaceParty": true,
+  "BatchGetResult": true
 }
