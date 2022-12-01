@@ -16,14 +16,18 @@
 ```bash
 yarn dep
 ```
+2. 启动构建
 
-2. 启动服务
+```bash
+yarn build:server
+```
+3. 启动服务
 
 ```bash
 yarn start
 ```
 
-3. 访问页面
+4. 访问页面
 
 在浏览器打开 http://localhost:3000/ 进行访问
 
@@ -68,14 +72,14 @@ yarn start
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
 | summary | 接口的名称 | 接口的名称不一定是对应文档的名称，一篇文档可能会有多个接口 |
-| description | 接口的描述 | 在文档中显示在最前面的对于接口描述相关的内容信息|
+| description | 接口的描述 | 在文档中显示在最前面的对于接口描述相关的内容信息，支持**markdown**语法，需注意换行要使用`<br>`表示|
 | path | 接口调用路径| 须是 `https://` 开头的 URL，且需要去掉 `?accsstoken=xxx` 等其他 query 参数 |
 | method | 接口调用类型| 仅 `GET`、`POST` 两个可选值，必须大写 |
-| permission | 权限描述信息| 用于展示接口的一些权限内容 |
-| attention | 额外的注意事项| 仅显示于接口的末尾 |
-| operationid | 接口内部调用ID| 无须更改 |
-| tag | 接口内部调用模块| 无须更改 |
-| cate_path | 接口在文档目录中的结构| 无须更改 |
+| permission | 权限描述信息| 用于展示接口的一些权限内容，会展示在接口基本信息最后一列中 |
+| attention | 额外的注意事项| 仅显示于接口的末尾，支持**markdown**语法，需注意换行要使用`<br>`表示 |
+| operationid | 接口内部调用ID标记 | 无须更改 |
+| tag | 接口内部调用模块 | 无须更改 |
+| cate_path | 接口来源 | 无须更改 |
 
 ### 2、请求信息 `request`
 
@@ -83,8 +87,8 @@ request 由四部分内容组成，
 
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
-| auth | 接口调用凭证信息 |  |
-| params | 带在 URL 里的 `query` 参数 | `[schema]` 参考 [schema](#4字段基本定义-schema) 定义 <br />除开 `accesstoken` 之外的 `query` 参数 |
+| auth | 接口调用凭证信息 | 一般指access_token等字段 |
+| params | 带在 URL 里的 `query` 参数 | `[schema]` 参考 [schema](#4字段基本定义-schema) 定义 <br />除开 `access_token` 之外的 `query` 参数 |
 | body | 接口调用类型为 `POST` 时的调用参数| `[schema]`，参考 [schema](#4字段基本定义-schema) 定义 |
 | formData | 表示附件上下传接口中的附件数据 | `[schema]`，参考 [schema](#4字段基本定义-schema) 定义 |
 
@@ -94,25 +98,23 @@ request 由四部分内容组成，
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
 | status | 接口返回状态码 | 因为企业微信的接口错误码统一管理，所以 `status` 固定为 200 |
-| description | 接口返回描述 |  |
-| body | 接口返回的实际信息 | `[schema]`，参考 [schema](#4字段基本定义-schema) 定义 |
+| description | 接口返回描述 | 保留字段，无需修改 |
+| body | 接口返回的实际信息 | `[schema]`，参考 [schema](#4接口基本定义-schema) 定义 |
 
-### 4、字段基本定义 `schema`
-
-每一个 schema 即为一个数据提的描述，包含以下结构：
+### 4、接口数据字段的基本定义 `schema`
 
 | 字段      | 说明 | 备注 |
 | :----------- | :----------- | :----------- |
-| name | 字段名 | 比如 name |
-| type | 字段类型 | 1 : string  <br /> 2 : array  <br /> 3 : object  <br /> 4 : number  <br /> 5 : file  <br /> 6 : boolean |
-| description | 字段描述信息 | markdown格式 |
-| is_required | 是否必填 |  true \| false |
-| default | 字段的默认值 | 如果没有，可以不填 |
-| example | 字段示例值 | 比如：zhangsan |
-| items | 仅 type 为 2 时填写 | `{properties: [schema]}`，参考 [schema](#4字段基本定义-schema) 定义 |
+| name | 字段名 | 非必有，当外层type为2且当前层type为2或3时不存在 |
+| type | 字段类型 | 值为number, 分别为 1(string) 2(array) 3(object) 4(number) 5(file) 6(boolean) |
+| description | 字段描述 | 非必有，当外层type为2且当前层type为2或3时不存在 |
+| is_required | 是否必填 |  |
+| default | 默认值 | 保留字段，填`""`即可 |
+| items | 当前层type为2或3时保留，描述用来描述内部数据 | 内部只有一个字段properties |
+| example | 字段示例，用来生成代码示例 | 当前层type为2或者3时不需要填写 |
 
-比如，对于成员名称 `name` 这个字段，对应的 `YAML` 描述为：
-
+## schema示例
+### 原始代码
 
 ```yaml
 - name: name
@@ -124,7 +126,40 @@ request 由四部分内容组成，
   items: {} 
 ```
 
-## 完整 YAML 样例
+``` yaml
+      - name: test_outer
+        type: 3
+        description: test数据
+        default: ''
+        example: ''
+        # external_profile的type为3因此需要items
+        items:
+          properties:
+            # 上层type不为2因此仍然需要name
+            - name: test_middle
+              type: 2
+              description: test数据
+              is_required: false
+              default: ''
+              example: ''
+              items:
+                properties:
+                # 上层type为2，因此仅保留type与example字段
+                  - type: 1
+                    example: test
+```
+
+### 渲染结果
+
+```json
+{
+  "test_outer": {
+    "test_middle": ["test"]
+  }
+}
+```
+
+## YAML 完整示例
 ``` yaml
 summary: 创建部门
 description: ''
