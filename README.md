@@ -11,23 +11,19 @@
 
 ## 启动流程
 
-1. 安装依赖
+1. 安装依赖、构建项目
 
 ```bash
-yarn dep
+yarn build
 ```
-2. 启动构建
 
-```bash
-yarn build:server
-```
-3. 启动服务
+2. 启动服务
 
 ```bash
 yarn start
 ```
 
-4. 访问页面
+3. 访问页面
 
 在浏览器打开 http://localhost:3000/ 进行访问
 

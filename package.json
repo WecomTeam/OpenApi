@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {    
-    "dep":"npx yarn install && npx yarn build:server && cd ./vue && npx yarn install && npx yarn build",
+    "build":"npx yarn install && npx yarn build:server && cd ./vue && npx yarn install && npx yarn build",
     "dev:server": "tsc --watch",
     "build:server": "rm -rf ./routes && tsc",
     "dev:vue":"cd ./vue && npx yarn serve",
