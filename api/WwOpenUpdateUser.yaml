@@ -331,13 +331,13 @@ request:
     - name: extattr.type
       example: ''
       type: 1
-      description: '属性类型: 0-文本 1-网页 2-小程序'
+      description: 属性类型：0-文本 1-网页 2-小程序
       is_required: 是
       default: ''
     - name: extattr.name
       example: ''
       type: 1
-      description: 属性名称： 需要先确保在管理端有创建该属性，否则会忽略
+      description: 属性名称：需要先确保在管理端有创建该属性，否则会忽略
       is_required: 是
       default: ''
     - name: extattr.text
@@ -355,13 +355,13 @@ request:
     - name: extattr.web
       example: ''
       type: 1
-      description: 网页类型的属性，url和title字段要么同时为空表示清除该属性，要么同时不为空
+      description: 网页类型的属性，url 和 title 字段要么同时为空表示清除该属性，要么同时不为空
       is_required: 否
       default: ''
     - name: extattr.web.url
       example: ''
       type: 1
-      description: 网页的url,必须包含http或者https头
+      description: 网页的url，必须包含http或者https头
       is_required: 是
       default: ''
     - name: extattr.web.title
