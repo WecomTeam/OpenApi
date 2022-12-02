@@ -105,7 +105,13 @@ request 由四部分内容组成，
 | example | 字段示例，用来生成代码示例 | 当前层type为2或者3时不需要填写 |
 
 ## schema示例
-### 原始代码
+### 1、 string 类型字段的描述
+
+对于一个用于展示成员名称的字段，比如：
+```json
+"name": "Bob"
+```
+在 yaml 中，须要用这样的内容来描述：
 
 ```yaml
 - name: name
@@ -117,38 +123,59 @@ request 由四部分内容组成，
   items: {} 
 ```
 
+### 2、array 和 object 类型的字段描述
+
+对于一个部门列表数组的字段，比如：
+
+``` json
+"department_id": [
+    {
+      "id": 3,
+      "parentid": 2,
+      "order": 40
+    },
+    {
+      "id": 4,
+      "parentid": 23,
+      "order": 43
+    }
+]
+```
+
+在 yaml 中，须要用这样的内容来描述：
+
 ``` yaml
-      - name: test_outer
-        type: 3
-        description: test数据
-        default: ''
-        example: ''
-        # external_profile的type为3因此需要items
+- name: department_id
+  type: 2
+  description: 部门列表数据。
+  default: ''
+  example: ''
+  items:
+    properties:
+      - type: 3
+        is_required: false
         items:
           properties:
-            # 上层type不为2因此仍然需要name
-            - name: test_middle
-              type: 2
-              description: test数据
-              is_required: false
+            - name: id
+              type: 4
+              description: 创建的部门id
               default: ''
-              example: ''
-              items:
-                properties:
-                # 上层type为2，因此仅保留type与example字段
-                  - type: 1
-                    example: test
+              example: 3
+              items: {}
+            - name: parentid
+              type: 4
+              description: 父部门id。根部门为1。
+              default: ''
+              example: 2
+              items: {}
+            - name: order
+              type: 4
+              description: 在父部门中的次序值。order值大的排序靠前。值范围是[0, 2^32)。
+              default: ''
+              example: 40
+              items: {}
 ```
 
-### 渲染结果
-
-```json
-{
-  "test_outer": {
-    "test_middle": ["test"]
-  }
-}
-```
 
 ## YAML 完整示例
 ``` yaml
