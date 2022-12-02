@@ -65,8 +65,7 @@ export default {
 /deep/ .CodeMirror{
   height:100%;
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 13px;  
 }
 /deep/ .CodeMirror-sizer{
 
