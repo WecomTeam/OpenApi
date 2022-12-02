@@ -4,10 +4,10 @@
       <t-head-menu theme="dark">
         <template #logo>
           <img style="padding-left:30px;"
-            src="https://wwcdn.weixin.qq.com/node/wework/images/202201062104.366e5ee28e.png" width="136" />
+            src="https://wwcdn.weixin.qq.com/node/wework/images/202201062104.366e5ee28e.png" width="136" /><span class="logo-text">Open Api Editor</span>
         </template>
         <template #operations>
-          <a href="javascript:;">
+          <a href="https://github.com/WecomTeam/OpenApi" target="_blank">
             <t-icon class="t-menu__operations-icon" name="logo-github-filled" />
           </a>
 
@@ -71,15 +71,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 html{
   height:100%;
+  overflow-y: hidden;
 }
 body {
   padding: 0;
   margin: 0;
   height: 100%;
-  /* overflow-y:hidden; */
+  overflow-y:hidden;
   /* background-color: var(--td-gray-color-14); */
 }
 
@@ -89,6 +90,22 @@ body {
   height:100%;
 }
 .nav{
+
+}
+.logo-text{
+  
+  font-size: 20px;  
+  line-height: 28px;
+  color: #0082EF;
+  text-decoration: none;
+  &::before{
+    content: "";    
+    margin: 6px 14px 0;
+    height: 16px;
+    display: inline-block;
+    float: left;
+    border-left: 1px solid #0082EF;
+  }
 
 }
 .main{

@@ -7,7 +7,7 @@
     "dev:server": "tsc --watch",
     "build:server": "rm -rf ./routes && tsc",
     "dev:vue":"cd ./vue && npx yarn serve",
-    "build:vue":"",
+    "build:vue":"cd ./vue && npx yarn build",
     "start": "node ./bin/www"
   },
   "dependencies": {

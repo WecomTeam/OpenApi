@@ -1,7 +1,7 @@
 <template>
   <div class="editor">
         <yaml-editor :yaml="yaml" @input="(yaml) => onSave(yaml, true)"></yaml-editor>
-        <div class="editor-action">
+        <div v-if="false" class="editor-action">
           <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
         </div>
   </div>

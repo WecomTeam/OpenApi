@@ -1,16 +1,21 @@
 <template>
     <div class="mainbox">
-        <div class="editorDoc">
-            <DocEditVue 
-                :apiYaml="apiData.yaml"
-                :operationid="api.api"
-                :currentCheck="api.is_check" 
-                @mark="onMark"
-            @save="onSave"/>                
+        <div class="toolbar">
+            <t-link theme="primary" :href="`https://developer.work.weixin.qq.com/document/path/${api.category_id}`"
+                target="__blank" underline><t-icon slot="suffixIcon" name="jump" /> 查看接口文档</t-link>
+
+            <span><t-button theme="default"><t-icon slot="icon" name="check-circle" />已标记</t-button> <t-button
+                    theme="default"><t-icon slot="icon" @click="onMark" name="circle" />标记</t-button></span>
         </div>
-        <div class="previewDoc">
-            <DocPreviewVue :apiMd="apiData.md"/>
-            <t-button class="open_btn" @click="onOpen">接口文档</t-button>
+        <div class="maindoc">
+            <div class="editorDoc">
+                <DocEditVue :apiYaml="apiData.yaml" :operationid="api.api" :currentCheck="api.is_check"
+                    @save="onSave" />
+            </div>
+            <div class="previewDoc">
+                <DocPreviewVue :apiMd="apiData.md" />
+
+            </div>
         </div>
     </div>
 </template>
@@ -31,12 +36,12 @@ export default {
     watch: {
         api: {
             async handler(value, pre) {
-                if(value.api !== pre.api){
+                if (value.api !== pre.api) {
                     this.getOnlineDocURL()
                     let apiData = await this.fetchApi(value.api);
-                    if(apiData){
+                    if (apiData) {
                         this.apiData = apiData
-                    }         
+                    }
                 }
             },
         }
@@ -46,15 +51,15 @@ export default {
             const res = await axios.post('/api/info/get', {
                 operationid: api
             })
-            if(res.status == 200){
+            if (res.status == 200) {
                 return res.data
             }
-            else{
-                return 
-            }           
-            
+            else {
+                return
+            }
+
         },
-        getOnlineDocURL :function(){            
+        getOnlineDocURL: function () {
             this.onlineDocURL = `https://developer.work.weixin.qq.com/document/path/${this.api.category_id}`
         },
         async saveApi(operationid, yaml) {
@@ -64,11 +69,11 @@ export default {
             })
             this.apiData.md = data.md
         },
-        async onSave({yaml}) {
+        async onSave({ yaml }) {
             try {
                 await this.saveApi(this.api.api, yaml)
                 // if(!isSilent) this.$message.success({content: '保存成功'})
-            } catch(e) {
+            } catch (e) {
                 // if(!isSilent) this.$message.error({content: '保存失败'})
                 console.log(e)
             }
@@ -81,20 +86,21 @@ export default {
         },
         onOpen() {
             window.open(this.onlineDocURL)
-        }
+        },
+        
     },
 
     data() {
         return {
-            tabValue:'preview',
-            apiData:{
+            tabValue: 'preview',
+            apiData: {
                 md: {
                     domStr: '',
                     md: ''
                 },
                 yaml: ''
-            },      
-            onlineDocURL:''
+            },
+            onlineDocURL: ''
         };
     },
 }
@@ -104,10 +110,25 @@ export default {
 <style scoped lang="less">
 .mainbox {
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.maindoc {
+    flex: 1;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 100%;
+}
+
+.toolbar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: var(--td-gray-color-12);
+
 }
 
 .editorDoc {
@@ -120,11 +141,6 @@ export default {
     flex: 1;
     height: 100%;
     width: 50%;
-}
-.open_btn {
-    position: absolute;
-    right: 25px;
-    top: 74px;
 }
 </style>
   
