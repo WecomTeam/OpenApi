@@ -38,21 +38,21 @@ request:
     - name: userid
       type: 1
       description: 成员UserID。对应管理端的帐号，企业内必须唯一。不区分大小写，长度为1~64个字节
-      is_required: 是
+      is_required: true
       default: ''
       example: zhangsan
       items: {}
     - name: name
       type: 1
       description: 成员名称。长度为1~64个utf8字符
-      is_required: 否
+      is_required: false
       default: ''
-      example: 李四
+      example: 张三
       items: {}
     - name: department
       type: 2
       description: 成员所属部门id列表，不超过100个
-      is_required: 否
+      is_required: false
       default: ''
       example: ''
       items:
@@ -68,7 +68,7 @@ request:
       description: >-
         部门内的排序值，默认为0。当有传入department时有效。数量必须和department一致，数值越大排序越前面。有效的值范围是[0,
         2^32)
-      is_required: 否
+      is_required: false
       default: ''
       example: ''
       items:
@@ -82,7 +82,7 @@ request:
     - name: position
       type: 1
       description: 职务信息。长度为0~128个字符
-      is_required: 否
+      is_required: false
       default: ''
       example: 后台工程师
       items: {}
@@ -91,14 +91,14 @@ request:
       description: >-
         手机号码。企业内必须唯一。<font color=red>若成员已激活企业微信，则需成员自行修改（此情况下该参数被忽略，但不会报错）
         </font>
-      is_required: 否
+      is_required: false
       default: ''
       example: '13800000000'
       items: {}
     - name: gender
       type: 1
       description: 性别。1表示男性，2表示女性
-      is_required: 否
+      is_required: false
       default: ''
       example: '1'
       items: {}
@@ -107,7 +107,7 @@ request:
       description: >-
         邮箱。长度不超过64个字节，且为有效的email格式。企业内必须唯一。<font
         color=red>若是绑定了腾讯企业邮箱的企业微信，则需要在腾讯企业邮箱中修改邮箱（此情况下该参数被忽略，但不会报错）</font>
-      is_required: 否
+      is_required: false
       default: ''
       example: zhangsan@gzdev.com
       items: {}
@@ -115,14 +115,14 @@ request:
       type: 1
       description: >-
         企业邮箱。仅对开通企业邮箱的企业有效。长度6~64个字节，且为有效的企业邮箱格式。企业内必须唯一。企业邮箱为系统自动生成的成员可修改一次，仅2022年4月25日以前创建的成员可通过此接口修改，之后创建的成员需通过企业管理后台-协作-邮件-邮箱管理-成员邮箱修改
-      is_required: 否
+      is_required: false
       default: ''
       example: zhangsan@qyycs2.wecom.work
       items: {}
     - name: is_leader_in_dept
       type: 2
       description: 部门负责人字段，个数必须和department一致，表示在所在的部门内是否为负责人。0-否，1-是
-      is_required: 否
+      is_required: false
       default: ''
       example: ''
       items:
@@ -136,7 +136,7 @@ request:
     - name: direct_leader
       type: 2
       description: 直属上级，可以设置企业范围内成员为直属上级，最多设置5个
-      is_required: 否
+      is_required: false
       default: ''
       example: ''
       items:
@@ -149,7 +149,7 @@ request:
     - name: enable
       type: 4
       description: 启用/禁用成员。1表示启用成员，0表示禁用成员
-      is_required: 否
+      is_required: false
       default: ''
       example: 1
       items: {}
