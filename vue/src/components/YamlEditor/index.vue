@@ -60,18 +60,16 @@ export default {
 
 <style scoped>
 .yaml-editor{
-  height: 100%;
-  position: relative;
-  overflow: auto;
+  height:100%;
 }
-.yaml-editor >>> .CodeMirror {
-  height: auto;
-  min-height: 100%;
+/deep/ .CodeMirror{
+  height:100%;
 }
-.yaml-editor >>> .CodeMirror-scroll{
-  min-height: 100%;
+/deep/ .CodeMirror-sizer{
+
 }
-.yaml-editor >>> .cm-s-rubyblue span.cm-string {
-  color: #F08047;
+/deep/ .CodeMirror-scroll{
+  margin-bottom:0 !important;
+  padding-bottom: 0 !important;
 }
 </style>

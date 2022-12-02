@@ -1,9 +1,7 @@
 <template>
   <div class="editor">
         <yaml-editor :yaml="yaml" @input="(yaml) => onSave(yaml, true)"></yaml-editor>
-        <div v-if="false" class="editor-action">
-          <t-button class="mark__wrapper" @click="onMark" :theme="is_mark ? 'default' : 'primary'">{{is_mark ? '取消标记' : '标记确认'}}</t-button>
-        </div>
+        
   </div>
 </template>
   
@@ -60,25 +58,9 @@ export default {
 <style lang="less" scoped>
 
 @import url(../style/jsoneditorvue-darkmode.css);
-.editor {
-  display: flex;
-  flex-direction: column;
-  height:100%;
-}
-.editor-box{
-  flex:1;
-  height: 1px;
-  overflow-y: auto;
-}
-.editor-action{
-  background:     var(--td-gray-color-12);
-  padding:10px;
-  display: flex;
-  justify-content: flex-end;
-  text-align: right;  
-}
-.mark__wrapper {
-  margin-right: 10px;
+.editor {  
+  
+  height: 100%;  
 }
 </style>
   
