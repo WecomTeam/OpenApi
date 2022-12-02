@@ -152,6 +152,7 @@ request 由四部分内容组成，
   example: ''
   items:
     properties:
+  # 上层type为2，因此可去除name,description描述
       - type: 3
         is_required: false
         items:
