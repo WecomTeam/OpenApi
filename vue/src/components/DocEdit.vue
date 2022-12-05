@@ -1,6 +1,6 @@
 <template>
   <div class="editor">
-        <yaml-editor :yaml="yaml" @input="(yaml) => onSave(yaml, true)"></yaml-editor>
+        <yaml-editor :yaml="yaml" @changed="(yaml) => onSave(yaml, true)"></yaml-editor>
         
   </div>
 </template>

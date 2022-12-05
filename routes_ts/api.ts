@@ -5,7 +5,7 @@ const path = require('path')
 
 import {parseTree} from '../logic/categoryParse.js'
 import { genWecomApiDoc } from '../logic/getApiInfo.js'
-import { getApiSchema, editApiSchema } from '../logic/operation.js'
+import { getApiSchema, editApiSchema, parseToSchema } from '../logic/operation.js'
 
 router.post('/info/get', async (req, res, next) => {
   const { operationid } = req.body;
@@ -32,19 +32,19 @@ router.post('/info/get', async (req, res, next) => {
 
 router.post('/info/edit', async (req, res, next) => {
   const { operationid, yaml } = req.body
-  await editApiSchema(operationid, yaml)
-  const {yaml: newYaml, schema} = await getApiSchema(operationid)
+  const newSchema = parseToSchema(yaml)
   try {
-    const md = genWecomApiDoc(schema)
+    const newMd = genWecomApiDoc(newSchema)
+    await editApiSchema(operationid, yaml)
     res.send({
-      yaml: newYaml,
-      md
+      yaml,
+      md: newMd
     })
   } catch (e) {
     console.log(`---- ${operationid} schema解析失败----`)
     console.error(e)
     res.send({
-      yaml: newYaml,
+      yaml,
       md: {
         domStr: '',
         md: ''

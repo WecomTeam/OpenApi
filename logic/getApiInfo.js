@@ -29,7 +29,7 @@ function cherryMakeHtml(md) {
 function walkSchema(schema = [], prefix = '') {
     let params = [];
 
-    schema.forEach(property => {
+    (schema || []).forEach(property => {
         params.push({
             name: prefix + property.name,
             type: TYPE_MAP[property.type] || 'string', // 临时的type默认值
@@ -140,7 +140,7 @@ function genApiMarkdownContent({
 function genExample(schema = [], isArray = false) {
     let example = {};
 
-    schema.forEach(property => {
+    (schema || []).forEach(property => {
         let type = TYPE_MAP[property.type];
 
         if (!type) {

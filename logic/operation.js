@@ -6,22 +6,32 @@ const parseValidFile = operationid => {
     return path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.yaml`)
 }
 
+export const parseToSchema = (yaml) => {
+    return jsyaml.load(yaml)
+}
+
 export const getApiSchema = async(operationid) => {
-    try {
-        const filePath = parseValidFile(operationid)
-        const isExist = await fs.existsSync(filePath)
-        if(isExist) {
-            const yamlData = await fs.readFileSync(filePath)
+    const filePath = parseValidFile(operationid);
+    const isExist = await fs.existsSync(filePath);
+    if (isExist) {
+        const yamlData = await fs.readFileSync(filePath);
+        try {
             return {
                 yaml: yamlData.toString(),
                 schema: jsyaml.load(yamlData)
-            }
-        } else {
-            return {}
+            };
+        }catch (e) {
+            console.error(e);
+            return {
+                yaml: yamlData.toString(),
+            };
         }
-    } catch(e) {
-        console.error(e)
-        return {}
+    }
+    else {
+        return {
+            yaml: '',
+            schema: {}
+        };
     }
 }
 export const editApiSchema = async(operationid, yamlData) => {
