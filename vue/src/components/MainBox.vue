@@ -4,8 +4,16 @@
             <t-link theme="primary" :href="`https://developer.work.weixin.qq.com/document/path/${api.category_id}`"
                 target="__blank" underline><t-icon slot="suffixIcon" name="jump" /> 查看接口文档</t-link>
 
-            <span><t-button theme="default"><t-icon slot="icon" name="check-circle" />已标记</t-button> <t-button
-                    theme="default"><t-icon slot="icon" @click="onMark" name="circle" />标记</t-button></span>
+            <span>
+                <t-button 
+                    v-if="api.is_check"
+                    theme="default"
+                    @click="onMark"><t-icon slot="icon" name="check-circle" />已标记</t-button>
+                <t-button
+                    v-else
+                    @click="onMark"
+                    theme="default"><t-icon slot="icon" name="circle" />标记</t-button>
+            </span>
         </div>
         <div class="maindoc">
             <div class="editorDoc">
@@ -78,10 +86,11 @@ export default {
                 console.log(e)
             }
         },
-        onMark(is_mark) {
+        onMark() {
+            console.log(this.api.is_check)
             this.$emit('mark', {
                 operationid: this.api.api,
-                is_mark: is_mark
+                is_mark: !this.api.is_check
             })
         },
         onOpen() {
