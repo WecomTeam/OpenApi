@@ -94,8 +94,17 @@ export default {
     this.yamlEditor.on('change', throttledFunc)
   },
   methods: {
-    concatDefine(line, type) {
+    concatDefine(line, typeOriginal) {
       const indent = '  '
+      const typeMap = {
+        'string': 1,
+        'array': 2,
+        'object': 3,
+        'number': 4,
+        'file': 5,
+        'boolean': 6
+      }
+      const type = typeMap[typeOriginal]
       let tempText = line.replace(/^( *)/g, (match, p1) => {
         const baseStr = `${p1}- name: ''\n${p1}${indent}type: ${type}\n${p1}${indent}description: ''\n${p1}${indent}example: ''\n${p1}${indent}is_required: false\n${p1}${indent}default: ''`
         if(type !== 'array' && type !== 'object') {

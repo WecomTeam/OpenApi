@@ -21,9 +21,10 @@ export const getApiSchema = async(operationid) => {
                 schema: jsyaml.load(yamlData)
             };
         }catch (e) {
-            console.error(e);
+            console.error('转换schema失败');
             return {
                 yaml: yamlData.toString(),
+                schema: {}
             };
         }
     }

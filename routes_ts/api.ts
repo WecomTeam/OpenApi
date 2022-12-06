@@ -54,20 +54,24 @@ router.post('/info/edit', async (req, res, next) => {
 })
 
 router.post('/category/get', async (req, res, next) => {
-  const category = await require('../../configs/category.json')
-  const markMap = JSON.parse(await fs.readFileSync(path.join(__dirname, '../../configs/markMap.json'), 'utf-8'))
-  const categoryTree = parseTree(category).children || []
-  const insertMark = category => {
-    category.forEach(cate => {
-      if(!cate.is_folder) {
-        cate.is_check = !!markMap[cate.api]
-      } else {
-        insertMark(cate.children)
-      }
-    })
+  try {
+    const category = await require('../../configs/category.json')
+    const markMap = JSON.parse(await fs.readFileSync(path.join(__dirname, '../../configs/markMap.json'), 'utf-8'))
+    const categoryTree = parseTree(category).children || []
+    const insertMark = category => {
+      category.forEach(cate => {
+        if(!cate.is_folder) {
+          cate.is_check = !!markMap[cate.api]
+        } else {
+          insertMark(cate.children)
+        }
+      })
+    }
+    insertMark(categoryTree)
+    res.send(categoryTree)
+  } catch(e) {
+    res.send([])
   }
-  insertMark(categoryTree)
-  res.send(categoryTree)
 })
 
 router.post('/interface/mark', async (req, res, next) => {
