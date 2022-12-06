@@ -14,6 +14,24 @@ import 'codemirror/addon/lint/lint'
 import 'codemirror/addon/lint/yaml-lint'
 import 'codemirror/addon/hint/show-hint.css'
 import 'codemirror/addon/hint/show-hint'
+// 搜索
+import 'codemirror/addon/scroll/annotatescrollbar.js'
+import 'codemirror/addon/search/matchesonscrollbar.js'
+import 'codemirror/addon/search/match-highlighter.js'
+import 'codemirror/addon/search/jump-to-line.js'
+
+import 'codemirror/addon/dialog/dialog.js'
+import 'codemirror/addon/dialog/dialog.css'
+import 'codemirror/addon/search/searchcursor.js'
+import 'codemirror/addon/search/search.js'
+
+// 折叠
+import 'codemirror/addon/fold/foldgutter.css'
+import 'codemirror/addon/fold/foldcode'
+import 'codemirror/addon/fold/foldgutter'
+import 'codemirror/addon/fold/indent-fold'
+import 'codemirror/addon/fold/comment-fold'
+
 import {debounce} from 'lodash-es'
 window.jsyaml = require('js-yaml') // 引入js-yaml为codemirror提高语法检查核心支持
 
@@ -41,10 +59,12 @@ export default {
     this.yamlEditor = CodeMirror.fromTextArea(this.$refs.textarea, {
       lineNumbers: true, // 显示行号
       mode: 'text/x-yaml', // 语法model
-      gutters: ['CodeMirror-lint-markers'],  // 语法检查器
+      gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],  // 语法检查器
       theme: 'monokai', // 编辑器主题
       lint: true, // 开启语法检查
+      foldGutter: true,
       lineWrapping: true,
+      matchBrackets: true,
       tabSize: 2,
       extraKeys: {
         Tab: (cm) => {
@@ -63,7 +83,6 @@ export default {
         hint: this.handleShowHint
       }
     })
-
     this.yamlEditor.setValue(this.yaml)
     const throttledFunc = debounce((cm) => {
         const currentValue = cm.getValue()
