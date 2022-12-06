@@ -2,13 +2,13 @@
 summary: 创建标签
 # 接口详细描述，将展示在接口文档顶部
 description: ''
-path: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/tag/create
 operationid: WwCreateTag
 tag: wwopencorplogic
 method: POST
 cate_path: 服务端API-通讯录管理-标签管理-创建标签
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 创建的标签属于该应用，只有该应用的secret才可以增删成员。<br>注意，标签总数不能超过3000个。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -27,8 +27,26 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
-  body: []
+  auth: 
+    - name: access_token
+      type: 1
+      description: 调用接口凭证
+      example: ''
+      is_required: false
+      default: ''
+  body: 
+    - name: tagname
+      type: 1
+      description: 标签名称，长度限制为32个字以内（汉字或英文字母），标签名不可与其他标签重名。
+      example: UI
+      is_required: true
+      default: ''
+    - name: tagid
+      type: 4
+      description: 标签id，非负整型，指定此参数时新增的标签会生成对应的标签id，不指定时则以目前最大的id自增。
+      example: 12
+      is_required: false
+      default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -44,7 +62,25 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        example: 0
+        is_required: false
+        default: ''
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        example: created
+        is_required: false
+        default: ''
+      - name: tagid
+        type: 4
+        description: 标签id
+        example: 12
+        is_required: false
+        default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 url: https://qyapi.weixin.qq.com/cgi-bin/tag/create
