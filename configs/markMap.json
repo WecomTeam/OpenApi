@@ -31,5 +31,6 @@
   "BatchGetResult": true,
   "WwCreateTag": true,
   "WwAddTagUser": true,
-  "WwDelTagUser": true
+  "WwDelTagUser": true,
+  "WwOpenGetExportResult": true
 }

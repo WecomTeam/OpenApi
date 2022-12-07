@@ -1,14 +1,14 @@
 # 接口中文名
-summary: '##接口定义'
+summary: '接口定义'
 # 接口详细描述，将展示在接口文档顶部
 description: ''
-path: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/export/get_result
 operationid: WwOpenGetExportResult
 tag: wwopencorplogic
 method: GET
 cate_path: 服务端API-通讯录管理-异步导出接口-获取导出结果
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 获取任务结果的调用身份需要与提交任务的一致
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -27,9 +27,22 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
+  auth: 
+    - name: access_token
+      type: 1
+      description: 	调用接口凭证
+      example: ACCESS_TOKEN
+      is_required: true
+      default: ''
+      
   body: []
-  params: []
+  params: 
+    - name: jobid
+      type: 1
+      description: 导出任务接口成功后返回
+      example: jobid_xxxxxxxxxxxxxxx
+      is_required: true
+      default: ''
   formData: []
 # 以baseType的格式补充到body下
 # - name: string
@@ -44,7 +57,53 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body: 
+      - name: errcode
+        type: 4
+        description: 返回码
+        example: 0
+        is_required: false
+        default: ''
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        example: ok
+        is_required: false
+        default: ''
+      - name: data_list
+        type: 2
+        description: 	数据文件列表
+        example: ''
+        is_required: false
+        default: ''
+        items:
+          properties: 
+            - name: ''
+              type: 3
+              description: ''
+              example: ''
+              is_required: false
+              default: ''
+              items:
+                properties: 
+                 - name: url
+                   type: 1
+                   description: 数据下载链接,支持指定Range头部分段下载。有效期2个小时
+                   example: https://xxxxx
+                   is_required: false
+                   default: ''
+                 - name: size
+                   type: 4
+                   description: 	密文数据大小
+                   example: 333
+                   is_required: false
+                   default: ''
+                 - name: md5
+                   type: 1
+                   description: 密文数据md5
+                   example: xxxxxxxx
+                   is_required: false
+                   default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 url: https://qyapi.weixin.qq.com/cgi-bin/export/get_result
