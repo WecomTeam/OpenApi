@@ -64,8 +64,12 @@ export default {
         }
       })
     },
-    onMark({operationid, is_mark}) {
+    async onMark({operationid, is_mark}) {
       this.insertMark(this.tree, operationid, is_mark)
+      await axios.post('/api//interface/mark', {
+        operationid,
+        is_check: is_mark
+      })
     }
   }
 }
