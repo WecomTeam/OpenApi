@@ -28,5 +28,6 @@
   "BatchSyncUser": true,
   "BatchReplaceUser": true,
   "BatchReplaceParty": true,
-  "BatchGetResult": true
+  "BatchGetResult": true,
+  "WwCreateTag": true
 }
