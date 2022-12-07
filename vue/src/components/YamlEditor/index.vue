@@ -124,28 +124,28 @@ export default {
       return {
         list: [{
             text: this.concatDefine(cursorLine, 'string'),
-            displayText: "字符串",
-            displayInfo: "以字符串格式新增字段定义",
+            displayText: "String",
+            displayInfo: "添加 String 类型",
             render: this.hintRender
           }, {
             text: this.concatDefine(cursorLine, 'number'),
-            displayText: "数值",
-            displayInfo: "以数值格式新增字段定义",
+            displayText: "Number",
+            displayInfo: "添加 Number 类型",
             render: this.hintRender
           }, {
             text: this.concatDefine(cursorLine, 'boolean'),
-            displayText: "布尔值",
-            displayInfo: "以布尔值格式新增字段定义",
+            displayText: "Boolean",
+            displayInfo: "添加 Boolean 类型",
             render: this.hintRender
           }, {
             text: this.concatDefine(cursorLine, 'array'),
-            displayText: "数组",
-            displayInfo: "以数组格式新增字段定义",
+            displayText: "Array",
+            displayInfo: "添加 Array 类型",
             render: this.hintRender
           }, {
             text: this.concatDefine(cursorLine, 'object'),
-            displayText: "对象",
-            displayInfo: "以对象格式新增字段定义",
+            displayText: "Object",
+            displayInfo: "添加 Object 类型",
             render: this.hintRender
           }],
         from: {
