@@ -49,6 +49,8 @@ yarn start
 
 4. 新增接口的请求与响应参数时可以通过使用**Alt/Option+Tab快捷键**的方式并选择字段的对应数据类型进行快速添加
 
+![test](https://wwcdn.weixin.qq.com/node/wework/images/shortcut.573d449446.png)
+
 5. 在右侧的预览窗口，实时预览编辑的接口结果
 
 ### 3、 标记接口完成
@@ -59,6 +61,10 @@ yarn start
 ### 4、 提交 MR
 
 - 提交 MR 需要填写修改的接口列表
+
+## 流程演示
+
+[流程演示动图](./gif/deleteLabel.gif)
 
 ## 接口标准
 
