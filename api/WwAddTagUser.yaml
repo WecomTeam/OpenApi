@@ -2,13 +2,13 @@
 summary: 增加标签成员
 # 接口详细描述，将展示在接口文档顶部
 description: ''
-path: ''
+path: https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers
 operationid: WwAddTagUser
 tag: wwopencorplogic
 method: POST
 cate_path: 服务端API-通讯录管理-标签管理-增加标签成员
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: ''
+permission: 调用的应用必须是指定标签的创建者；成员属于应用的可见范围。<br>注意，每个标签下部门数和人员数总和不能超过3万个。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -27,8 +27,48 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
-  body: []
+  auth: 
+    - name: access_token
+      type: 1
+      description: 调用接口凭证
+      example: ''
+      is_required: true
+      default: ''
+  body: 
+    - name: tagid
+      type: 4
+      description: 标签ID
+      example: 12
+      is_required: false
+      default: ''
+    - name: userlist
+      type: 2
+      description: 企业成员ID列表，注意：userlist、partylist不能同时为空，单次请求个数不超过1000
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties: 
+          - name: ''
+            type: 1
+            description: ''
+            example: user1
+            is_required: false
+            default: ''
+    - name: partylist
+      type: 2
+      description: 	企业部门ID列表，注意：userlist、partylist不能同时为空，单次请求个数不超过100
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties: 
+          - name: ''
+            type: 4
+            description: ''
+            example: 4
+            is_required: false
+            default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -44,7 +84,39 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        example: 0
+        is_required: false
+        default: ''
+      - name: errmsg
+        type: 1
+        description: 对返回码的文本描述内容
+        example: ok
+        is_required: false
+        default: ''
+      - name: invalidlist
+        type: 1
+        description: 非法的成员帐号列表
+        example: usr1|usr2|usr
+        is_required: false
+        default: ''
+      - name: invalidparty
+        type: 2
+        description: 非法的部门id列表
+        example: ''
+        is_required: false
+        default: ''
+        items:
+          properties: 
+            - name: ''
+              type: 4
+              description: ''
+              example: 2
+              is_required: false
+              default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 url: https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers
