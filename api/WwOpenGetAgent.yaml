@@ -127,7 +127,14 @@ response:
               is_required: false
               default: ''
               example: ''
-              items: {}
+              items: 
+                properties:
+                  - name: ''
+                    type: 4
+                    description: ''
+                    example: 1
+                    is_required: false
+                    default: ''
       - name: allow_tags
         type: 3
         description: 企业应用可见范围（标签）
@@ -141,7 +148,14 @@ response:
               is_required: false
               default: ''
               example: ''
-              items: {}
+              items: 
+                properties:
+                  - name: ''
+                    type: 4
+                    description: ''
+                    example: 1
+                    is_required: false
+                    default: ''
       - name: close
         type: 4
         description: 企业应用是否被停用
