@@ -5,7 +5,7 @@
   "scripts": {    
     "build":"npx yarn install && npx yarn build:server && cd ./vue && npx yarn install && npx yarn build",
     "dev:server": "tsc --watch",
-    "build:server": "rm -rf ./routes && tsc",
+    "build:server": "tsc",
     "dev:vue":"cd ./vue && npx yarn serve",
     "build:vue":"cd ./vue && npx yarn build",
     "start": "node ./bin/www"
