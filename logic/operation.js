@@ -6,8 +6,18 @@ const parseValidFile = operationid => {
     return path.join(__dirname, `../../api/${operationid.replace(/[\.\/\\]/g, '')}.yaml`)
 }
 
+const getYamlData = yamlData => {
+    try {
+        return jsyaml.load(yamlData);
+        
+    } catch(e) {
+        console.log('-------yaml load error-------')
+        return ''
+    }
+}
+
 export const parseToSchema = (yaml) => {
-    return jsyaml.load(yaml)
+    return getYamlData(yaml)
 }
 
 export const getApiSchema = async(operationid) => {
@@ -15,11 +25,13 @@ export const getApiSchema = async(operationid) => {
     const isExist = await fs.existsSync(filePath);
     if (isExist) {
         const yamlData = await fs.readFileSync(filePath);
+        const yaml = getYamlData(yamlData)
         try {
-            return {
+            const result =  {
                 yaml: yamlData.toString(),
-                schema: jsyaml.load(yamlData)
+                schema: yaml
             };
+            return result;
         }catch (e) {
             console.error('转换schema失败');
             return {

@@ -32,8 +32,8 @@ router.post('/info/get', async (req, res, next) => {
 
 router.post('/info/edit', async (req, res, next) => {
   const { operationid, yaml } = req.body
-  const newSchema = parseToSchema(yaml)
   try {
+    const newSchema = await parseToSchema(yaml)
     const newMd = genWecomApiDoc(newSchema)
     await editApiSchema(operationid, yaml)
     res.send({
