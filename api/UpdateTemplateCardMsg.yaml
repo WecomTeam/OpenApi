@@ -1,8 +1,10 @@
 # 接口中文名
-summary: 接口定义
+summary: 更新模版卡片消息
 # 接口详细描述，将展示在接口文档顶部
-description: ''
-path: ''
+description: >-
+  应用可以[发送模板卡片消息](#10167/模板卡片消息)<br>
+  请注意，当应用调用发送模版卡片消息后，接口会返回一个response_code，通过response_code用户可以调用本接口一次。后续如果有用户点击任务卡片，回调接口也会带上response_code，开发者通过该code也可以调用本接口一次，注意response_code的有效期是72小时，超过72小时后将无法使用。
+path: 'https://qyapi.weixin.qq.com/cgi-bin/message/update_template_card'
 operationid: UpdateTemplateCardMsg
 tag: wwopenmsglogic
 method: POST
@@ -27,8 +29,88 @@ permission: ''
 #     properties:
 #       baseType
 request:
-  auth: []
-  body: []
+  auth: 
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: 获取方法查看“[获取access_token](#10013/第三步：获取access_token)”
+      is_required: true
+      default: ''
+  body:
+    - name: 'userids'
+      type: 2
+      description: '企业的成员ID列表（最多支持1000个）'
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties:
+          - name: ''
+            type: 1
+            description: ''
+            example: 'userids'
+            is_required: false
+            default: ''
+    - name: 'partyids'
+      type: 2
+      description: '企业的部门ID列表（最多支持100个）'
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties: 
+          - name: ''
+            type: 4
+            description: ''
+            example: 2
+            is_required: false
+            default: ''
+    - name: 'tagids'
+      type: 2
+      description: '企业的标签ID列表（最多支持100个）'
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties: 
+          - name: ''
+            type: 4
+            description: ''
+            example: '44'
+            is_required: false
+            default: ''
+    - name: 'atall'
+      type: 4
+      description: '更新整个任务接收人员'
+      example: 0
+      is_required: false
+      default: ''
+    - name: 'agentid'
+      type: 4
+      description: '应用的agentid'
+      example: 1
+      is_required: true
+      default: ''
+    - name: 'response_code'
+      type: 1
+      description: '	更新卡片所需要消费的code，可通过发消息接口和回调接口返回值获取，一个code只能调用一次该接口，且只能在72小时内调用'
+      example: 'response_code'
+      is_required: true
+      default: ''
+    - name: 'button'
+      type: 3
+      description: '配置按钮属性'
+      example: ''
+      is_required: false
+      default: ''
+      items:
+        properties:
+          - name: 'replace_name'
+            type: 1
+            description: '需要更新的按钮的文案'
+            example: 'replace_name'
+            is_required: false
+            default: ''
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -44,7 +126,30 @@ request:
 response:
   - status: 200
     description: ''
-    body: []
+    body: 
+      - name: errcode
+        example: 0
+        type: 4
+        description: 返回码
+        default: ''
+      - name: errmsg
+        example: 'ok'
+        type: 1
+        description: 对返回码的文本描述内容
+        default: ''
+      - name: invaliduser
+        example: ''
+        type: 2
+        description: 不合法的userid，不区分大小写，统一转为小写
+        default: ''
+        items:
+          properties:
+            - name: ''
+              type: 1
+              description: ''
+              example: 'userid1'
+              is_required: false
+              default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 url: https://qyapi.weixin.qq.com/cgi-bin/message/update_template_card

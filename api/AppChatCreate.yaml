@@ -86,22 +86,22 @@ response:
     description: ''
     body:
       - name: errcode
-        example: ''
+        example: '0'
         type: 1
         description: 返回码
         default: ''
       - name: errmsg
-        example: ''
+        example: 'ok'
         type: 1
         description: 对返回码的文本描述内容
         default: ''
       - name: chatid
-        example: ''
+        example: 'CHATID'
         type: 1
         description: 群聊的唯一标志
         default: ''
 # 注意事项，仅显示于接口的末尾
 attention: >-
-  **限制说明：**<br>群成员人数不可超过管理端配置的“群成员人数上限”，且最大不可超过2000人。<br>每企业创建群数不可超过1000/天。<br>**返回示例：**<br>{"errcode":0,"errmsg":"ok","chatid":"CHATID"}<br>注意：刚创建的群，如果没有下发消息，在企业微信不会出现该群。
+  **限制说明：**<br>群成员人数不可超过管理端配置的“群成员人数上限”，且最大不可超过2000人。<br>每企业创建群数不可超过1000/天。<br>注意：刚创建的群，如果没有下发消息，在企业微信不会出现该群。
 isExampleError: false
 isInterface: true

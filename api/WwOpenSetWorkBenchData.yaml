@@ -1,0 +1,139 @@
+# 接口中文名
+summary: 设置应用在用户工作台展示的数据
+# 接口详细描述，将展示在接口文档顶部
+description: '**请求说明：**该接口指定应用自定义模版类型。同时也支持设置企业默认模版数据。若type指定为 "normal" 则为取消自定义模式，改为普通展示模式'
+path: https://qyapi.weixin.qq.com/cgi-bin/agent/set_workbench_data
+operationid: WwOpenSetWorkBenchData
+tag: wwopenlogic
+method: POST
+cate_path: 服务端API-应用管理-设置工作台自定义展示
+# 表示权限说明，将会显示在接口的基本信息表格中
+permission: 可设置当前凭证对应的应用；设置的userid必须在应用可见范围<br>**每个用户每个应用接口限制10次/分钟**
+# request包含以下4种类型：
+# auth 表示凭证参数
+# params 表示get请求的query参数
+# body 表示post请求的body参数
+# formData 表示附件上下传接口中的附件数据
+# 任意字段描述的基本类型(之后以baseType表示)：
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: 字段详细描述
+#   is_required: boolean true|false
+#   default: string 默认值，无特殊情况则为空
+#   items: {}
+#   如果items字段type为2(array类型)|3(object类型)时需要补充items的内容，当type为2时，只有第一个baseType生效，格式如下:
+#   items:
+#     properties:
+#       baseType
+request:
+  auth:
+    - name: access_token
+      example: ACCESS_TOKEN
+      type: 1
+      description: ''
+      is_required: true
+      default: ''
+  body:
+    - name: agentid
+      type: 4
+      description: 应用id
+      is_required: 是
+      default: ''
+      example: 1000005
+      items: {}
+    - name: userid
+      type: 1
+      description: 需要设置的用户的userid
+      is_required: 是
+      default: ''
+      example: test
+      items: {}
+    - name: type
+      type: 1
+      description: 目前支持 "keydata"、 "image"、 "list" 、"webview"
+      is_required: 是
+      default: ''
+      example: image
+      items: {}
+    - name: image
+      type: 3
+      description: 若type指定为 "image"，且需要设置企业级别默认数据，则需要设置图片型模版数据,数据结构参考“图片型”
+      is_required: 否
+      default: ''
+      example: ''
+      items:
+        properties:
+          - name: url
+            type: 1
+            description: ''
+            is_required: false
+            default: ''
+            example: xxxx
+            items: {}
+          - name: jump_url
+            type: 1
+            description: ''
+            is_required: false
+            default: ''
+            example: http://www.qq.com
+            items: {}
+          - name: pagepath
+            type: 1
+            description: ''
+            is_required: false
+            default: ''
+            example: pages/index
+            items: {}
+    - name: keydata
+      example: ''
+      type: 3
+      description: 若type指定为 "keydata"，且需要设置企业级别默认数据，则需要设置关键数据型模版数据,数据结构参考“关键数据型”
+      is_required: 否
+      default: ''
+    - name: list
+      example: ''
+      type: 3
+      description: 若type指定为 "list"，且需要设置企业级别默认数据，则需要设置列表型模版数据,数据结构参考“列表型”
+      is_required: 否
+      default: ''
+    - name: webview
+      example: ''
+      type: 3
+      description: 若type指定为 "webview"，且需要设置企业级别默认数据，则需要设置webview型模版数据,数据结构参考“webview型”
+      is_required: 否
+      default: ''
+  params: []
+  formData: []
+# 以baseType的格式补充到body下
+# - name: string
+#   example: string
+#   type: number 1(string)|2(array)|3(object)|4(number)|5(file)|6(boolean)
+#   description: string 当前字段的详细描述
+#   is_required: boolean true|false
+#   default: string
+#   items:
+#     properties:
+#       baseType
+response:
+  - status: '200'
+    description: ''
+    body:
+      - name: errcode
+        type: 4
+        description: ''
+        is_required: false
+        default: ''
+        example: 0
+        items: {}
+      - name: errmsg
+        type: 1
+        description: ''
+        is_required: false
+        default: ''
+        example: ok
+        items: {}
+# 注意事项，仅显示于接口的末尾
+attention: ''
+isExampleError: true
+isInterface: true

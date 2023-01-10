@@ -144,7 +144,48 @@ response:
                     is_required: false
                     default: ''
                     example: ''
-                    items: {}
+                    items:
+                      properties:
+                        - name: ''
+                          type: 3
+                          description: ''
+                          example: ''
+                          is_required: false
+                          default: ''
+                          items:
+                            properties:
+                              - name: 'name'
+                                type: 1
+                                description: '扩展属性名'
+                                example: '自定义属性(文本)'
+                                is_required: false
+                                default: ''
+                              - name: 'value'
+                                type: 1
+                                description: '扩展属性值'
+                                example: '10086'
+                                is_required: false
+                                default: ''
+                              - name: 'type'
+                                type: 4
+                                description: '扩展属性类型'
+                                example: 0
+                                is_required: false
+                                default: ''
+                              - name: 'text'
+                                type: 3
+                                description: ''
+                                example: ''
+                                is_required: false
+                                default: ''
+                                items:
+                                  properties:
+                                          - name: 'value'
+                                            type: 1
+                                            description: '文本属性值'
+                                            example: '10086'
+                                            is_required: false
+                                            default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 isExampleError: false

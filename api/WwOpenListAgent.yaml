@@ -1,14 +1,14 @@
 # 接口中文名
-summary: 获取群聊会话
+summary: 获取access_token对应的应用列表
 # 接口详细描述，将展示在接口文档顶部
 description: ''
-path: https://qyapi.weixin.qq.com/cgi-bin/appchat/get
-operationid: AppChatGet
-tag: wwopenmsglogic
+path: https://qyapi.weixin.qq.com/cgi-bin/agent/list
+operationid: WwOpenListAgent
+tag: wwopenlogic
 method: GET
-cate_path: 服务端API-消息推送-发送消息到群聊会话-获取群聊会话
+cate_path: 服务端API-应用管理-获取应用
 # 表示权限说明，将会显示在接口的基本信息表格中
-permission: 只允许企业自建应用调用，且应用的可见范围必须是根部门；<br>chatid所代表的群必须是该应用所创建；<br>第三方不可调用。
+permission: 企业仅可获取当前凭证对应的应用；第三方仅可获取被授权的应用。
 # request包含以下4种类型：
 # auth 表示凭证参数
 # params 表示get请求的query参数
@@ -31,17 +31,11 @@ request:
     - name: access_token
       example: ACCESS_TOKEN
       type: 1
-      description: ''
+      description: 调用接口凭证
       is_required: true
       default: ''
   body: []
-  params:
-    - name: chatid
-      example: ''
-      type: 1
-      description: 群聊id
-      is_required: 是
-      default: ''
+  params: []
   formData: []
 # 以baseType的格式补充到body下
 # - name: string
@@ -58,50 +52,46 @@ response:
     description: ''
     body:
       - name: errcode
-        example: 0
         type: 4
-        description: 返回码
+        description: 出错返回码，为0表示成功，非0表示调用失败
         default: ''
+        example: 0
+        items: {}
       - name: errmsg
-        example: 'ok'
         type: 1
-        description: 对返回码的文本描述内容
+        description: 返回码提示语
         default: ''
-      - name: chat_info
-        example: ''
-        type: 3
-        description: 群聊信息
+        example: ok
+        items: {}
+      - name: agentlist
+        type: 2
+        description: 当前凭证可访问的应用列表
         default: ''
+        example: ok
         items:
           properties:
-            - name: chatid
-              example: CHATID
-              type: 1
-              description: 群聊唯一标志
-              default: ''
-            - name: name
-              example: NAME
-              type: 1
-              description: 群聊名
-              default: ''
-            - name: owner
-              example: userid2
-              type: 1
-              description: 群主id
-              default: ''
-            - name: userlist
-              example: ''
-              type: 2
-              description: 群成员id列表
-              default: ''
+            - name: ''
+              type: 3
               items:
                 properties:
-                  - name: ''
-                    type: 1
-                    description: ''
-                    example: 'userid1'
-                    is_required: false
-                    default: ''
+                - name: agentid
+                  type: 1
+                  description: 应用id
+                  default: ''
+                  example: 1000005
+                  items: {}
+                - name: name
+                  type: 1
+                  description: 应用名
+                  default: ''
+                  example: HR助手
+                  items: {}
+                - name: square_logo_url
+                  type: 1
+                  description: 应用logo地址
+                  default: ''
+                  example: https://p.qlogo.cn/bizmail/FicwmI50icF8GH9ib7rUAYR5kicLTgP265naVFQKnleqSlRhiaBx7QA9u7Q/0
+                  items: {}
 # 注意事项，仅显示于接口的末尾
 attention: ''
 isExampleError: false

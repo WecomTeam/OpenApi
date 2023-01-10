@@ -1,7 +1,7 @@
 # 接口中文名
 summary: 撤回应用消息
 # 接口详细描述，将展示在接口文档顶部
-description: ''
+description: 本接口可以撤回24小时内通过[发送应用消息](#10167)接口推送的消息，仅可撤回企业微信端的数据，微信插件端的数据不支持撤回。
 path: https://qyapi.weixin.qq.com/cgi-bin/message/recall
 operationid: WwOpenAppRecallMsg
 tag: wwopenmsglogic
@@ -31,7 +31,7 @@ request:
     - name: access_token
       example: ACCESS_TOKEN
       type: 1
-      description: ''
+      description: 获取方法查看“[获取access_token](#10013/第三步：获取access_token)”
       is_required: true
       default: ''
   body:

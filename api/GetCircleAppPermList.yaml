@@ -34,18 +34,7 @@ request:
       description: ''
       is_required: true
       default: ''
-  body:
-    - name: errmsg
-      example: ''
-      type: 1
-      description: 可见的userids，是用 CorpId + ’/‘ + USERID 拼成的字符串
-      is_required: 对返回码的文本描述内容
-      default: ''
-    - name: department_ids
-      example: ''
-      type: 1
-      is_required: 可见的department_ids，是用 linkedid + ’/‘ + department_id 拼成的字符串
-      default: ''
+  body: []
   params: []
   formData: []
 # 以baseType的格式补充到body下
@@ -61,7 +50,45 @@ request:
 response:
   - status: '200'
     description: ''
-    body: []
+    body:
+      - name: errcode
+        type: 4
+        description: 返回码
+        example: 0
+        is_required: false
+        default: ''
+      - name: errmsg
+        example: ok
+        type: 1
+        description: 对返回码的文本描述内容
+        is_required: ''
+        default: ''
+      - name: userids
+        example: ok
+        type: 2
+        description: 可见的userids，是用 CorpId + ’/‘ + USERID 拼成的字符串
+        items:
+          properties:
+            - name: ''
+              type: 1
+              description: ''
+              example: "CORPID/USERID"
+              is_required: false
+              default: ''
+        is_required: ''
+        default: ''
+      - name: department_ids
+        example: ''
+        type: 2
+        is_required: 可见的department_ids，是用 linkedid + ’/‘ + department_id 拼成的字符串
+        default: ''
+        items:
+          properties:
+            - name: department_ids
+              example: 'LINKEDID/DEPARTMENTID'
+              type: 1
+              is_required: 
+              default: ''
 # 注意事项，仅显示于接口的末尾
 attention: ''
 isExampleError: false

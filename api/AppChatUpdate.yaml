@@ -99,17 +99,17 @@ response:
     description: ''
     body:
       - name: errcode
-        example: ''
-        type: 1
+        example: 0
+        type: 4
         description: 返回码
         default: ''
       - name: errmsg
-        example: ''
+        example: ok
         type: 1
         description: 对返回码的文本描述内容
         default: ''
 # 注意事项，仅显示于接口的末尾
 attention: >-
-  **限制说明：**<br>chatid所代表的群必须是该应用所创建。<br>群成员人数不可超过2000人。<br>每企业变更群的次数不可超过1000次/小时。<br>**返回示例：**<br>{"errcode":0,"errmsg":"ok"}
+  **限制说明：**<br>chatid所代表的群必须是该应用所创建。<br>群成员人数不可超过2000人。<br>每企业变更群的次数不可超过1000次/小时。
 isExampleError: false
 isInterface: true

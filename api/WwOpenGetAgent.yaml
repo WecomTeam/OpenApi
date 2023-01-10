@@ -28,22 +28,16 @@ permission: 企业仅可获取当前凭证对应的应用；第三方仅可获�
 #       baseType
 request:
   auth:
-    - name: access\_token
-      example: ACCESS\_TOKEN
+    - name: access_token
+      example: ACCESS_TOKEN
       type: 1
-      description: ''
+      description: 调用接口凭证
       is_required: true
       default: ''
   body: []
   params:
-    - name: access_token
-      example: ''
-      type: 1
-      description: 调用接口凭证
-      is_required: 是
-      default: ''
     - name: agentid
-      example: ''
+      example: 'xxxxxxxx'
       type: 1
       description: 应用id
       is_required: 是
@@ -113,7 +107,22 @@ response:
               is_required: false
               default: ''
               example: ''
-              items: {}
+              items:
+                properties:
+                  - name: ''
+                    type: 3
+                    description: ''
+                    example: ''
+                    is_required: false
+                    default: ''
+                    items:
+                      properties:
+                        - name: 'userid'
+                          type: 1
+                          description: '企业微信用户id'
+                          example: 'zhangsan'
+                          is_required: false
+                          default: ''
       - name: allow_partys
         type: 3
         description: 企业应用可见范围（部门）

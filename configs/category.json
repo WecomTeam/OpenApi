@@ -677,9 +677,10 @@
                 "90227": {
                     "author": "samueldeng",
                     "category_id": 90227,
-                    "childSort": ["WwOpenGetAgent"],
+                    "childSort": ["WwOpenGetAgent", "WwOpenListAgent"],
                     "children": {
-                        "WwOpenGetAgent": "获取指定的应用详情"
+                        "WwOpenGetAgent": "获取指定的应用详情",
+                        "WwOpenListAgent": "获取access_token对应的应用列表"
                     },
                     "doc_id": 10087,
                     "gray_status": 0,
@@ -760,9 +761,11 @@
                 "92535": {
                     "author": "sandyzeng",
                     "category_id": 92535,
-                    "childSort": ["WwOpenSetWorkBenchTemplate"],
+                    "childSort": ["WwOpenSetWorkBenchTemplate", "WwOpenGetWorkBenchTemplate", "WwOpenSetWorkBenchData"],
                     "children": {
-                        "WwOpenSetWorkBenchTemplate": "设置应用在工作台展示的模版"
+                        "WwOpenSetWorkBenchTemplate": "设置应用在工作台展示的模版",
+                        "WwOpenGetWorkBenchTemplate": "获取应用在工作台展示的模版",
+                        "WwOpenSetWorkBenchData": "设置应用在用户工作台展示的数据"
                     },
                     "doc_id": 20102,
                     "gray_status": 0,
@@ -789,7 +792,7 @@
                     "category_id": 90236,
                     "childSort": ["WwOpenAppSendMsg"],
                     "children": {
-                        "WwOpenAppSendMsg": "接口定义"
+                        "WwOpenAppSendMsg": "发送应用消息"
                     },
                     "doc_id": 10167,
                     "gray_status": 0,
@@ -850,7 +853,7 @@
                             "category_id": 90248,
                             "childSort": ["AppChatSend"],
                             "children": {
-                                "AppChatSend": "##接口定义"
+                                "AppChatSend": "应用推送消息"
                             },
                             "doc_id": 13294,
                             "gray_status": 0,
@@ -877,7 +880,7 @@
                             "category_id": 90250,
                             "childSort": ["WwOpenLinkedCorpSendMsg"],
                             "children": {
-                                "WwOpenLinkedCorpSendMsg": "接口定义"
+                                "WwOpenLinkedCorpSendMsg": "发送应用消息"
                             },
                             "doc_id": 14689,
                             "gray_status": 0,
@@ -904,7 +907,7 @@
                             "category_id": 91609,
                             "childSort": ["WwOpenExContactSendMsg"],
                             "children": {
-                                "WwOpenExContactSendMsg": "接口定义"
+                                "WwOpenExContactSendMsg": "发送「学校通知」"
                             },
                             "doc_id": 16504,
                             "gray_status": 0,
@@ -940,7 +943,7 @@
                     "category_id": 94888,
                     "childSort": ["UpdateTemplateCardMsg"],
                     "children": {
-                        "UpdateTemplateCardMsg": "接口定义"
+                        "UpdateTemplateCardMsg": "更新模版卡片消息"
                     },
                     "doc_id": 32086,
                     "gray_status": 0,
@@ -1892,7 +1895,7 @@
                             "category_id": 92321,
                             "childSort": ["WwOpenExContactSendMsg"],
                             "children": {
-                                "WwOpenExContactSendMsg": "接口定义"
+                                "WwOpenExContactSendMsg": "发送「学校通知」"
                             },
                             "doc_id": 16504,
                             "gray_status": 0,
